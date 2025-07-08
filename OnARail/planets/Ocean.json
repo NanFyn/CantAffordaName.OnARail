@@ -1,0 +1,116 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/body_schema.json",
+  "name": "Ocean",
+  "starSystem": "Jam5",
+  "Base": {
+    "gravityFallOff": "linear",
+    "surfaceSize": 100,
+    "surfaceGravity": 0.1,
+    "gravityAlignmentRadiusOverride": 100,
+    "groundSize": 40
+  },
+  "Orbit": {
+    "primaryBody": "Railway System",
+    "showOrbitLine": true,
+    "semiMajorAxis": 1900,
+    "trueAnomaly": 45
+  },
+  "Atmosphere": {
+    "atmosphereSunIntensity": 0.5,
+    "hasOxygen": true,
+    "size": 100,
+    "useAtmosphereShader": true,
+    "atmosphereTint": {
+      "r": 166,
+      "g": 255,
+      "b": 255,
+      "a": 0
+    },
+    "fogSize": 100,
+    "fogDensity": 0.1,
+    "minShockSpeed": 150,
+    "maxShockSpeed": 500
+  },
+  "AmbientLights": [
+    {
+      "outerRadius": 100,
+      "innerRadius": 40,
+      "isShell": true,
+      "intensity": 0.8,
+      "tint": {
+        "r": 166,
+        "g": 255,
+        "b": 255,
+        "a": 0
+      }
+    }
+  ],
+  "Spawn": {
+    "playerSpawnPoints": [
+      {
+        "isDefault": false,
+        "alignRadial": true,
+        "rename": "OceanSpawn",
+        "position": {
+          "x": 0,
+          "y": 75,
+          "z": 0
+        }
+      }
+    ]
+  },
+  "Volumes": {
+    "rulesets": {
+      "probeRulesets": [
+        {
+          "radius": 49,
+          "probeSpeed": 15,
+          "overrideProbeSpeed": true
+        }
+      ]
+    },
+    "forces": {
+      "gravityVolumes": [
+        {
+          "alignmentRadius": 100,
+          "force": 12,
+          "radius": 120,
+          "lowerRadius": 70,
+          "upperRadius": 120,
+          "minForce": 12,
+          "fallOff": "linear",
+          "rename": "TestGravityVolume"
+        }
+      ]
+    }
+  },
+  "Water": {
+    "size": 50,
+    "density": 50,
+    "buoyancy": 0.9,
+    "tint": {
+      "r": 65,
+      "g": 200,
+      "b": 255
+    }
+  },
+  "Sand": {
+    "size": 40
+  },
+  "Props": {
+    "details": [
+
+    ]
+  },
+  "ShipLog": {
+    "mapMode": {
+      "remove": true
+    }
+  },
+  "ReferenceFrame": {
+    "enabled": true
+  },
+  "MapMarker": {
+    "enabled": true
+  }
+}

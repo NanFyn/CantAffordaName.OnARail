@@ -1,0 +1,28 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/body_schema.json",
+  "name": "Train",
+  "starSystem": "Jam5",
+  "Base": {
+    "gravityFallOff": "linear",
+    "surfaceSize": 300,
+    "surfaceGravity": 12,
+    "groundSize": 200
+  },
+  "Orbit": {
+    "primaryBody": "Railway System",
+    "showOrbitLine": true,
+    "semiMajorAxis": 1900,
+    "trueAnomaly": 120
+  },
+  "ShipLog": {
+    "mapMode": {
+      "remove": true
+    }
+  },
+  "ReferenceFrame": {
+    "enabled": true
+  },
+  "MapMarker": {
+    "enabled": true
+  }
+}

@@ -47,19 +47,9 @@ namespace OnARail
                     ModHelper.Console.WriteLine("Set layer to IgnoreSun in Ocean_Body/Sector/Water!", MessageType.Info);
 
                     Material[] waterMaterial = water.GetComponent<TessellatedSphereRenderer>().GetComponent<TessellatedRenderer>()._materials;
-                    waterMaterial[1].color = new Color(0.8f, 0.8f, 1f, 0f);
-                    /*foreach (Material material in test)
-                    {
-                        if (material.name == "Ocean_GD_Surface_mat")
-                        {
-                            ModHelper.Console.WriteLine("Found it!", MessageType.Success);
-                            material.color = new Color(0f, 0f, 0f, 0f);
-                        }
-                        else
-                        {
-                            ModHelper.Console.WriteLine("Nope, sorry!", MessageType.Info);
-                        }
-                    }*/
+                    waterMaterial[1].color = new Color(0.4f, 0.8f, 1f, 0f);
+                    //Makes atmosphere render infront as it should, but not worth the hassle of reconfiguring renderQueue for everything
+                    //waterMaterial[1].renderQueue = 999;
                 }
                 else{ModHelper.Console.WriteLine("Can't find Ocean_Body/Sector/Water!", MessageType.Error);}
                 /*TessSphereSectorToggle oceanGDTessSectorToggle = SearchUtilities.Find("Ocean_Body/Sector/Ocean_GD").GetComponent<TessSphereSectorToggle>();

@@ -13,7 +13,7 @@
     "primaryBody": "Railway System",
     "showOrbitLine": true,
     "semiMajorAxis": 1900,
-    "trueAnomaly": 45
+    "trueAnomaly": 8
   },
   "Atmosphere": {
     "atmosphereSunIntensity": 0.5,
@@ -74,7 +74,7 @@
         {
           "alignmentRadius": 100,
           "force": 12,
-          "radius": 120,
+          "radius": 100,
           "lowerRadius": 70,
           "upperRadius": 120,
           "minForce": 12,

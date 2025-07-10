@@ -99,7 +99,115 @@
   },
   "Props": {
     "details": [
-
+      {
+        "path": "",
+        "rename": "Fish_Standard"
+      },
+      {
+        "assetBundle": "planets/assetbundle/onarail",
+        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
+        "parentPath": "Sector/Fish_Standard"
+      },
+      {
+        "assetBundle": "planets/assetbundle/onarail",
+        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
+        "parentPath": "Sector/Fish_Standard"
+      },
+      {
+        "assetBundle": "planets/assetbundle/onarail",
+        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
+        "parentPath": "Sector/Fish_Standard"
+      },
+      {
+        "assetBundle": "planets/assetbundle/onarail",
+        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
+        "parentPath": "Sector/Fish_Standard"
+      },
+      {
+        "assetBundle": "planets/assetbundle/onarail",
+        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
+        "parentPath": "Sector/Fish_Standard"
+      },
+      {
+        "assetBundle": "planets/assetbundle/onarail",
+        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
+        "parentPath": "Sector/Fish_Standard"
+      },
+      {
+        "assetBundle": "planets/assetbundle/onarail",
+        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
+        "parentPath": "Sector/Fish_Standard"
+      },
+      {
+        "assetBundle": "planets/assetbundle/onarail",
+        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
+        "parentPath": "Sector/Fish_Standard"
+      },
+      {
+        "assetBundle": "planets/assetbundle/onarail",
+        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
+        "parentPath": "Sector/Fish_Standard"
+      },
+      {
+        "assetBundle": "planets/assetbundle/onarail",
+        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
+        "parentPath": "Sector/Fish_Standard"
+      },
+      {
+        "assetBundle": "planets/assetbundle/onarail",
+        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
+        "parentPath": "Sector/Fish_Standard"
+      },
+      {
+        "assetBundle": "planets/assetbundle/onarail",
+        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
+        "parentPath": "Sector/Fish_Standard"
+      },
+      {
+        "assetBundle": "planets/assetbundle/onarail",
+        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
+        "parentPath": "Sector/Fish_Standard"
+      },
+      {
+        "assetBundle": "planets/assetbundle/onarail",
+        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
+        "parentPath": "Sector/Fish_Standard"
+      },
+      {
+        "assetBundle": "planets/assetbundle/onarail",
+        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
+        "parentPath": "Sector/Fish_Standard"
+      },
+      {
+        "assetBundle": "planets/assetbundle/onarail",
+        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
+        "parentPath": "Sector/Fish_Standard"
+      },
+      {
+        "assetBundle": "planets/assetbundle/onarail",
+        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
+        "parentPath": "Sector/Fish_Standard"
+      },
+      {
+        "assetBundle": "planets/assetbundle/onarail",
+        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
+        "parentPath": "Sector/Fish_Standard"
+      },
+      {
+        "assetBundle": "planets/assetbundle/onarail",
+        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
+        "parentPath": "Sector/Fish_Standard"
+      },
+      {
+        "assetBundle": "planets/assetbundle/onarail",
+        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
+        "parentPath": "Sector/Fish_Standard"
+      },
+      {
+        "assetBundle": "planets/assetbundle/onarail",
+        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
+        "parentPath": "Sector/Fish_Standard"
+      }
     ]
   },
   "ShipLog": {

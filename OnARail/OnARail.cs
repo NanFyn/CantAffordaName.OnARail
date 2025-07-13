@@ -2,18 +2,19 @@
 using OWML.ModHelper;
 using NewHorizons.Utility;
 using UnityEngine;
-using NewHorizons;
-using OWML.ModHelper.Events;
 using OnARail.Components;
-using System.Linq;
 using System.Collections.Generic;
+using UnityEngine.Events;
 
 namespace OnARail
 {
     public class OnARail : ModBehaviour
     {
+        public static OnARail Instance;
+
         private void Awake()
         {
+            Instance = this;
             // You won't be able to access OWML's mod helper in Awake. Use Start() instead.
             // Harmony Patches can go here.
         }
@@ -40,21 +41,38 @@ namespace OnARail
         {
             var newHorizons = ModHelper.Interaction.TryGetModApi<INewHorizons>("xen.NewHorizons");
 
-            GameObject oceanPlanet = newHorizons.GetPlanet("Ocean");
+            GameObject trainPlanet = newHorizons.GetPlanet("Locomocean");
+            if (trainPlanet != null)
+            {
+                GameObject trainInterface = SearchUtilities.Find("StellarExpress_Body/Sector/TrainInterface");
+                if (trainInterface != null)
+                {
+                    trainInterface.AddComponent<CoordInterfaceController>();
+                }
+                else { ModHelper.Console.WriteLine("Can't find TrainInterface!", MessageType.Error); }
+            }
+
+            GameObject oceanPlanet = newHorizons.GetPlanet("Locomocean");
             if (oceanPlanet != null)
             {
-                GameObject water = SearchUtilities.Find("Ocean_Body/Sector/Water");
+                SphereCollider sphereCollider = SearchUtilities.Find("Locomocean_Body/Sector/Air").GetComponent<SphereCollider>();
+                if(sphereCollider != null)
+                {
+                    sphereCollider.radius = 110f;
+                }
+                
+                GameObject water = SearchUtilities.Find("Locomocean_Body/Sector/Water");
                 if (water != null)
                 {
                     //water.layer = LayerMask.NameToLayer("IgnoreSun");
-                    //ModHelper.Console.WriteLine("Set layer to IgnoreSun in Ocean_Body/Sector/Water!", MessageType.Info);
+                    //ModHelper.Console.WriteLine("Set layer to IgnoreSun in Locomocean_Body/Sector/Water!", MessageType.Info);
 
                     Material[] waterMaterial = water.GetComponent<TessellatedSphereRenderer>().GetComponent<TessellatedRenderer>()._materials;
                     waterMaterial[1].color = new Color(0.4f, 0.8f, 1f, 0f);
                 }
-                else{ModHelper.Console.WriteLine("Can't find Ocean_Body/Sector/Water!", MessageType.Error);}
+                else{ModHelper.Console.WriteLine("Can't find Locomocean_Body/Sector/Water!", MessageType.Error);}
 
-                GameObject fishStandardRoot = SearchUtilities.Find("Ocean_Body/Sector/Fish_Standard");
+                GameObject fishStandardRoot = SearchUtilities.Find("Locomocean_Body/Sector/Fish_Standard");
                 if (fishStandardRoot != null)
                 {
                     List<GameObject> fishList = SearchUtilities.GetAllChildren(fishStandardRoot);
@@ -70,8 +88,24 @@ namespace OnARail
             }
             else
             {
-                ModHelper.Console.WriteLine("Couldn't locate planet: Ocean!", MessageType.Error);
+                ModHelper.Console.WriteLine("Couldn't locate planet: Locomocean!", MessageType.Error);
             }
+        }
+
+        public static void SolvedCoords()
+        {
+            var newHorizons = Instance.ModHelper.Interaction.TryGetModApi<INewHorizons>("xen.NewHorizons");
+            //Temporary: Set stuff up once train is done!
+            GameObject warpSwitch = SearchUtilities.Find("StellarExpress_Body/Sector/TrainInterface/WarpSwitch");
+            GameObject pillarRoot = SearchUtilities.Find("StellarExpress_Body/Sector/TrainInterface/PillarPivot/PillarRoot");
+            
+            warpSwitch.transform.SetParent(pillarRoot.transform);
+            warpSwitch.transform.localPosition = new Vector3(0, 0.4f, 0);
+        }
+
+        public static void DebugLog(string line, MessageType type)
+        {
+            Instance.ModHelper.Console.WriteLine($"DEBUG: {line}", MessageType.Info);
         }
     }
 }

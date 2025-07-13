@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1275214011
+CRC: 2861685901
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 44efe38bec3a8e53c1aa9fc0228f6426
+    Hash: 026a1903bc27aeb0793b10e22a49d65a
   TypeTreeHash:
     serializedVersion: 2
-    Hash: f84699563d2dd09d978bf6c2e03adf13
+    Hash: cd274af1ef056112ef1c1813e6260b67
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -25,7 +25,14 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 65
   Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: -1231077053, guid: 9a5fca7750cc5444181beddb63600c21, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 135
+  Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/OnARail/Prefabs/TestFish.prefab
+- Assets/OnARail/Prefabs/TestReplacer.prefab
 Dependencies: []

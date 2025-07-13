@@ -1,0 +1,75 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/body_schema.json",
+  "name": "Stellar Express",
+  "starSystem": "Jam5",
+  "Base": {
+    "gravityFallOff": "linear",
+    "surfaceSize": 50,
+    "surfaceGravity": 0.1,
+    "gravityAlignmentRadiusOverride": 100,
+    "groundSize": 40
+  },
+  "Orbit": {
+    "primaryBody": "Railway System",
+    "showOrbitLine": true,
+    "semiMajorAxis": 1500,
+    "trueAnomaly": 360,
+    "isTidallyLocked": true,
+    "alignmentAxis": {
+      "x": -1,
+      "y": 0,
+      "z": 0
+    }
+  },
+  "Atmosphere": {
+    "hasOxygen": false,
+    "size": 150,
+    "useAtmosphereShader": false
+  },
+  "Volumes": {
+    "forces": {
+      "gravityVolumes": [
+        {
+          "alignmentRadius": 150,
+          "force": 12,
+          "radius": 150,
+          "lowerRadius": 40,
+          "upperRadius": 100,
+          "minForce": 12,
+          "fallOff": "inverseSquared",
+          "rename": "CustomGravityVolume"
+        }
+      ]
+    }
+  },
+  "Props": {
+    "details": [
+      {
+        "rename": "TrainInterface",
+        "path": "DB_VesselDimension_Body/Sector_VesselDimension/Sector_VesselBridge/Interactibles_VesselBridge/WarpController/CoordinateInterface",
+        "position": {
+          "x": 0,
+          "y": 40,
+          "z": 0
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      }
+    ]
+  },
+  "ShipLog": {
+    "mapMode": {
+      "remove": true
+    }
+  },
+  "ReferenceFrame": {
+    "enabled": true,
+    "targetWhenClose": true
+  },
+  "MapMarker": {
+    "enabled": true
+  }
+}

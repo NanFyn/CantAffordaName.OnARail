@@ -21,8 +21,8 @@
   "Star": {
     "stellarDeathType": "none",
     "size": 400,
-    "solarLuminosity": 1,
-    "lightRadius": 7500,
+    "solarLuminosity": 2,
+    "lightRadius": 2500,
     "lightTint": {
       "r": 255,
       "g": 255,
@@ -38,7 +38,7 @@
     "rulesets": {
       "antiTravelMusicRulesets": [
         {
-          "radius": 2500,
+          "radius": 1900,
           "rename": "RailwayAntiTravelMusic"
         }
       ]

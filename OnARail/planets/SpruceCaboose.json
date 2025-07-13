@@ -1,0 +1,127 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/body_schema.json",
+  "name": "Spruce Caboose",
+  "starSystem": "Jam5",
+  "Base": {
+    "gravityFallOff": "linear",
+    "surfaceSize": 50,
+    "surfaceGravity": 0.1,
+    "gravityAlignmentRadiusOverride": 100,
+    "groundSize": 40
+  },
+  "Orbit": {
+    "primaryBody": "Railway System",
+    "showOrbitLine": false,
+    "semiMajorAxis": 1500,
+    "trueAnomaly": 300,
+    "isMoon": true,
+    "isTidallyLocked": true,
+    "alignmentAxis": {
+      "x": -1,
+      "y": 0,
+      "z": 0
+    }
+  },
+  "Atmosphere": {
+    "atmosphereSunIntensity": 1,
+    "hasOxygen": true,
+    "size": 150,
+    "useAtmosphereShader": true,
+    "atmosphereTint": {
+      "r": 0,
+      "g": 100,
+      "b": 0,
+      "a": 0
+    },
+    "fogSize": 110,
+    "fogDensity": 0.1,
+    "minShockSpeed": 50,
+    "maxShockSpeed": 150
+  },
+  "AmbientLights": [
+    {
+      "outerRadius": 100,
+      "innerRadius": 40,
+      "isShell": true,
+      "intensity": 0.8,
+      "tint": {
+        "r": 0,
+        "g": 255,
+        "b": 0,
+        "a": 0
+      }
+    }
+  ],
+  "Volumes": {
+    "forces": {
+      "gravityVolumes": [
+        {
+          "alignmentRadius": 150,
+          "force": 12,
+          "radius": 150,
+          "lowerRadius": 40,
+          "upperRadius": 100,
+          "minForce": 12,
+          "fallOff": "inverseSquared",
+          "rename": "CustomGravityVolume"
+        }
+      ]
+    }
+  },
+  "Props": {
+    "details": [
+      {
+        "rename": "TestPole",
+        "path": "DB_VesselDimension_Body/Sector_VesselDimension/Props_VesselDimension/Prefab_NOM_NomaiTree_VarDRY_3/GEO_Treepot_3",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": -40
+        },
+        "rotation": {
+          "x": 270,
+          "y": 0,
+          "z": 0
+        },
+        "stretch": {
+          "x": 50,
+          "y": 150,
+          "z": 50
+        },
+        "keepLoaded": true
+      },
+      {
+        "rename": "TestPole2",
+        "path": "DB_VesselDimension_Body/Sector_VesselDimension/Props_VesselDimension/Prefab_NOM_NomaiTree_VarDRY_3/GEO_Treepot_3",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 40
+        },
+        "rotation": {
+          "x": 90,
+          "y": 0,
+          "z": 0
+        },
+        "stretch": {
+          "x": 50,
+          "y": 150,
+          "z": 50
+        },
+        "keepLoaded": true
+      }
+    ]
+  },
+  "ShipLog": {
+    "mapMode": {
+      "remove": true
+    }
+  },
+  "ReferenceFrame": {
+    "enabled": true,
+    "targetWhenClose": true
+  },
+  "MapMarker": {
+    "enabled": true
+  }
+}

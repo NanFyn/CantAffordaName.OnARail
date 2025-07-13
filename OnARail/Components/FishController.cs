@@ -19,8 +19,8 @@ namespace OnARail.Components
         public float heightLerpSpeed = 0.5f;
 
         [Header("Obstacle Detection")]
-        public LayerMask obstacleLayers = 1 << 12;
-        public float obstacleCheckDistance = 5f;
+        public LayerMask obstacleLayers = 1 << 10 | 1 << 12;
+        public float obstacleCheckDistance = 8f;
         public float obstacleCheckCooldown = 0.5f;
 
         private Quaternion startRotation;
@@ -100,7 +100,7 @@ namespace OnARail.Components
             Vector3 origin = fishTransform.position;
             Vector3 direction = fishDirectionSmoothed.normalized;
 
-            if (Physics.Raycast(origin, direction, out RaycastHit hit, obstacleCheckDistance, obstacleLayers))
+            if (Physics.SphereCast(origin, 1f, direction, out RaycastHit hit, obstacleCheckDistance, obstacleLayers))
             {
                 obstacleLastCheckTime = Time.time;
                 PickNewRotation();

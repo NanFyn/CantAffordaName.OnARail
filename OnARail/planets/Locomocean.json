@@ -35,6 +35,7 @@
     },
     "fogSize": 110,
     "fogDensity": 0.1,
+    "fogRampPath": "planets/textures/fog/FogColorRamp_TH.png",
     "minShockSpeed": 50,
     "maxShockSpeed": 150
   },

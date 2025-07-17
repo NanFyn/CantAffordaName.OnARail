@@ -52,6 +52,20 @@
       }
     }
   ],
+  "Spawn": {
+    "playerSpawnPoints": [
+      {
+        "isDefault": false,
+        "alignRadial": true,
+        "rename": "_SpruceSpawn",
+        "position": {
+          "x": 0,
+          "y": 75,
+          "z": 0
+        }
+      }
+    ]
+  },
   "Volumes": {
     "forces": {
       "gravityVolumes": [

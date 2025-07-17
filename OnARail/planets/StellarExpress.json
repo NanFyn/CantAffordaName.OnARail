@@ -4,10 +4,9 @@
   "starSystem": "Jam5",
   "Base": {
     "gravityFallOff": "linear",
-    "surfaceSize": 50,
-    "surfaceGravity": 0.1,
-    "gravityAlignmentRadiusOverride": 100,
-    "groundSize": 40
+    "surfaceSize": 0,
+    "surfaceGravity": 0,
+    "showMinimap": false
   },
   "Orbit": {
     "primaryBody": "Railway System",
@@ -19,44 +18,326 @@
       "x": -1,
       "y": 0,
       "z": 0
+    },
+    "tint": {
+      "r": 9,
+      "g": 23,
+      "b": 191
     }
   },
-  "Atmosphere": {
-    "hasOxygen": false,
-    "size": 150,
-    "useAtmosphereShader": false
-  },
-  "Volumes": {
-    "forces": {
-      "gravityVolumes": [
-        {
-          "alignmentRadius": 150,
-          "force": 12,
-          "radius": 150,
-          "lowerRadius": 40,
-          "upperRadius": 100,
-          "minForce": 12,
-          "fallOff": "inverseSquared",
-          "rename": "CustomGravityVolume"
-        }
-      ]
-    }
-  },
-  "Props": {
-    "details": [
+  "Spawn": {
+    "playerSpawnPoints": [
       {
-        "rename": "TrainInterface",
-        "path": "DB_VesselDimension_Body/Sector_VesselDimension/Sector_VesselBridge/Interactibles_VesselBridge/WarpController/CoordinateInterface",
+        "isDefault": false,
+        "alignRadial": true,
+        "rename": "_TrainSpawn",
         "position": {
           "x": 0,
-          "y": 40,
+          "y": 75,
           "z": 0
+        }
+      }
+    ]
+  },
+  "Volumes": {
+    "notificationVolumes": [
+      {
+        "entryNotification": {
+          "displayMessage": "DANGER: GHOST MATTER DETECTED NEARBY"
+        },
+        "radius": 8,
+        "position": {
+          "x": 0,
+          "y": -4.2,
+          "z": -43.5
+        },
+        "target": "player"
+      }
+    ],
+    "hazardVolumes": [
+      {
+        "type": "ghostMatter",
+        "firstContactDamageType": "impact",
+        "damagePerSecond": 50,
+        "radius": 4,
+        "position": {
+          "x": 0,
+          "y": -4.5,
+          "z": -40
+        }
+      }
+    ]
+  },
+  "Props": {
+    "audioSources": [
+      {
+        "rename": "TrainWhistle",
+        "track": "environment",
+        "minDistance": 1,
+        "maxDistance": 2500,
+        "audio": "PartyHouseWhistle_Confident",
+        "position": {
+          "x": 0,
+          "y": 17,
+          "z": -26
+        }
+      }
+    ],
+    "warpReceivers": [
+      {
+        "rename": "Warp_Train_Main",
+        "frequency": "CantAffordaName_TrainEntrance",
+        "position": {
+          "x": 0,
+          "y": 8.4,
+          "z": -71.15
         },
         "rotation": {
           "x": 0,
           "y": 0,
           "z": 0
         }
+      }
+    ],
+    "details": [
+      {
+        "assetBundle": "planets/assetbundle/onarail",
+        "path": "Assets/OnARail/Prefabs/TrainBase.prefab",
+        "keepLoaded": true,
+        "rotation": {
+          "x": 0,
+          "y": 270,
+          "z": 0
+        }
+      },
+      {
+        "rename": "TrainInterface",
+        "path": "DB_VesselDimension_Body/Sector_VesselDimension/Sector_VesselBridge/Interactibles_VesselBridge/WarpController/CoordinateInterface",
+        "position": {
+          "x": 0,
+          "y": -7.6,
+          "z": -5.2
+        },
+        "rotation": {
+          "x": 0,
+          "y": 180,
+          "z": 0
+        }
+      },
+      {
+        "path": "Sector_EscapePodBody/Interactables_EscapePodBody/EmergencyHatch",
+        "position": {
+          "x": 0,
+          "y": -15.4,
+          "z": 10.9
+        },
+        "rotation": {
+          "x": 22,
+          "y": 0,
+          "z": 0
+        },
+        "scale": 0.975
+      },
+      {
+        "path": "",
+        "rename": "Lights"
+      },
+      {
+        "path": "DB_VesselDimension_Body/Sector_VesselDimension/Interactables_VesselDimension/UNSORTED/Prefab_NOM_Lamp_Glow_Vessel_Wall",
+        "parentPath": "Sector/Lights",
+        "position": {
+          "x": 2.888,
+          "y": -5.0241,
+          "z": -40.2428
+        },
+        "rotation": {
+          "x": 0,
+          "y": 270,
+          "z": 0
+        },
+        "scale": 0.7
+      },
+      {
+        "path": "DB_VesselDimension_Body/Sector_VesselDimension/Interactables_VesselDimension/UNSORTED/Prefab_NOM_Lamp_Glow_Vessel_Wall",
+        "parentPath": "Sector/Lights",
+        "position": {
+          "x": -2.909401,
+          "y": -5.335884,
+          "z": -46.56708
+        },
+        "rotation": {
+          "x": 0,
+          "y": 90,
+          "z": 0
+        },
+        "scale": 0.7
+      },
+      {
+        "path": "DB_VesselDimension_Body/Sector_VesselDimension/Interactables_VesselDimension/UNSORTED/Prefab_NOM_Lamp_Glow_Vessel_Wall",
+        "parentPath": "Sector/Lights",
+        "position": {
+          "x": 9.3,
+          "y": 0,
+          "z": -54.8
+        },
+        "rotation": {
+          "x": 348,
+          "y": 90,
+          "z": 0
+        },
+        "scale": 5
+      },
+      {
+        "path": "DB_VesselDimension_Body/Sector_VesselDimension/Interactables_VesselDimension/UNSORTED/Prefab_NOM_Lamp_Glow_Vessel_Wall",
+        "parentPath": "Sector/Lights",
+        "position": {
+          "x": -9.3,
+          "y": 0,
+          "z": -54.8
+        },
+        "rotation": {
+          "x": 12,
+          "y": 90,
+          "z": 0
+        },
+        "scale": 5
+      },
+      {
+        "path": "DB_VesselDimension_Body/Sector_VesselDimension/Interactables_VesselDimension/UNSORTED/Prefab_NOM_Lamp_Glow_Vessel_Wall",
+        "parentPath": "Sector/Lights",
+        "position": {
+          "x": 0,
+          "y": 5.4,
+          "z": -2.1
+        },
+        "rotation": {
+          "x": 283.3,
+          "y": 0,
+          "z": 0
+        },
+        "scale": 3
+      },
+      {
+        "path": "DB_VesselDimension_Body/Sector_VesselDimension/Interactables_VesselDimension/UNSORTED/Prefab_NOM_Lamp_Glow_Vessel_Wall",
+        "parentPath": "Sector/Lights",
+        "position": {
+          "x": 12.6,
+          "y": -10,
+          "z": -2.1
+        },
+        "rotation": {
+          "x": 0,
+          "y": 90,
+          "z": 0
+        },
+        "scale": 3
+      },
+      {
+        "path": "DB_VesselDimension_Body/Sector_VesselDimension/Interactables_VesselDimension/UNSORTED/Prefab_NOM_Lamp_Glow_Vessel_Wall",
+        "parentPath": "Sector/Lights",
+        "position": {
+          "x": -12.6,
+          "y": -10,
+          "z": -2.1
+        },
+        "rotation": {
+          "x": 0,
+          "y": 270,
+          "z": 0
+        },
+        "scale": 3
+      },
+      {
+        "path": "DB_VesselDimension_Body/Sector_VesselDimension/Interactables_VesselDimension/UNSORTED/Prefab_NOM_Lamp_Glow_Vessel_Wall",
+        "parentPath": "Sector/Lights",
+        "position": {
+          "x": 6.3,
+          "y": -5,
+          "z": -35.6
+        }
+      },
+      {
+        "path": "DB_VesselDimension_Body/Sector_VesselDimension/Interactables_VesselDimension/UNSORTED/Prefab_NOM_Lamp_Glow_Vessel_Wall",
+        "parentPath": "Sector/Lights",
+        "position": {
+          "x": -6.3,
+          "y": -5,
+          "z": -35.6
+        }
+      },
+      {
+        "path": "DB_VesselDimension_Body/Sector_VesselDimension/Interactables_VesselDimension/UNSORTED/Prefab_NOM_Lamp_Glow_Vessel_Wall",
+        "parentPath": "Sector/Lights",
+        "position": {
+          "x": 0,
+          "y": -5.1635,
+          "z": 7.85
+        },
+        "rotation": {
+          "x": 0,
+          "y": 180,
+          "z": 0
+        }
+      },
+      {
+        "path": "",
+        "rename": "Props"
+      },
+      {
+        "rename": "GhostMatterClutter",
+        "path": "TimberHearth_Body/Sector_TH/Sector_NomaiCrater/DetailPatches_NomaiCrater/NomaiCrater Foliage/Props_GhostMatter/Props_GM_Clutter",
+        "parentPath": "Sector/Props",
+        "position": {
+          "x": 0.14,
+          "y": -4.5,
+          "z": -40
+        },
+        "stretch": {
+          "x": 1,
+          "y": 1.5,
+          "z": 1
+        }
+      },
+      {
+        "rename": "GhostMatterWisps",
+        "path": "TimberHearth_Body/Sector_TH/Sector_NomaiCrater/Interactables_NomaiCrater/Effects_GM_AuroraWisps (1)",
+        "parentPath": "Sector/Props",
+        "position": {
+          "x": 0.14,
+          "y": -6.2,
+          "z": -41
+        }
+      },
+      {
+        "rename": "Treepot",
+        "path": "DB_VesselDimension_Body/Sector_VesselDimension/Props_VesselDimension/Prefab_NOM_NomaiTree_VarDRY_3/GEO_Treepot_3",
+        "parentPath": "Sector/Props",
+        "position": {
+          "x": -3.89,
+          "y": 9.2,
+          "z": -57.05
+        },
+        "rotation": {
+          "x": 0,
+          "y": 315,
+          "z": 0
+        }
+      },
+      {
+        "path": "WhiteholeStation_Body/Sector_WhiteholeStation/Props_WhiteHoleStation/Prefab_NOM_NomaiTree_Var_2/GEO_NomaiTree_1_Trunk",
+        "parentPath": "Sector/Props/Treepot",
+        "isRelativeToParent": true
+      },
+      {
+        "rename": "Fire",
+        "path": "TimberHearth_Body/Sector_TH/Sector_Village/Interactables_Village/LaunchTower/Effects_HEA_Campfire",
+        "parentPath": "Sector/Props",
+        "position": {
+          "x": 0,
+          "y": -6.400002,
+          "z": -72.07205
+        },
+        "scale": 0.75
       }
     ]
   },

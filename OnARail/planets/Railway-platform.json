@@ -26,6 +26,17 @@
         "parentPath": "Sector/Treepot",
         "isRelativeToParent": true
       }
+    ],
+    "warpTransmitters": [
+      {
+        "frequency": "CantAffordaName_TrainEntrance",
+        "alignmentWindow": 360,
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 60
+        }
+      }
     ]
   }
 }

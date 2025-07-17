@@ -35,12 +35,12 @@ namespace OnARail.Components
         private Vector3 previousOriginPosition;
         private float targetYPosition;
 
-        void Awake()
+        private void Awake()
         {
             fishTransform = transform.GetChild(0);
         }
 
-        void Start()
+        private void Start()
         {
             previousFishPosition = fishTransform.position;
             previousOriginPosition = transform.position;
@@ -51,7 +51,7 @@ namespace OnARail.Components
             PickNewRotation();
         }
 
-        void Update()
+        private void Update()
         {
             RotateParent();
             RotateFish();
@@ -59,7 +59,7 @@ namespace OnARail.Components
             ObstacleDetection();
         }
 
-        void RotateParent()
+        private void RotateParent()
         {
             rotationTimer += Time.deltaTime;
             transform.rotation = Quaternion.Slerp(startRotation, targetRotation, easingCurve.Evaluate(Mathf.Clamp01(rotationTimer / rotationDuration)));
@@ -70,7 +70,7 @@ namespace OnARail.Components
             }
         }
 
-        void RotateFish()
+        private void RotateFish()
         {
             Vector3 adjustedMovement = (fishTransform.position - previousFishPosition) - (transform.position - previousOriginPosition);
             Vector3 movementDir = adjustedMovement.normalized;
@@ -86,14 +86,14 @@ namespace OnARail.Components
             previousOriginPosition = transform.position;
         }
 
-        void AdjustFishHeight()
+        private void AdjustFishHeight()
         {
             Vector3 localPos = fishTransform.localPosition;
             localPos.y = Mathf.Lerp(localPos.y, targetYPosition, Time.deltaTime * heightLerpSpeed);
             fishTransform.localPosition = localPos;
         }
 
-        void ObstacleDetection()
+        private void ObstacleDetection()
         {
             if (Time.time - obstacleLastCheckTime < obstacleCheckCooldown) return;
 
@@ -107,7 +107,7 @@ namespace OnARail.Components
             }
         }
 
-        public void PickNewRotation()
+        private void PickNewRotation()
         {
             startRotation = transform.rotation;
             targetRotation = Random.rotation;

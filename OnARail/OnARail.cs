@@ -5,6 +5,7 @@ using UnityEngine;
 using OnARail.Components;
 using System.Collections.Generic;
 using UnityEngine.Events;
+using NewHorizons.Components.Orbital;
 
 namespace OnARail
 {
@@ -35,11 +36,21 @@ namespace OnARail
             };
 
             newHorizons.GetStarSystemLoadedEvent().AddListener(OnStarSystemLoaded);
+            GlobalMessenger.AddListener("EnterMapView", OnEnterMapView);
+            GlobalMessenger<DeathType>.AddListener("PlayerDeath", OnPlayerDeath);
+            GlobalMessenger.AddListener("TriggerSupernova", OnTriggerSupernova);
         }
 
         private void OnStarSystemLoaded(string systemName)
         {
             var newHorizons = ModHelper.Interaction.TryGetModApi<INewHorizons>("xen.NewHorizons");
+
+            GameObject star = newHorizons.GetPlanet("Railway System");
+            if (star != null)
+            {
+                VisorRainEffectVolume visorRainEffectVolume = SearchUtilities.Find("RailwaySystem_Body/Sector/WetEffectVolume2").GetComponent<VisorRainEffectVolume>();
+                visorRainEffectVolume._rainDirection = VisorRainEffectVolume.RainDirection.Linear;
+            }
 
             GameObject trainPlanet = newHorizons.GetPlanet("Locomocean");
             if (trainPlanet != null)
@@ -49,7 +60,21 @@ namespace OnARail
                 {
                     trainInterface.AddComponent<CoordInterfaceController>();
                 }
-                else { ModHelper.Console.WriteLine("Can't find TrainInterface!", MessageType.Error); }
+                else{ModHelper.Console.WriteLine("Can't find TrainInterface!", MessageType.Error);}
+
+                GameObject warpReceiverMain = SearchUtilities.Find("StellarExpress_Body/Sector/Warp_Train_Main");
+                if (warpReceiverMain != null)
+                {
+                    warpReceiverMain.transform.localScale = new Vector3(0.92f, 0.95f, 0.92f);
+                }
+                else{ModHelper.Console.WriteLine("Can't find Warp_Train_Main!", MessageType.Error);}
+
+                GameObject fireAttachPoint = SearchUtilities.Find("StellarExpress_Body/Sector/Props/Fire/AttachPoint");
+                if (fireAttachPoint != null)
+                {
+                    fireAttachPoint.transform.localScale = new Vector3(1.35f, 1.35f, 1.35f);
+                }
+                else{ModHelper.Console.WriteLine("Can't find AttachPoint!", MessageType.Error);}
             }
 
             GameObject oceanPlanet = newHorizons.GetPlanet("Locomocean");
@@ -92,6 +117,25 @@ namespace OnARail
             }
         }
 
+        //NHOrbitLine can't be accessed in OnStarSystemLoaded
+        private void OnEnterMapView()
+        {
+            var newHorizons = ModHelper.Interaction.TryGetModApi<INewHorizons>("xen.NewHorizons");
+
+            GameObject trainOrbit = SearchUtilities.Find("StellarExpress_Body/Orbit");
+            if (trainOrbit != null)
+            {
+                trainOrbit.GetComponent<NHOrbitLine>()._lineWidth = 1;
+                LineRenderer lineRenderer = trainOrbit.GetComponent<LineRenderer>();
+                lineRenderer.material.renderQueue = 0;
+                lineRenderer.endColor = new Color(0, 0, 0, 0);
+                lineRenderer.endWidth = 0;
+                lineRenderer.numPositions = 128;
+                lineRenderer.positionCount = 128;
+            }
+            else{ModHelper.Console.WriteLine("Can't find Orbit!", MessageType.Error);}
+        }
+
         public static void SolvedCoords()
         {
             var newHorizons = Instance.ModHelper.Interaction.TryGetModApi<INewHorizons>("xen.NewHorizons");
@@ -101,6 +145,20 @@ namespace OnARail
             
             warpSwitch.transform.SetParent(pillarRoot.transform);
             warpSwitch.transform.localPosition = new Vector3(0, 0.4f, 0);
+
+            //Disable for Final Voyage, but re-enable the loop later to prevent game over!
+            TimeLoop.SetTimeLoopEnabled(false);
+            GlobalMessenger<OWRigidbody>.FireEvent("ExitTimeLoopCentral", Locator.GetPlayerBody());
+        }
+
+        private static void OnPlayerDeath(DeathType deathType)
+        {
+            TimeLoop.SetTimeLoopEnabled(true);
+        }
+
+        private void OnTriggerSupernova()
+        {
+            TimeLoop.SetTimeLoopEnabled(true);
         }
 
         public static void DebugLog(string line, MessageType type)

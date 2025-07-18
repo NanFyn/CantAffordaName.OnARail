@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2008216208
+CRC: 3473242605
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: b5d5f57e895958e31d6ffe1cb74fbc0d
+    Hash: a3f56efff1953abaf06c50bc851900e9
   TypeTreeHash:
     serializedVersion: 2
     Hash: d082bb165776e5d6d4f75de4a9127786
@@ -65,6 +65,10 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
+- Assets/OnARail/Prefabs/OceanBase.prefab
+- Assets/OnARail/Prefabs/Foliage_Leaves.prefab
+- Assets/OnARail/Prefabs/Foliage_Thin.prefab
+- Assets/OnARail/Prefabs/Foliage_Bush.prefab
 - Assets/OnARail/Prefabs/TrainBase.prefab
 - Assets/OnARail/Prefabs/TestFish.prefab
 - Assets/OnARail/Prefabs/TestReplacer.prefab

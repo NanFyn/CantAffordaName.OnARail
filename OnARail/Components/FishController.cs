@@ -14,14 +14,14 @@ namespace OnARail.Components
         public Transform fishTransform;
         public float fishRotationSpeed = 6f;
         public float fishDirectionSpeed = 6f;
-        public float minY = 41f;
-        public float maxY = 49f;
+        public float minY = 38f;
+        public float maxY = 45f;
         public float heightLerpSpeed = 0.5f;
 
         [Header("Obstacle Detection")]
-        public LayerMask obstacleLayers = 1 << 10 | 1 << 12;
+        public LayerMask obstacleLayers = 1 << 10 | 1 << 14;
         public float obstacleCheckDistance = 8f;
-        public float obstacleCheckCooldown = 0.5f;
+        public float obstacleCheckCooldown = 0.1f;
 
         private Quaternion startRotation;
         private Quaternion targetRotation;
@@ -100,7 +100,7 @@ namespace OnARail.Components
             Vector3 origin = fishTransform.position;
             Vector3 direction = fishDirectionSmoothed.normalized;
 
-            if (Physics.SphereCast(origin, 1f, direction, out RaycastHit hit, obstacleCheckDistance, obstacleLayers))
+            if (Physics.SphereCast(origin, 2f, direction, out RaycastHit hit, obstacleCheckDistance, obstacleLayers))
             {
                 obstacleLastCheckTime = Time.time;
                 PickNewRotation();

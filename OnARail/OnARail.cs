@@ -4,6 +4,7 @@ using NewHorizons.Utility;
 using UnityEngine;
 using OnARail.Components;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine.Events;
 using NewHorizons.Components.Orbital;
 
@@ -12,6 +13,7 @@ namespace OnARail
     public class OnARail : ModBehaviour
     {
         public static OnARail Instance;
+        public Material porcelain, silver, black;
 
         private void Awake()
         {
@@ -52,7 +54,7 @@ namespace OnARail
                 visorRainEffectVolume._rainDirection = VisorRainEffectVolume.RainDirection.Linear;
             }
 
-            GameObject trainPlanet = newHorizons.GetPlanet("Locomocean");
+            GameObject trainPlanet = newHorizons.GetPlanet("Stellar Express");
             if (trainPlanet != null)
             {
                 GameObject trainInterface = SearchUtilities.Find("StellarExpress_Body/Sector/TrainInterface");
@@ -75,6 +77,17 @@ namespace OnARail
                     fireAttachPoint.transform.localScale = new Vector3(1.35f, 1.35f, 1.35f);
                 }
                 else{ModHelper.Console.WriteLine("Can't find AttachPoint!", MessageType.Error);}
+
+                porcelain = Resources.FindObjectsOfTypeAll<Material>().First(x => x.name.Contains("Structure_NOM_PorcelainClean_mat"));
+                silver = Resources.FindObjectsOfTypeAll<Material>().First(x => x.name.Contains("Structure_NOM_Silver_mat"));
+                black = Resources.FindObjectsOfTypeAll<Material>().First(x => x.name.Contains("Structure_NOM_SilverPorcelain_mat"));
+
+                var stellarExpress = newHorizons.GetPlanet("Stellar Express");
+                ReplaceMaterials(stellarExpress);
+            }
+            else
+            {
+                ModHelper.Console.WriteLine("Couldn't locate planet: Stellar Express!", MessageType.Error);
             }
 
             GameObject oceanPlanet = newHorizons.GetPlanet("Locomocean");
@@ -164,6 +177,40 @@ namespace OnARail
         public static void DebugLog(string line, MessageType type)
         {
             Instance.ModHelper.Console.WriteLine($"DEBUG: {line}", MessageType.Info);
+        }
+
+        public void ReplaceMaterials(GameObject go)
+        {
+            foreach (var renderer in go.GetComponentsInChildren<Renderer>())
+            {
+                renderer.materials = renderer.materials.Select(GetReplacementMaterial).ToArray();
+            }
+        }
+
+        private Material GetReplacementMaterial(Material material)
+        {
+            if (material.name.Contains("Structure_NOM_SandStone_mat") ||
+                material.name.Contains("Structure_NOM_SandStone_Dark_mat")
+                )
+            {
+                return porcelain;
+            }
+            else if (material.name.Contains("Structure_NOM_CopperOld_mat") ||
+                material.name.Contains("Structure_NOM_TrimPattern_mat") ||
+                material.name.Contains("Structure_NOM_CopperOld_Dark_mat")
+                )
+            {
+                return silver;
+            }
+            else if (material.name.Contains("Structure_NOM_PropTile_Color_mat") ||
+                material.name.Contains("Structure_NOM_SandStone_Darker_mat") ||
+                material.name.Contains("Structure_NOM_WarpReceiver_mat")
+                )
+            {
+                return black;
+            }
+
+            return material;
         }
     }
 }

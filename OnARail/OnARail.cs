@@ -18,14 +18,11 @@ namespace OnARail
         private void Awake()
         {
             Instance = this;
-            // You won't be able to access OWML's mod helper in Awake. Use Start() instead.
-            // Harmony Patches can go here.
         }
 
         internal void Start()
         {
-            // Starting here, you'll have access to OWML's mod helper.
-            ModHelper.Console.WriteLine($"My mod {nameof(OnARail)} is loaded!", MessageType.Success);
+            //ModHelper.Console.WriteLine($"My mod {nameof(OnARail)} is loaded!", MessageType.Success);
 
             // Get the New Horizons API and load configs
             var newHorizons = ModHelper.Interaction.TryGetModApi<INewHorizons>("xen.NewHorizons");
@@ -34,7 +31,7 @@ namespace OnARail
             LoadManager.OnCompleteSceneLoad += (scene, loadScene) =>
             {
                 if (loadScene != OWScene.SolarSystem) return;
-                ModHelper.Console.WriteLine("Loaded into solar system with On A Rail!", MessageType.Success);
+                //ModHelper.Console.WriteLine("Loaded into solar system with On A Rail!", MessageType.Success);
             };
 
             newHorizons.GetStarSystemLoadedEvent().AddListener(OnStarSystemLoaded);
@@ -57,6 +54,13 @@ namespace OnARail
             GameObject trainPlanet = newHorizons.GetPlanet("Stellar Express");
             if (trainPlanet != null)
             {
+                GameObject trainWhistle = SearchUtilities.Find("StellarExpress_Body/Sector/TrainBase/WhistleController");
+                if (trainWhistle != null)
+                {
+                    trainWhistle.AddComponent<WhistleController>();
+                }
+                else { ModHelper.Console.WriteLine("Can't find WhistleController!", MessageType.Error); }
+
                 GameObject trainInterface = SearchUtilities.Find("StellarExpress_Body/Sector/TrainInterface");
                 if (trainInterface != null)
                 {
@@ -71,13 +75,6 @@ namespace OnARail
                 }
                 else{ModHelper.Console.WriteLine("Can't find Warp_Train_Main!", MessageType.Error);}
 
-                GameObject fireAttachPoint = SearchUtilities.Find("StellarExpress_Body/Sector/Props/Fire/AttachPoint");
-                if (fireAttachPoint != null)
-                {
-                    fireAttachPoint.transform.localScale = new Vector3(1.35f, 1.35f, 1.35f);
-                }
-                else{ModHelper.Console.WriteLine("Can't find AttachPoint!", MessageType.Error);}
-
                 porcelain = Resources.FindObjectsOfTypeAll<Material>().First(x => x.name.Contains("Structure_NOM_PorcelainClean_mat"));
                 silver = Resources.FindObjectsOfTypeAll<Material>().First(x => x.name.Contains("Structure_NOM_Silver_mat"));
                 black = Resources.FindObjectsOfTypeAll<Material>().First(x => x.name.Contains("Structure_NOM_SilverPorcelain_mat"));
@@ -90,9 +87,29 @@ namespace OnARail
                 ModHelper.Console.WriteLine("Couldn't locate planet: Stellar Express!", MessageType.Error);
             }
 
+            GameObject frozenPlanet = newHorizons.GetPlanet("Frost Car");
+            if (frozenPlanet != null)
+            {
+                SphereCollider sphereCollider = SearchUtilities.Find("FrostCar_Body/Sector/Air").GetComponent<SphereCollider>();
+                if (sphereCollider != null)
+                {
+                    sphereCollider.radius = 110f;
+                }
+            }
+            else
+            {
+                ModHelper.Console.WriteLine("Couldn't locate planet: Frost Car!", MessageType.Error);
+            }
+
             GameObject oceanPlanet = newHorizons.GetPlanet("Locomocean");
             if (oceanPlanet != null)
             {
+                SphereShape sectorSphere = SearchUtilities.Find("Locomocean_Body/Sector").GetComponent<SphereShape>();
+                if (sectorSphere != null)
+                {
+                    sectorSphere.radius = 600f;
+                }
+
                 SphereCollider sphereCollider = SearchUtilities.Find("Locomocean_Body/Sector/Air").GetComponent<SphereCollider>();
                 if(sphereCollider != null)
                 {
@@ -113,20 +130,47 @@ namespace OnARail
                 GameObject fishStandardRoot = SearchUtilities.Find("Locomocean_Body/Sector/Fish_Standard");
                 if (fishStandardRoot != null)
                 {
-                    List<GameObject> fishList = SearchUtilities.GetAllChildren(fishStandardRoot);
-                    GameObject[] fish = fishList.ToArray();
-                    
-                    foreach (GameObject currentFish in fishList)
+                    GameObject fish = SearchUtilities.Find("Locomocean_Body/Sector/Fish_Standard/Fish");
+                    if (fish != null)
                     {
-                        _ = currentFish.AddComponent<FishController>();
-                        ModHelper.Console.WriteLine("Added FishController to " + currentFish, MessageType.Info);
+                        fish.AddComponent<FishController>();
+                        for (int i = 0; i < 24; i++)
+                        {
+                            GameObject fishClone = Instantiate(fish, fishStandardRoot.transform);
+                        }
+                        fish.transform.rotation = new Quaternion(180f, 0f, 0f, 0f);
+                        for (int i = 0; i < 23; i++)
+                        {
+                            GameObject fishClone = Instantiate(fish, fishStandardRoot.transform);
+                        }
                     }
+                    else{ModHelper.Console.WriteLine("Can't find Fish!", MessageType.Error);}
                 }
                 else{ModHelper.Console.WriteLine("Can't find Fish_Standard!", MessageType.Error);}
             }
             else
             {
                 ModHelper.Console.WriteLine("Couldn't locate planet: Locomocean!", MessageType.Error);
+            }
+
+            GameObject sprucePlanet = newHorizons.GetPlanet("Spruce Caboose");
+            if (sprucePlanet != null)
+            {
+                SphereShape sectorSphere = SearchUtilities.Find("SpruceCaboose_Body/Sector").GetComponent<SphereShape>();
+                if (sectorSphere != null)
+                {
+                    sectorSphere.radius = 2500f;
+                }
+
+                SphereCollider sphereCollider = SearchUtilities.Find("SpruceCaboose_Body/Sector/Air").GetComponent<SphereCollider>();
+                if (sphereCollider != null)
+                {
+                    sphereCollider.radius = 110f;
+                }
+            }
+            else
+            {
+                ModHelper.Console.WriteLine("Couldn't locate planet: Spruce Caboose!", MessageType.Error);
             }
         }
 

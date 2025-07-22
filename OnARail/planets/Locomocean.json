@@ -60,7 +60,7 @@
         "rename": "_OceanSpawn",
         "position": {
           "x": 0,
-          "y": 75,
+          "y": -75,
           "z": 0
         }
       }
@@ -72,6 +72,11 @@
         {
           "radius": 49,
           "probeSpeed": 15,
+          "overrideProbeSpeed": true
+        },
+        {
+          "radius": 26.5,
+          "probeSpeed": 40,
           "overrideProbeSpeed": true
         }
       ]
@@ -96,7 +101,73 @@
           "rename": "CustomGravityVolume"
         }
       ]
-    }
+    },
+    "zeroGravityVolumes": [
+      {
+        "radius": 10,
+        "priority": 5
+      }
+    ],
+    "destructionVolumes": [
+      {
+        "rename": "MunchVolume",
+        "deathType": "crushedByElevator",
+        "onlyAffectsPlayerRelatedBodies": true,
+        "parentPath": "Sector/Fish_Standard/Fish/FishCollider/Angler",
+        "isRelativeToParent": true,
+        "radius": 1,
+        "position": {
+          "x": 0,
+          "y": 16,
+          "z": 74
+        }
+      }
+    ],
+    "audioVolumes": [
+      {
+        "audio": "2881",
+        "clipSelection": "random",
+        "track": "environment",
+        "volume": 0.4,
+        "priority": 0,
+        "radius": 100.0
+      },
+      {
+        "audio": "2880",
+        "clipSelection": "random",
+        "track": "environment",
+        "volume": 0.4,
+        "priority": 1,
+        "radius": 49
+      },
+      {
+        "audio": "OW_DarkBramble_loop",
+        "clipSelection": "random",
+        "track": "music",
+        "volume": 0.15,
+        "priority": 1,
+        "radius": 49,
+        "fadeSeconds": 5,
+        "pauseOnFadeOut": true
+      },
+      {
+        "audio": "1811",
+        "clipSelection": "random",
+        "track": "environment",
+        "volume": 0.4,
+        "priority": 2,
+        "radius": 26.5
+      },
+      {
+        "audio": "2515",
+        "clipSelection": "random",
+        "track": "music",
+        "volume": 0.15,
+        "priority": 2,
+        "radius": 26.5,
+        "fadeSeconds": 3
+      }
+    ]
   },
   "Water": {
     "size": 50,
@@ -109,63 +180,146 @@
     }
   },
   "Sand": {
-    "size": 35
+    "size": 34.85
   },
   "Props": {
-    "details": [
+    "remotes": [
       {
-        "assetBundle": "planets/assetbundle/onarail",
-        "path": "Assets/OnARail/Prefabs/TestReplacer.prefab",
-        "position": {
-          "x": 0,
-          "y": 60,
-          "z": 0
+        "id": "REMOTE_OCEAN1",
+        "decalPath": "planets/textures/projection pools/Locomocean.png",
+        "platform": {
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 23.8
+          },
+          "rotation": {
+            "x": 0,
+            "y": 90,
+            "z": 270
+          },
+          "disableStructure": false,
+          "disablePool": false,
+          "rename": "RemoteProjectionOcean1"
+        },
+        "whiteboard": {
+          "position": {
+            "x": 0,
+            "y": 24,
+            "z": -2
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 180
+          },
+          "rename": "RemoteWhiteBoard1",
+          "nomaiText": [
+            {
+              "id": "REMOTE_FROSTCAR",
+              "location": "b",
+              "xmlFile": "planets/nomaitext/FrostToOcean.xml"
+            },
+            {
+              "id": "REMOTE_SPRUCECABOOSE",
+              "location": "b",
+              "xmlFile": "planets/nomaitext/SpruceToOcean.xml"
+            }
+          ]
         }
       },
+      {
+        "id": "REMOTE_FROSTCAR",
+        "decalPath": "planets/textures/projection pools/FrostCar.png",
+        "stones": [
+          {
+            "rename": "FrostCar_RemoteStone",
+            "position": {
+              "x": -2.619718,
+              "y": -5.148975,
+              "z": 23.87502
+            },
+            "rotation": {
+              "x": 60.34,
+              "y": 90,
+              "z": 270
+            }
+          }
+        ]
+      },
+      {
+        "id": "REMOTE_SPRUCECABOOSE",
+        "decalPath": "planets/textures/projection pools/SpruceCaboose.png",
+        "stones": [
+          {
+            "rename": "SpruceCaboose_RemoteStone",
+            "position": {
+              "x": -0.7422812,
+              "y": -5.278087,
+              "z": 23.87502
+            },
+            "rotation": {
+              "x": 335.97,
+              "y": 90,
+              "z": 270
+            }
+          }
+        ]
+      }
+    ],
+    "warpTransmitters": [
+      {
+        "rename": "Warp_Angler_Entrance",
+        "frequency": "CantAffordaName_Locomocean",
+        "alignmentWindow": 360,
+        "position": {
+          "x": 0,
+          "y": 80,
+          "z": 0
+        }
+      }
+    ],
+    "warpReceivers": [
+      {
+        "rename": "Warp_Angler_Exit",
+        "frequency": "CantAffordaName_Locomocean",
+        "position": {
+          "x": 0,
+          "y": -24.65,
+          "z": 0
+        },
+        "rotation": {
+          "x": 0,
+          "y": 90,
+          "z": 0
+        }
+      }
+    ],
+    "audioSources": [
+      {
+        "rename": "Breathing_Audio",
+        "audio": "2100",
+        "isRelativeToParent": true,
+        "parentPath": "Sector/Fish_Standard/Fish/FishCollider",
+        "minDistance": 10,
+        "maxDistance": 50,
+        "volume": 1.5,
+        "track": "environment"
+      }
+    ],
+    "details": [
       {
         "assetBundle": "planets/assetbundle/onarail",
         "path": "Assets/OnARail/Prefabs/OceanBase.prefab",
         "keepLoaded": true
       },
       {
-        "rename": "TestPole",
-        "path": "DB_VesselDimension_Body/Sector_VesselDimension/Props_VesselDimension/Prefab_NOM_NomaiTree_VarDRY_3/GEO_Treepot_3",
-        "position": {
-          "x": 0,
-          "y": 0,
-          "z": -40
-        },
-        "rotation": {
-          "x": 270,
-          "y": 0,
-          "z": 0
-        },
-        "stretch": {
-          "x": 50,
-          "y": 150,
-          "z": 50
-        },
-        "keepLoaded": true
+        "assetBundle": "planets/assetbundle/onarail",
+        "path": "Assets/OnARail/Prefabs/OceanInterior.prefab"
       },
       {
-        "rename": "TestPole2",
-        "path": "DB_VesselDimension_Body/Sector_VesselDimension/Props_VesselDimension/Prefab_NOM_NomaiTree_VarDRY_3/GEO_Treepot_3",
-        "position": {
-          "x": 0,
-          "y": 0,
-          "z": 40
-        },
-        "rotation": {
-          "x": 90,
-          "y": 0,
-          "z": 0
-        },
-        "stretch": {
-          "x": 50,
-          "y": 150,
-          "z": 50
-        },
-        "keepLoaded": true
+        "path": "Locomocean_Body/Sector/Water/OceanFog",
+        "scale": 55
       },
       {
         "path": "",
@@ -178,108 +332,68 @@
       },
       {
         "assetBundle": "planets/assetbundle/onarail",
-        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
+        "path": "Assets/OnARail/Prefabs/Fish.prefab",
         "parentPath": "Sector/Fish_Standard"
       },
       {
-        "assetBundle": "planets/assetbundle/onarail",
-        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
-        "parentPath": "Sector/Fish_Standard"
+        "rename": "Angler",
+        "path": "Anglerfish_Body/Beast_Anglerfish",
+        "parentPath": "Sector/Fish_Standard/Fish/FishCollider",
+        "scale": 0.02,
+        "removeChildren": [
+          "B_angler_root/B_angler_body01/B_angler_body02/B_angler_antenna01/B_angler_antenna02/B_angler_antenna03/B_angler_antenna04/B_angler_antenna05/B_angler_antenna06/B_angler_antenna07/B_angler_antenna08/B_angler_antenna09/B_angler_antenna10/B_angler_antenna11/B_angler_antenna12_end"
+        ]
       },
       {
-        "assetBundle": "planets/assetbundle/onarail",
-        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
-        "parentPath": "Sector/Fish_Standard"
+        "path": "Anglerfish_Body/Beast_Anglerfish_Collision",
+        "parentPath": "Sector/Fish_Standard/Fish/FishCollider/Angler",
+        "isRelativeToParent": true,
+        "scale": 1.5
       },
       {
-        "assetBundle": "planets/assetbundle/onarail",
-        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
-        "parentPath": "Sector/Fish_Standard"
+        "rename": "Fire",
+        "path": "TimberHearth_Body/Sector_TH/Sector_RadioTower/RadioTower_DLC/Interactibles_RadioTower/Hornfels'GrovePivot/Prefab_HEA_Campfire",
+        "position": {
+          "x": 45.22871,
+          "y": 22.62766,
+          "z": 2.93073
+        },
+        "alignRadial": true
       },
       {
-        "assetBundle": "planets/assetbundle/onarail",
-        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
-        "parentPath": "Sector/Fish_Standard"
-      },
-      {
-        "assetBundle": "planets/assetbundle/onarail",
-        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
-        "parentPath": "Sector/Fish_Standard"
-      },
-      {
-        "assetBundle": "planets/assetbundle/onarail",
-        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
-        "parentPath": "Sector/Fish_Standard"
-      },
-      {
-        "assetBundle": "planets/assetbundle/onarail",
-        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
-        "parentPath": "Sector/Fish_Standard"
-      },
-      {
-        "assetBundle": "planets/assetbundle/onarail",
-        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
-        "parentPath": "Sector/Fish_Standard"
-      },
-      {
-        "assetBundle": "planets/assetbundle/onarail",
-        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
-        "parentPath": "Sector/Fish_Standard"
-      },
-      {
-        "assetBundle": "planets/assetbundle/onarail",
-        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
-        "parentPath": "Sector/Fish_Standard"
-      },
-      {
-        "assetBundle": "planets/assetbundle/onarail",
-        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
-        "parentPath": "Sector/Fish_Standard"
-      },
-      {
-        "assetBundle": "planets/assetbundle/onarail",
-        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
-        "parentPath": "Sector/Fish_Standard"
-      },
-      {
-        "assetBundle": "planets/assetbundle/onarail",
-        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
-        "parentPath": "Sector/Fish_Standard"
-      },
-      {
-        "assetBundle": "planets/assetbundle/onarail",
-        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
-        "parentPath": "Sector/Fish_Standard"
-      },
-      {
-        "assetBundle": "planets/assetbundle/onarail",
-        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
-        "parentPath": "Sector/Fish_Standard"
-      },
-      {
-        "assetBundle": "planets/assetbundle/onarail",
-        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
-        "parentPath": "Sector/Fish_Standard"
-      },
-      {
-        "assetBundle": "planets/assetbundle/onarail",
-        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
-        "parentPath": "Sector/Fish_Standard"
-      },
-      {
-        "assetBundle": "planets/assetbundle/onarail",
-        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
-        "parentPath": "Sector/Fish_Standard"
-      },
-      {
-        "assetBundle": "planets/assetbundle/onarail",
-        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
-        "parentPath": "Sector/Fish_Standard"
-      },
-      {
-        "assetBundle": "planets/assetbundle/onarail",
-        "path": "Assets/OnARail/Prefabs/TestFish.prefab",
-        "parentPath": "Sector/Fish_Standard"
+        "path": "CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_TimeLoopExperiment/WarpCoreWallSockets/WarpCoreSocket (2)/Props_NOM_WarpCoreWhite (1)",
+        "position": {
+          "x": -1,
+          "y": -31.5,
+          "z": 2
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 90
+        },
+        "scale": 10,
+        "removeComponents": true,
+        "item": {
+          "name": "Warp Core",
+          "itemType": "WarpCoreWhite",
+          "socketAudio": "206",
+          "holdOffset": {
+            "x": 0.161,
+            "y": 0,
+            "z": 0.123
+          },
+          "holdRotation": {
+            "x": 345.0511,
+            "y": 262.5902,
+            "z": 343.6968
+          },
+          "dropNormal": {
+            "x": 90,
+            "y": 0,
+            "z": 0
+          }
+        }
       }
     ],
     "scatter": [
@@ -306,6 +420,10 @@
       }
     ]
   },
+  "removeChildren": [
+    "Sector/Water/OceanFog",
+    "Sector/Sand/Collider"
+  ],
   "ShipLog": {
     "mapMode": {
       "remove": true

@@ -6,8 +6,7 @@
     "gravityFallOff": "linear",
     "surfaceSize": 50,
     "surfaceGravity": 0.1,
-    "gravityAlignmentRadiusOverride": 100,
-    "groundSize": 40
+    "gravityAlignmentRadiusOverride": 100
   },
   "Orbit": {
     "primaryBody": "Railway System",
@@ -25,16 +24,18 @@
   "Atmosphere": {
     "atmosphereSunIntensity": 1,
     "hasOxygen": true,
+    "hasTrees": true,
     "size": 150,
     "useAtmosphereShader": true,
     "atmosphereTint": {
-      "r": 0,
-      "g": 100,
-      "b": 0,
+      "r": 130,
+      "g": 200,
+      "b": 255,
       "a": 0
     },
     "fogSize": 110,
     "fogDensity": 0.1,
+    "fogRampPath": "planets/textures/fog/FogColorRamp_TH.png",
     "minShockSpeed": 50,
     "maxShockSpeed": 150
   },
@@ -42,12 +43,11 @@
     {
       "outerRadius": 100,
       "innerRadius": 40,
-      "isShell": true,
       "intensity": 0.8,
       "tint": {
-        "r": 0,
-        "g": 255,
-        "b": 0,
+        "r": 130,
+        "g": 200,
+        "b": 255,
         "a": 0
       }
     }
@@ -59,9 +59,14 @@
         "alignRadial": true,
         "rename": "_SpruceSpawn",
         "position": {
-          "x": 0,
-          "y": 75,
-          "z": 0
+          "x": 33.1188,
+          "y": -1.931086,
+          "z": -6.208712
+        },
+        "rotation": {
+          "x": 18.1171,
+          "y": 180,
+          "z": 90
         }
       }
     ]
@@ -71,61 +76,347 @@
       "gravityVolumes": [
         {
           "alignmentRadius": 150,
-          "force": 12,
+          "force": 18,
           "radius": 150,
           "lowerRadius": 40,
           "upperRadius": 100,
-          "minForce": 12,
+          "minForce": 18,
           "fallOff": "inverseSquared",
           "rename": "CustomGravityVolume"
         }
       ]
-    }
-  },
-  "Props": {
-    "details": [
+    },
+    "rulesets": {
+      "playerImpactRulesets": [
+        {
+          "minImpactSpeed": 40,
+          "maxImpactSpeed": 80,
+          "radius": 30
+        }
+      ],
+      "probeRulesets": [
+        {
+          "radius": 100,
+          "probeSpeed": 40,
+          "overrideProbeSpeed": true
+        }
+      ],
+      "thrustRulesets": [
+        {
+          "nerfJetpackBooster": true,
+          "radius": 16,
+          "position": {
+            "x": -32,
+            "y": 0,
+            "z": 0
+          }
+        }
+      ]
+    },
+    "audioVolumes": [
       {
-        "rename": "TestPole",
-        "path": "DB_VesselDimension_Body/Sector_VesselDimension/Props_VesselDimension/Prefab_NOM_NomaiTree_VarDRY_3/GEO_Treepot_3",
-        "position": {
-          "x": 0,
-          "y": 0,
-          "z": -40
-        },
-        "rotation": {
-          "x": 270,
-          "y": 0,
-          "z": 0
-        },
-        "stretch": {
-          "x": 50,
-          "y": 150,
-          "z": 50
-        },
-        "keepLoaded": true
+        "pauseOnFadeOut": true,
+        "volume": 0.4,
+        "priority": 2,
+        "radius": 13,
+        "track": "music",
+        "audio": "2500",
+        "isRelativeToParent": true,
+        "parentPath": "Sector/SpruceInterior/MusicRoot/Music (1)"
       },
       {
-        "rename": "TestPole2",
-        "path": "DB_VesselDimension_Body/Sector_VesselDimension/Props_VesselDimension/Prefab_NOM_NomaiTree_VarDRY_3/GEO_Treepot_3",
-        "position": {
-          "x": 0,
-          "y": 0,
-          "z": 40
-        },
-        "rotation": {
-          "x": 90,
-          "y": 0,
-          "z": 0
-        },
-        "stretch": {
-          "x": 50,
-          "y": 150,
-          "z": 50
-        },
-        "keepLoaded": true
+        "pauseOnFadeOut": true,
+        "volume": 0.4,
+        "priority": 2,
+        "radius": 13,
+        "track": "music",
+        "audio": "2500",
+        "isRelativeToParent": true,
+        "parentPath": "Sector/SpruceInterior/MusicRoot/Music (2)"
+      },
+      {
+        "pauseOnFadeOut": true,
+        "volume": 0.4,
+        "priority": 2,
+        "radius": 21,
+        "track": "music",
+        "audio": "2500",
+        "isRelativeToParent": true,
+        "parentPath": "Sector/SpruceInterior/MusicRoot/Music (3)"
+      },
+      {
+        "pauseOnFadeOut": true,
+        "volume": 0.4,
+        "priority": 2,
+        "radius": 17,
+        "track": "music",
+        "audio": "2500",
+        "isRelativeToParent": true,
+        "parentPath": "Sector/SpruceInterior/MusicRoot/Music (4)"
+      },
+      {
+        "audio": "1807",
+        "clipSelection": "random",
+        "track": "environment",
+        "volume": 0.4,
+        "priority": 2,
+        "radius": 100.0
       }
     ]
   },
+  "Water": {
+    "size": 29.7,
+    "buoyancy": 0.9
+  },
+  "Props": {
+    "remotes": [
+      {
+        "id": "REMOTE_SPRUCECABOOSE",
+        "decalPath": "planets/textures/projection pools/SpruceCaboose.png",
+        "platform": {
+          "position": {
+            "x": 40.94,
+            "y": 8.13,
+            "z": 23.16
+          },
+          "rotation": {
+            "x": 359.5,
+            "y": 331,
+            "z": 279.3
+          },
+          "disableStructure": false,
+          "disablePool": false,
+          "rename": "RemoteProjectionSpruceCaboose"
+        },
+        "whiteboard": {
+          "position": {
+            "x": 39.70367,
+            "y": -15.45474,
+            "z": 10.3068
+          },
+          "rotation": {
+            "x": 326.1959,
+            "y": 2.577068,
+            "z": 242.4136
+          },
+          "rename": "RemoteWhiteBoard",
+          "nomaiText": [
+            {
+              "id": "REMOTE_OCEAN1",
+              "location": "a",
+              "xmlFile": "planets/nomaitext/SpruceToOcean.xml"
+            }
+          ]
+        }
+      },
+      {
+        "id": "REMOTE_OCEAN1",
+        "decalPath": "planets/textures/projection pools/Locomocean.png",
+        "stones": [
+          {
+            "rename": "Ocean_RemoteStone2",
+            "position": {
+              "x": 38.77724,
+              "y": 20.5141,
+              "z": -2.365089
+            },
+            "rotation": {
+              "x": 18.99838,
+              "y": 19.23714,
+              "z": 303.4045
+            }
+          }
+        ]
+      }
+    ],
+    "warpTransmitters": [
+      {
+        "rename": "Warp_FrostCar",
+        "frequency": "CantAffordaName_FrostCar",
+        "alignmentWindow": 360,
+        "parentPath": "Sector/WarpRoot",
+        "isRelativeToParent": true
+      },
+      {
+        "rename": "Warp_Fake",
+        "frequency": "CantAffordaName_Fake_1",
+        "alignmentWindow": 0,
+        "parentPath": "Sector/WarpFake",
+        "isRelativeToParent": true
+      }
+    ],
+    "warpReceivers": [
+      {
+        "rename": "Warp_Old",
+        "frequency": "CantAffordaName_Old",
+        "parentPath": "Sector/WarpOld",
+        "isRelativeToParent": true
+      }
+    ],
+    "details": [
+      {
+        "assetBundle": "planets/assetbundle/onarail",
+        "path": "Assets/OnARail/Prefabs/SpruceBase.prefab",
+        "keepLoaded": true
+      },
+      {
+        "assetBundle": "planets/assetbundle/onarail",
+        "path": "Assets/OnARail/Prefabs/SpruceInterior.prefab"
+      },
+      {
+        "rename": "Beacon",
+        "path": "CaveTwin_Body/Sector_CaveTwin/Sector_SouthHemisphere/Sector_EscapePod/Interactables_EscapePod/EscapePod_VisibleFrom_Far/DistressBeaconTransmitter/Props_NOM_Transponder",
+        "position": {
+          "x": -55.8,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 90
+        }
+      },
+      {
+        "path": "",
+        "rename": "WarpRoot",
+        "position": {
+          "x": 29.3188,
+          "y": -5.7317,
+          "z": 1.9642
+        },
+        "rotation": {
+          "x": 15,
+          "y": 180,
+          "z": 90
+        },
+        "activationCondition": "WARPCORE_BLACK_INSERTED",
+        "blinkWhenActiveChanged": false
+      },
+      {
+        "path": "",
+        "rename": "WarpFake",
+        "position": {
+          "x": 29.3188,
+          "y": -5.7317,
+          "z": 1.9642
+        },
+        "rotation": {
+          "x": 15,
+          "y": 180,
+          "z": 90
+        },
+        "itemSocket": {
+          "socketPath": "",
+          "colliderRadius": 2,
+          "itemType": "WarpCoreBlack",
+          "insertCondition": "WARPCORE_BLACK_INSERTED",
+          "isRelativeToParent": true
+        },
+        "deactivationCondition": "WARPCORE_BLACK_INSERTED",
+        "blinkWhenActiveChanged": false
+      },
+      {
+        "path": "",
+        "rename": "WarpOld",
+        "position": {
+          "x": 29.9188,
+          "y": 5.8883,
+          "z": -1.1358
+        },
+        "rotation": {
+          "x": 15,
+          "y": 180,
+          "z": 90
+        },
+        "stretch": {
+          "x": 1,
+          "y": 0.333,
+          "z": 1
+        }
+      },
+      {
+        "rename": "Fire",
+        "path": "TimberHearth_Body/Sector_TH/Sector_RadioTower/RadioTower_DLC/Interactibles_RadioTower/Hornfels'GrovePivot/Prefab_HEA_Campfire",
+        "position": {
+          "x": 39.56466,
+          "y": 15.98947,
+          "z": -8.311787
+        },
+        "alignRadial": true
+      },
+      {
+        "path": "Moon_Body/Sector_THM/Interactables_THM/Prefab_HEA_FuelTank",
+        "position": {
+          "x": 30,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "path": "CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_TimeLoopExperiment/WarpCoreWallSockets/WarpCoreSocket/Props_NOM_WarpCoreBroken (1)",
+        "position": {
+          "x": 30.11878,
+          "y": 3.83221,
+          "z": -7.747383
+        },
+        "rotation": {
+          "x": 68.66869,
+          "y": 180.0001,
+          "z": 90.00007
+        }
+      },
+      {
+        "path": "CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_TimeLoopExperiment/WarpCoreWallSockets/WarpCoreSocket (1)/Props_NOM_WarpCoreBlack (2)",
+        "position": {
+          "x": 30.11878,
+          "y": 3.83221,
+          "z": -7.747383
+        },
+        "rotation": {
+          "x": 68.66869,
+          "y": 180.0001,
+          "z": 90.00007
+        },
+        "removeComponents": true,
+        "item": {
+          "name": "Warp Core",
+          "itemType": "WarpCoreBlack",
+          "socketAudio": "206",
+          "holdOffset": {
+            "x": 0.161,
+            "y": 0,
+            "z": 0.123
+          },
+          "holdRotation": {
+            "x": 345.0511,
+            "y": 262.5902,
+            "z": 343.6968
+          },
+          "dropNormal": {
+            "x": 90,
+            "y": 0,
+            "z": 0
+          }
+        }
+      }
+    ]
+  },
+  "removeChildren": [
+    "Sector/Water/OceanFog",
+    "Sector/RemoteWhiteBoard/Props_NOM_Whiteboard_Shared/whiteboard_brokenTiles",
+    "Sector/WarpRoot/Warp_FrostCar/Structure_NOM_WarpTransmitter/Structure_NOM_WarpTransmitter_Glass",
+    "Sector/WarpFake/Warp_Fake/Structure_NOM_WarpTransmitter/Structure_NOM_WarpTransmitter_Glass",
+    "Sector/WarpFake/Warp_Fake/Structure_NOM_WarpTransmitter/Structure_NOM_WarpTransmitter_Effects",
+    "Sector/WarpFake/Warp_Fake/Props_NOM_WarpCoreBlack",
+    "Sector/WarpFake/Warp_Fake/PointLight_NOM_WarpCoreBlack (1)",
+    "Sector/WarpOld/Warp_Old/Structure_NOM_WarpReceiver_PlatformOnly",
+    "Sector/WarpOld/Warp_Old/Props_NOM_WarpCoreWhite",
+    "Sector/WarpOld/Warp_Old/Effects_NOM_ReverseWarpParticles",
+    "Sector/WarpOld/Warp_Old/PointLight_NOM_WarpCoreWhite (1)",
+    "Sector/WarpOld/Warp_Old/Structure_NOM_WarpReceiver_Effects",
+    "Sector/Fire/Effects/Effects_HEA_SmokeColumn"
+  ],
   "ShipLog": {
     "mapMode": {
       "remove": true

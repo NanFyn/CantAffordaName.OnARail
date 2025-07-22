@@ -19,9 +19,9 @@ namespace OnARail.Components
         public float heightLerpSpeed = 0.5f;
 
         [Header("Obstacle Detection")]
-        public LayerMask obstacleLayers = 1 << 10 | 1 << 14;
+        public LayerMask obstacleLayers = 1 << 10 | 1 << 12;
         public float obstacleCheckDistance = 8f;
-        public float obstacleCheckCooldown = 0.1f;
+        public float obstacleCheckCooldown = 0.5f;
 
         private Quaternion startRotation;
         private Quaternion targetRotation;

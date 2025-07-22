@@ -5,9 +5,8 @@
   "Base": {
     "gravityFallOff": "linear",
     "surfaceSize": 50,
-    "surfaceGravity": 0.1,
-    "gravityAlignmentRadiusOverride": 100,
-    "groundSize": 40
+    "surfaceGravity": 0,
+    "gravityAlignmentRadiusOverride": 100
   },
   "Orbit": {
     "primaryBody": "Railway System",
@@ -40,10 +39,9 @@
   },
   "AmbientLights": [
     {
-      "outerRadius": 100,
-      "innerRadius": 40,
-      "isShell": true,
-      "intensity": 0.8,
+      "outerRadius": 150,
+      "innerRadius": 100,
+      "intensity": 0.4,
       "tint": {
         "r": 166,
         "g": 255,
@@ -59,14 +57,28 @@
         "alignRadial": true,
         "rename": "_FrostSpawn",
         "position": {
-          "x": 0,
-          "y": 75,
-          "z": 0
+          "x": 28.56266,
+          "y": -1.090971,
+          "z": -0.4656819
+        },
+        "rotation": {
+          "x": 60.30155,
+          "y": 180,
+          "z": 90.00002
         }
       }
     ]
   },
   "Volumes": {
+    "rulesets": {
+      "probeRulesets": [
+        {
+          "radius": 100,
+          "probeSpeed": 26,
+          "overrideProbeSpeed": true
+        }
+      ]
+    },
     "forces": {
       "gravityVolumes": [
         {
@@ -81,87 +93,391 @@
         }
       ]
     },
+    "zeroGravityVolumes": [
+      {
+        "position": {
+          "x": 1.8,
+          "y": 0,
+          "z": 0
+        },
+        "priority": 2,
+        "radius": 26
+      }
+    ],
     "hazardVolumes": [
       {
         "type": "ghostMatter",
-        "damagePerSecond": 0.00001,
-        "radius": 20,
-        "position": {
-          "x": 0,
-          "y": -40,
-          "z": 0
-        }
+        "damagePerSecond": 50,
+        "radius": 10.5,
+        "parentPath": "Sector/FrozenInterior/GM_Root_Main/GM (1)",
+        "isRelativeToParent": true
+      },
+      {
+        "type": "ghostMatter",
+        "damagePerSecond": 50,
+        "radius": 15,
+        "parentPath": "Sector/FrozenInterior/GM_Root_Main/GM (2)",
+        "isRelativeToParent": true
+      },
+      {
+        "type": "ghostMatter",
+        "damagePerSecond": 50,
+        "radius": 12,
+        "parentPath": "Sector/FrozenInterior/GM_Root_Main/GM (3)",
+        "isRelativeToParent": true
+      },
+      {
+        "type": "ghostMatter",
+        "damagePerSecond": 65,
+        "radius": 16,
+        "parentPath": "Sector/FrozenInterior/GM_Root_Main/GM (4)",
+        "isRelativeToParent": true
       }
     ],
     "visorEffects": {
       "frostEffectVolumes": [
         {
-          "frostRate": 0.005,
-          "maxFrost": 1,
-          "radius": 100,
+          "frostRate": 0.5,
+          "maxFrost": 0.2,
+          "radius": 10.5,
           "layer": 1,
-          "rename": "MainFrostVolume"
+          "parentPath": "Sector/FrozenInterior/GM_Root_EffectOnly/GM (1)",
+          "isRelativeToParent": true
         },
         {
-          "frostRate": 0,
-          "maxFrost": 0,
-          "radius": 20,
+          "frostRate": 0.5,
+          "maxFrost": 0.2,
+          "radius": 15,
           "layer": 1,
-          "position": {
-            "x": 0,
-            "y": 40,
-            "z": 0
-          },
-          "rename": "FrostSafetyVolume",
-          "priority": 2
+          "parentPath": "Sector/FrozenInterior/GM_Root_EffectOnly/GM (2)",
+          "isRelativeToParent": true
+        },
+        {
+          "frostRate": 0.5,
+          "maxFrost": 0.2,
+          "radius": 12,
+          "layer": 1,
+          "parentPath": "Sector/FrozenInterior/GM_Root_EffectOnly/GM (3)",
+          "isRelativeToParent": true
+        },
+        {
+          "frostRate": 0.5,
+          "maxFrost": 0.2,
+          "radius": 16,
+          "layer": 1,
+          "parentPath": "Sector/FrozenInterior/GM_Root_EffectOnly/GM (4)",
+          "isRelativeToParent": true
         }
       ]
-    }
-  },
-  "Props": {
-    "details": [
+    },
+    "audioVolumes": [
       {
-        "rename": "TestPole",
-        "path": "DB_VesselDimension_Body/Sector_VesselDimension/Props_VesselDimension/Prefab_NOM_NomaiTree_VarDRY_3/GEO_Treepot_3",
-        "position": {
-          "x": 0,
-          "y": 0,
-          "z": -40
-        },
-        "rotation": {
-          "x": 270,
-          "y": 0,
-          "z": 0
-        },
-        "stretch": {
-          "x": 50,
-          "y": 150,
-          "z": 50
-        },
-        "keepLoaded": true
+        "audio": "1905",
+        "clipSelection": "random",
+        "track": "environment",
+        "volume": 0.4,
+        "priority": 0,
+        "radius": 100
       },
       {
-        "rename": "TestPole2",
-        "path": "DB_VesselDimension_Body/Sector_VesselDimension/Props_VesselDimension/Prefab_NOM_NomaiTree_VarDRY_3/GEO_Treepot_3",
+        "audio": "1811",
+        "clipSelection": "random",
+        "track": "environment",
+        "volume": 0.4,
+        "priority": 1,
+        "radius": 59
+      },
+      {
+        "audio": "Ice_Cave_Amb_loop_v3_01",
+        "clipSelection": "random",
+        "track": "music",
+        "volume": 0.2,
+        "priority": 1,
         "position": {
-          "x": 0,
-          "y": 0,
-          "z": 40
-        },
-        "rotation": {
-          "x": 90,
+          "x": 3,
           "y": 0,
           "z": 0
         },
-        "stretch": {
-          "x": 50,
-          "y": 150,
-          "z": 50
-        },
-        "keepLoaded": true
+        "radius": 26
+      }
+    ],
+    "reverbVolumes": [
+      {
+        "radius": 59
       }
     ]
   },
+  "Props": {
+    "remotes": [
+      {
+        "id": "REMOTE_FROSTCAR",
+        "decalPath": "planets/textures/projection pools/FrostCar.png",
+        "platform": {
+          "position": {
+            "x": 27.7,
+            "y": -20.5,
+            "z": -3
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 270
+          },
+          "disableStructure": false,
+          "disablePool": false,
+          "rename": "RemoteProjectionFrostCar"
+        },
+        "whiteboard": {
+          "position": {
+            "x": 27.575,
+            "y": 8.3,
+            "z": -10.7
+          },
+          "rotation": {
+            "x": 45,
+            "y": 0,
+            "z": 270
+          },
+          "rename": "RemoteWhiteBoard",
+          "nomaiText": [
+            {
+              "id": "REMOTE_OCEAN1",
+              "location": "a",
+              "xmlFile": "planets/nomaitext/FrostToOcean.xml"
+            }
+          ]
+        }
+      },
+      {
+        "id": "REMOTE_OCEAN1",
+        "decalPath": "planets/textures/projection pools/Locomocean.png",
+        "stones": [
+          {
+            "rename": "Ocean_RemoteStone1",
+            "position": {
+              "x": 27.63751,
+              "y": 2.774739,
+              "z": -10.97973
+            },
+            "rotation": {
+              "x": 10.3004,
+              "y": -6.508,
+              "z": 270
+            }
+          }
+        ]
+      }
+    ],
+    "warpReceivers": [
+      {
+        "rename": "Warp_FrostCar",
+        "frequency": "CantAffordaName_FrostCar",
+        "parentPath": "Sector/WarpRoot",
+        "isRelativeToParent": true
+      },
+      {
+        "rename": "Warp_Fake",
+        "frequency": "CantAffordaName_Fake_2",
+        "parentPath": "Sector/WarpFake",
+        "isRelativeToParent": true
+      }
+    ],
+    "details": [
+      {
+        "assetBundle": "planets/assetbundle/onarail",
+        "path": "Assets/OnARail/Prefabs/FrozenBase.prefab",
+        "keepLoaded": true
+      },
+      {
+        "assetBundle": "planets/assetbundle/onarail",
+        "path": "Assets/OnARail/Prefabs/FrozenInterior.prefab"
+      },
+      {
+        "path": "",
+        "rename": "WarpRoot",
+        "position": {
+          "x": 26.875,
+          "y": 8.85,
+          "z": 11.6
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 270
+        },
+        "activationCondition": "WARPCORE_WHITE_INSERTED",
+        "blinkWhenActiveChanged": false
+      },
+      {
+        "path": "",
+        "rename": "WarpFake",
+        "position": {
+          "x": 26.875,
+          "y": 8.85,
+          "z": 11.6
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 270
+        },
+        "itemSocket": {
+          "socketPath": "",
+          "colliderRadius": 2,
+          "itemType": "WarpCoreWhite",
+          "insertCondition": "WARPCORE_WHITE_INSERTED",
+          "isRelativeToParent": true
+        },
+        "deactivationCondition": "WARPCORE_WHITE_INSERTED",
+        "blinkWhenActiveChanged": false
+      },
+      {
+        "rename": "GhostMatterClutter (1)",
+        "path": "TimberHearth_Body/Sector_TH/Sector_NomaiCrater/DetailPatches_NomaiCrater/NomaiCrater Foliage/Props_GhostMatter/Props_GM_Clutter",
+        "parentPath": "Sector/Props",
+        "position": {
+          "x": 33.9,
+          "y": 9.3,
+          "z": -9.93
+        },
+        "rotation": {
+          "x": 347.2974,
+          "y": 312.0491,
+          "z": 194.7153
+        },
+        "scale": 2.1
+      },
+      {
+        "rename": "GhostMatterClutter (2)",
+        "path": "TimberHearth_Body/Sector_TH/Sector_NomaiCrater/DetailPatches_NomaiCrater/NomaiCrater Foliage/Props_GhostMatter/Props_GM_Clutter",
+        "parentPath": "Sector/Props",
+        "position": {
+          "x": 33.48,
+          "y": 0.56,
+          "z": -9.24
+        },
+        "rotation": {
+          "x": 39.76,
+          "y": 308.65,
+          "z": 320.35
+        },
+        "stretch": {
+          "x": 1.2,
+          "y": 2.2,
+          "z": 1.2
+        }
+      },
+      {
+        "rename": "GhostMatterClutter (3)",
+        "path": "TimberHearth_Body/Sector_TH/Sector_NomaiCrater/DetailPatches_NomaiCrater/NomaiCrater Foliage/Props_GhostMatter/Props_GM_Clutter",
+        "parentPath": "Sector/Props",
+        "position": {
+          "x": 34.9375,
+          "y": 10.7724,
+          "z": 10.8018
+        },
+        "rotation": {
+          "x": 0,
+          "y": 180,
+          "z": 180
+        },
+        "stretch": {
+          "x": 2,
+          "y": 3,
+          "z": 2
+        }
+      },
+      {
+        "path": "BrittleHollow_Body/Sector_BH/Sector Crossroad Quantum Path/Fragment 28_CrossroadQuantumPath/Core 28_CrossroadQuantumPath/Lighting_Core_28_CrossroadQuantumPath/Prefab_NOM_WallTorch",
+        "parentPath": "Sector/Props",
+        "position": {
+          "x": 30.6375,
+          "y": -18.5731,
+          "z": 5.0462
+        },
+        "rotation": {
+          "x": 0,
+          "y": 180,
+          "z": 90
+        }
+      },
+      {
+        "path": "BrittleHollow_Body/Sector_BH/Sector Crossroad Quantum Path/Fragment 28_CrossroadQuantumPath/Core 28_CrossroadQuantumPath/Lighting_Core_28_CrossroadQuantumPath/Prefab_NOM_WallTorch",
+        "parentPath": "Sector/Props",
+        "position": {
+          "x": 30.6375,
+          "y": -18.5731,
+          "z": -10.7538
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 270
+        }
+      },
+      {
+        "rename": "GhostMatterWisps",
+        "path": "TimberHearth_Body/Sector_TH/Sector_NomaiCrater/Interactables_NomaiCrater/Effects_GM_AuroraWisps (1)",
+        "parentPath": "Sector/FrozenInterior/GM_Root_EffectOnly/GM (1)",
+        "isRelativeToParent": true,
+        "alignRadial": true,
+        "scale": 3,
+        "position": {
+          "x": -3,
+          "y": 5,
+          "z": -3
+        }
+      },
+      {
+        "rename": "GhostMatterWisps",
+        "path": "TimberHearth_Body/Sector_TH/Sector_NomaiCrater/Interactables_NomaiCrater/Effects_GM_AuroraWisps (1)",
+        "parentPath": "Sector/FrozenInterior/GM_Root_EffectOnly/GM (2)",
+        "isRelativeToParent": true,
+        "alignRadial": true,
+        "scale": 3,
+        "position": {
+          "x": 2,
+          "y": -4,
+          "z": 4
+        }
+      },
+      {
+        "rename": "GhostMatterWisps",
+        "path": "TimberHearth_Body/Sector_TH/Sector_NomaiCrater/Interactables_NomaiCrater/Effects_GM_AuroraWisps (1)",
+        "parentPath": "Sector/FrozenInterior/GM_Root_EffectOnly/GM (3)",
+        "isRelativeToParent": true,
+        "alignRadial": true,
+        "scale": 3,
+        "position": {
+          "x": 2,
+          "y": 1,
+          "z": -1
+        }
+      },
+      {
+        "rename": "GhostMatterWisps",
+        "path": "TimberHearth_Body/Sector_TH/Sector_NomaiCrater/Interactables_NomaiCrater/Effects_GM_AuroraWisps (1)",
+        "parentPath": "Sector/FrozenInterior/GM_Root_EffectOnly/GM (4)",
+        "isRelativeToParent": true,
+        "alignRadial": true,
+        "scale": 4,
+        "position": {
+          "x": 0,
+          "y": -10,
+          "z": 2
+        }
+      }
+    ]
+  },
+  "removeChildren": [
+    "Sector/WarpRoot/Warp_FrostCar/Structure_NOM_WarpReceiver_PlatformOnly/Structure_NOM_WarpReceiver_PlatformOnly_Glass",
+    "Sector/WarpRoot/Warp_FrostCar/PointLight_NOM_WarpCoreWhite (1)",
+    "Sector/WarpFake/Warp_Fake/Structure_NOM_WarpReceiver_PlatformOnly/Structure_NOM_WarpReceiver_PlatformOnly_Glass",
+    "Sector/WarpFake/Warp_Fake/Effects_NOM_ReverseWarpParticles",
+    "Sector/WarpFake/Warp_Fake/PointLight_NOM_WarpCoreWhite (1)",
+    "Sector/WarpFake/Warp_Fake/Props_NOM_WarpCoreWhite",
+    "Sector/WarpFake/Warp_Fake/Structure_NOM_WarpReceiver_Effects"
+  ],
   "ShipLog": {
     "mapMode": {
       "remove": true

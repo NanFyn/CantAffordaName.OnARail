@@ -138,7 +138,7 @@
         "track": "environment",
         "volume": 0.4,
         "priority": 1,
-        "radius": 49
+        "radius": 49.5
       },
       {
         "audio": "OW_DarkBramble_loop",
@@ -146,7 +146,7 @@
         "track": "music",
         "volume": 0.15,
         "priority": 1,
-        "radius": 49,
+        "radius": 49.5,
         "fadeSeconds": 5,
         "pauseOnFadeOut": true
       },
@@ -180,7 +180,7 @@
     }
   },
   "Sand": {
-    "size": 34.85
+    "size": 34.9
   },
   "Props": {
     "remotes": [
@@ -272,10 +272,12 @@
         "rename": "Warp_Angler_Entrance",
         "frequency": "CantAffordaName_Locomocean",
         "alignmentWindow": 360,
+        "parentPath": "Sector/Fish_Puzzle/Fish/FishCollider/WarpScale",
+        "isRelativeToParent": true,
         "position": {
           "x": 0,
-          "y": 80,
-          "z": 0
+          "y": -1,
+          "z": 2.5
         }
       }
     ],
@@ -309,6 +311,37 @@
     ],
     "details": [
       {
+        "path": "DeadNomai_Body (4)/Prefab_NOM_Dead_Suit_Advanced_FloatC",
+        "position": {
+          "x": 5.4922,
+          "y": 23.475,
+          "z": 2.8652
+        },
+        "rotation": {
+          "x": 279.9995,
+          "y": 92.7178,
+          "z": 180
+        }
+      },
+      {
+        "path": "Comet_Body/Sector_CO/Sector_CometInterior/Props_CometInterior/Props_GM_Cystals (1)/Props_GM_CrystalMedium_A",
+        "position": {
+          "x": 6.8292,
+          "y": 23.875,
+          "z": 2.7652
+        },
+        "rotation": {
+          "x": 0,
+          "y": 12.7178,
+          "z": 180
+        },
+        "stretch": {
+          "x": 2,
+          "y": 6,
+          "z": 2
+        }
+      },
+      {
         "assetBundle": "planets/assetbundle/onarail",
         "path": "Assets/OnARail/Prefabs/OceanBase.prefab",
         "keepLoaded": true
@@ -318,8 +351,49 @@
         "path": "Assets/OnARail/Prefabs/OceanInterior.prefab"
       },
       {
-        "path": "Locomocean_Body/Sector/Water/OceanFog",
-        "scale": 55
+        "path": "",
+        "rename": "CoreSocket",
+        "itemSocket": {
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 90
+          },
+          "colliderRadius": 0.5,
+          "itemType": "WarpCoreGM",
+          "removalCondition": "WARPCORE_GM_REMOVED"
+        },
+        "deactivationCondition": "WARPCORE_GM_REMOVED",
+        "blinkWhenActiveChanged": false
+      },
+      {
+        "assetBundle": "planets/assetbundle/onarail",
+        "path": "Assets/OnARail/Prefabs/GMWarpCore.prefab",
+        "rename": "Ghost Matter Core",
+        "item": {
+          "colliderRadius": 0,
+          "itemType": "WarpCoreGM",
+          "holdOffset": {
+            "x": 0.1,
+            "y": -0.1,
+            "z": 0
+          },
+          "dropNormal": {
+            "x": 1,
+            "y": 0,
+            "z": 0
+          },
+          "dropOffset": {
+            "x": 0.2,
+            "y": 0,
+            "z": 0
+          },
+          "pickupAudio": "204",
+          "dropAudio": "205",
+          "socketAudio": "206",
+          "unsocketAudio": "207",
+          "pathToInitialSocket": "Sector/CoreSocket"
+        }
       },
       {
         "path": "",
@@ -331,9 +405,25 @@
         "rename": "Fish_Standard"
       },
       {
+        "path": "",
+        "rename": "Fish_Puzzle"
+      },
+      {
+        "path": "",
+        "rename": "WarpScale",
+        "parentPath": "Sector/Fish_Puzzle/Fish/FishCollider",
+        "isRelativeToParent": true,
+        "scale": 0.5
+      },
+      {
         "assetBundle": "planets/assetbundle/onarail",
         "path": "Assets/OnARail/Prefabs/Fish.prefab",
         "parentPath": "Sector/Fish_Standard"
+      },
+      {
+        "assetBundle": "planets/assetbundle/onarail",
+        "path": "Assets/OnARail/Prefabs/Fish.prefab",
+        "parentPath": "Sector/Fish_Puzzle"
       },
       {
         "rename": "Angler",
@@ -349,6 +439,27 @@
         "parentPath": "Sector/Fish_Standard/Fish/FishCollider/Angler",
         "isRelativeToParent": true,
         "scale": 1.5
+      },
+      {
+        "rename": "AnglerWarper",
+        "path": "Anglerfish_Body/Beast_Anglerfish",
+        "parentPath": "Sector/Fish_Puzzle/Fish/FishCollider",
+        "scale": 0.02,
+        "removeChildren": [
+          "B_angler_root/B_angler_body01/B_angler_body02/B_angler_antenna01/B_angler_antenna02/B_angler_antenna03/B_angler_antenna04/B_angler_antenna05/B_angler_antenna06/B_angler_antenna07/B_angler_antenna08/B_angler_antenna09/B_angler_antenna10/B_angler_antenna11/B_angler_antenna12_end"
+        ]
+      },
+      {
+        "assetBundle": "planets/assetbundle/onarail",
+        "path": "Assets/OnARail/Prefabs/AnglerReplacementSphere.prefab",
+        "parentPath": "Sector/Fish_Puzzle/Fish/FishCollider/AnglerWarper/B_angler_root/B_angler_body01/B_angler_body02/B_angler_antenna01/B_angler_antenna02/B_angler_antenna03/B_angler_antenna04/B_angler_antenna05/B_angler_antenna06/B_angler_antenna07/B_angler_antenna08/B_angler_antenna09/B_angler_antenna10/B_angler_antenna11",
+        "isRelativeToParent": true,
+        "position": {
+          "x": -7.3,
+          "y": 0,
+          "z": 0
+        },
+        "scale": 11
       },
       {
         "rename": "Fire",
@@ -418,11 +529,56 @@
         "seed": 34512,
         "count": 300
       }
+    ],
+    "translatorText": [
+      {
+        "position": {
+          "x": -51.99221,
+          "y": 0.3020882,
+          "z": 1.301384
+        },
+        "rotation": {
+          "x": 8.402731,
+          "y": 179.8856,
+          "z": 268.8449
+        },
+        "type": "whiteboard"
+      },
+      {
+        "position": {
+          "x": 45.37942,
+          "y": 22.65563,
+          "z": 0.3388024
+        },
+        "xmlFile": "planets/nomaitext/WaterScary.xml",
+        "type": "scroll",
+        "seed": 12,
+        "alignRadial": true
+      },
+      {
+        "position": {
+          "x": 9.157279,
+          "y": 24.24091,
+          "z": 0.6820793
+        },
+        "rotation": {
+          "x": 343.0923,
+          "y": 260.1107,
+          "z": 181.2423
+        },
+        "xmlFile": "planets/nomaitext/End.xml",
+        "type": "preCrashRecorder"
+      }
     ]
   },
   "removeChildren": [
-    "Sector/Water/OceanFog",
-    "Sector/Sand/Collider"
+    "Sector/Sand/Collider",
+    "Sector/Fire/Effects/Effects_HEA_SmokeColumn",
+    "Sector/Fish_Puzzle/Fish/FishCollider/WarpScale/Warp_Angler_Entrance/Props_NOM_WarpCoreBlack",
+    "Sector/Fish_Puzzle/Fish/FishCollider/WarpScale/Warp_Angler_Entrance/PointLight_NOM_WarpCoreBlack (1)",
+    "Sector/Fish_Puzzle/Fish/FishCollider/WarpScale/Warp_Angler_Entrance/Structure_NOM_PlatformContainer",
+    "Sector/Fish_Puzzle/Fish/FishCollider/WarpScale/Warp_Angler_Entrance/Structure_NOM_WarpTransmitter"
+
   ],
   "ShipLog": {
     "mapMode": {

@@ -88,6 +88,8 @@
           "lowerRadius": 40,
           "upperRadius": 100,
           "minForce": 12,
+          "layer": 1,
+          "priority": 1,
           "fallOff": "inverseSquared",
           "rename": "CustomGravityVolume"
         }
@@ -101,7 +103,8 @@
           "z": 0
         },
         "priority": 2,
-        "radius": 26
+        "radius": 26,
+        "layer": 0
       }
     ],
     "hazardVolumes": [
@@ -131,6 +134,34 @@
         "damagePerSecond": 65,
         "radius": 16,
         "parentPath": "Sector/FrozenInterior/GM_Root_Main/GM (4)",
+        "isRelativeToParent": true
+      },
+      {
+        "type": "ghostMatter",
+        "damagePerSecond": 0.000001,
+        "radius": 10.5,
+        "parentPath": "Sector/FrozenInterior/GM_Root_EffectOnly/GM (1)",
+        "isRelativeToParent": true
+      },
+      {
+        "type": "ghostMatter",
+        "damagePerSecond": 0.000001,
+        "radius": 15,
+        "parentPath": "Sector/FrozenInterior/GM_Root_EffectOnly/GM (2)",
+        "isRelativeToParent": true
+      },
+      {
+        "type": "ghostMatter",
+        "damagePerSecond": 0.000001,
+        "radius": 12,
+        "parentPath": "Sector/FrozenInterior/GM_Root_EffectOnly/GM (3)",
+        "isRelativeToParent": true
+      },
+      {
+        "type": "ghostMatter",
+        "damagePerSecond": 0.000001,
+        "radius": 16,
+        "parentPath": "Sector/FrozenInterior/GM_Root_EffectOnly/GM (4)",
         "isRelativeToParent": true
       }
     ],
@@ -291,6 +322,10 @@
       {
         "assetBundle": "planets/assetbundle/onarail",
         "path": "Assets/OnARail/Prefabs/FrozenInterior.prefab"
+      },
+      {
+        "path": "",
+        "rename": "Props"
       },
       {
         "path": "",
@@ -466,6 +501,22 @@
           "y": -10,
           "z": 2
         }
+      }
+    ],
+    "translatorText": [
+      {
+        "position": {
+          "x": 28.56266,
+          "y": 0.5811505,
+          "z": 0.4517908
+        },
+        "rotation": {
+          "x": 301.6093,
+          "y": 0,
+          "z": 270
+        },
+        "xmlFile": "planets/nomaitext/WhistleHint.xml",
+        "type": "preCrashRecorder"
       }
     ]
   },

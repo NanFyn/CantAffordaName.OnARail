@@ -1,13 +1,25 @@
 <NomaiObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/text_schema.xsd">
 	<TextBlock>
 		<ID>1</ID>
-        <LocationA />
-		<Text>ENJI: Location One Spruce Caboose.</Text>
+        <LocationB />
+		<Text><![CDATA[<color=lightblue>Enji</color>]]>: An update on the current situation. I... just lost a warp core.</Text>
 	</TextBlock>
 	<TextBlock>
 		<ID>2</ID>
         <ParentID>1</ParentID>
         <LocationB />
-		<Text>ENJI: Location 2 Spruce Caboose.</Text>
+		<Text>I'm in the process of sealing off <![CDATA[<color=orange>Locomocean's refinery</color>]]> and I brought a core by leaping to the planet. I hit a patch of land. On an ocean planet. Not quite the <![CDATA[<i>splash</i>]]> I was hoping to make (Ha ha. I'm in pain).</Text>
 	</TextBlock>
+  <TextBlock>
+    <ID>3</ID>
+    <ParentID>2</ParentID>
+    <LocationB />
+    <Text>Now, I didn't break anything... I think. But I lost grip of the core and I'm not about to go back to swimming with the fishies to find it. I'll grab another core to use instead.</Text>
+  </TextBlock>
+  <TextBlock>
+    <ID>4</ID>
+    <ParentID>3</ParentID>
+    <LocationB />
+    <Text>If I had to guess where it was? Based on the ocean current, probably the <![CDATA[<color=orange>South Pole</color>]]>. But I'm not about to go digging in the sand because A) I hate sand, and B) I hate the fish.</Text>
+  </TextBlock>
 </NomaiObject>

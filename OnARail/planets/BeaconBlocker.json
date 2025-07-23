@@ -1,0 +1,77 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/body_schema.json",
+  "name": "Beacon Blocker",
+  "starSystem": "Jam5",
+  "Base": {
+    "gravityFallOff": "linear",
+    "surfaceSize": 0,
+    "surfaceGravity": 0,
+    "showMinimap": false
+  },
+  "Orbit": {
+    "primaryBody": "Railway System",
+    "showOrbitLine": false,
+    "semiMajorAxis": 1500,
+    "trueAnomaly": 200,
+    "isMoon": true,
+    "isTidallyLocked": true,
+    "alignmentAxis": {
+      "x": -1,
+      "y": 0,
+      "z": 0
+    }
+  },
+  "Spawn": {
+    "playerSpawnPoints": [
+      {
+        "isDefault": false,
+        "rename": "_CoordSpawn",
+        "position": {
+          "x": 0,
+          "y": 40,
+          "z": 0
+        }
+      }
+    ]
+  },
+  "Props": {
+    "signals": [
+      {
+        "frequency": "One-Way Frequency",
+        "name": "Coordinate Relay",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 15
+        },
+        "audio": "1618",
+        "detectionRadius": 30,
+        "identificationRadius": 10,
+        "minDistance": 2,
+        "maxDistance": 30
+      }
+    ],
+    "details": [
+      {
+        "assetBundle": "planets/assetbundle/onarail",
+        "path": "Assets/OnARail/Prefabs/ProbeRoot.prefab",
+        "rotation": {
+          "x": 90,
+          "y": 0,
+          "z": 0
+        }
+      }
+    ]
+  },
+  "ShipLog": {
+    "mapMode": {
+      "remove": true
+    }
+  },
+  "ReferenceFrame": {
+    "enabled": false
+  },
+  "MapMarker": {
+    "enabled": false
+  }
+}

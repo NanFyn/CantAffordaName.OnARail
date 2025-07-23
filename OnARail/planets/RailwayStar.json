@@ -19,7 +19,6 @@
     }
   },
   "Star": {
-    "stellarDeathType": "none",
     "size": 400,
     "solarLuminosity": 2,
     "lightRadius": 2500,
@@ -32,33 +31,62 @@
       "r": 255,
       "g": 200,
       "b": 100
+    },
+    "endTint": {
+      "r": 255,
+      "g": 100,
+      "b": 100
+    },
+    "curve": [
+      {
+        "time": 0,
+        "value": 1
+      },
+      {
+        "time": 12,
+        "value": 1
+      },
+      {
+        "time": 22,
+        "value": 2
+      }
+    ],
+    "supernovaSize": 2500,
+    "supernovaSpeed": 50,
+    "stellarDeathType": "supernova",
+    "supernovaTint": {
+      "r": 255,
+      "g": 100,
+      "b": 100
     }
   },
   "Volumes": {
-    "rulesets": {
-      "antiTravelMusicRulesets": [
-        {
-          "radius": 1900,
-          "rename": "RailwayAntiTravelMusic"
-        }
-      ]
-    },
     "visorEffects": {
       "rainEffectVolumes": [
         {
           "rename": "WetEffectVolume1",
+          "parentPath": "Sector/VisorEffects",
           "radius": 2500,
           "dropletRate": 0,
           "streakRate": 0.5
         },
         {
           "rename": "WetEffectVolume2",
+          "parentPath": "Sector/VisorEffects",
           "radius": 2500,
           "dropletRate": 0,
           "streakRate": 0.5
         }
       ]
     }
+  },
+  "Props": {
+    "details": [
+      {
+        "path": "",
+        "rename": "VisorEffects"
+      }
+    ]
   },
   "ShipLog": {
     "xmlFile": "planets/shiplog/Railway.xml",

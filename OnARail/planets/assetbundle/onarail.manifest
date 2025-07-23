@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1744592844
+CRC: 3849798249
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: f5760d1af4f427e6b0db0a367ccc6faf
+    Hash: 53e7df9bd21d627cc7befd50658c59d9
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 23df5067a6bc079066f6f31bf8d5f2eb
+    Hash: 3bfdfd7f3eee4a023ed83d9c81678d9a
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -75,8 +75,11 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 199
   Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
+- Assets/OnARail/Prefabs/ProbeRoot.prefab
 - Assets/OnARail/Prefabs/SpruceInterior.prefab
 - Assets/OnARail/Prefabs/FrozenInterior.prefab
 - Assets/OnARail/Prefabs/OceanBase.prefab
@@ -87,5 +90,7 @@ Assets:
 - Assets/OnARail/Prefabs/Foliage_Bush.prefab
 - Assets/OnARail/Prefabs/TrainBase.prefab
 - Assets/OnARail/Prefabs/OceanInterior.prefab
+- Assets/OnARail/Prefabs/AnglerReplacementSphere.prefab
 - Assets/OnARail/Prefabs/Fish.prefab
+- Assets/OnARail/Prefabs/GMWarpCore.prefab
 Dependencies: []

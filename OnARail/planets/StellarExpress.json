@@ -29,7 +29,6 @@
     "playerSpawnPoints": [
       {
         "isDefault": false,
-        "alignRadial": true,
         "rename": "_TrainSpawn",
         "position": {
           "x": 0,
@@ -40,6 +39,29 @@
     ]
   },
   "Volumes": {
+    "creditsVolume": [
+      {
+        "deathType": "bigBang",
+        "gameOver": {
+          "creditsType": "none",
+          "colour": {
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          "text": "On A Rail"
+        },
+        "radius": 300
+      }
+    ],
+    "revealVolumes": [
+      {
+        "radius": 300,
+        "reveals": [ "RAILWAY_FINAL_FACT" ],
+        "revealOn": "enter"
+      }
+    ],
     "notificationVolumes": [
       {
         "entryNotification": {
@@ -78,7 +100,7 @@
         "type": "ghostMatter",
         "firstContactDamageType": "impact",
         "damagePerSecond": 50,
-        "radius": 2.2,
+        "radius": 4,
         "parentPath": "Sector/TrainBase/WhistleController/GhostMatterRoot",
         "isRelativeToParent": true,
         "position": {
@@ -99,6 +121,13 @@
         },
         "parentPath": "Sector/TrainBase/WhistleController/GhostMatterRoot",
         "isRelativeToParent": true
+      },
+      {
+        "rename": "EndingGM",
+        "type": "ghostMatter",
+        "firstContactDamageType": "impact",
+        "damagePerSecond": 0.0001,
+        "radius": 50
       }
     ],
     "audioVolumes": [
@@ -162,6 +191,33 @@
         }
       },
       {
+        "path": "",
+        "rename": "CoreSocket",
+        "parentPath": "Sector/TrainBase/CoreSocketParent",
+        "isRelativeToParent": true,
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 90
+        },
+        "itemSocket": {
+          "colliderRadius": 0.5,
+          "itemType": "WarpCoreGM",
+          "insertCondition": "WARPCORE_GM_INSERTED"
+        },
+        "deactivationCondition": "WARPCORE_GM_INSERTED",
+        "blinkWhenActiveChanged": false
+      },
+      {
+        "assetBundle": "planets/assetbundle/onarail",
+        "path": "Assets/OnARail/Prefabs/GMWarpCore.prefab",
+        "parentPath": "Sector/TrainBase/CoreSocketParent",
+        "isRelativeToParent": true,
+        "rename": "Ghost Matter Core",
+        "activationCondition": "WARPCORE_GM_INSERTED",
+        "blinkWhenActiveChanged": false
+      },
+      {
         "rename": "TrainInterface",
         "path": "DB_VesselDimension_Body/Sector_VesselDimension/Sector_VesselBridge/Interactibles_VesselBridge/WarpController/CoordinateInterface",
         "position": {
@@ -173,7 +229,8 @@
           "x": 0,
           "y": 180,
           "z": 0
-        }
+        },
+        "activationCondition": "WARPCORE_GM_INSERTED"
       },
       {
         "path": "Sector_EscapePodBody/Interactables_EscapePodBody/EmergencyHatch",
@@ -378,31 +435,123 @@
         "path": "WhiteholeStation_Body/Sector_WhiteholeStation/Props_WhiteHoleStation/Prefab_NOM_NomaiTree_Var_2/GEO_NomaiTree_1_Trunk",
         "parentPath": "Sector/Props/Treepot",
         "isRelativeToParent": true
+      },
+      {
+        "rename": "Treepot2",
+        "path": "DB_VesselDimension_Body/Sector_VesselDimension/Props_VesselDimension/Prefab_NOM_NomaiTree_VarDRY_3/GEO_Treepot_3",
+        "parentPath": "Sector/Props",
+        "position": {
+          "x": 4.624092,
+          "y": 9.23327,
+          "z": -56.26783
+        },
+        "rotation": {
+          "x": 2.135734E-05,
+          "y": 226.9154,
+          "z": 1.263898E-05
+        }
+      },
+      {
+        "path": "WhiteholeStation_Body/Sector_WhiteholeStation/Props_WhiteHoleStation/Prefab_NOM_NomaiTree_Var_2/GEO_NomaiTree_1_Trunk",
+        "parentPath": "Sector/Props/Treepot2",
+        "isRelativeToParent": true
       }
     ],
     "translatorText": [
       {
         "rename": "TrainText",
-        "position": {"x": 4.3937, "y": -4.0684, "z": -51.3741}, "normal": {"x": -0.7584649, "y": 0.01199946, "z": -0.6516041},
+        "position": {
+          "x": 4.3937,
+          "y": -4.0684,
+          "z": -51.3741
+        },
+        "normal": {
+          "x": -0.7584649,
+          "y": 0.01199946,
+          "z": -0.6516041
+        },
         "xmlFile": "planets/nomaitext/TrainText.xml",
         "seed": 1337,
         "arcInfo": [
           {
-            "zRotation": 0, "mirror": false
+            "zRotation": 0,
+            "mirror": false
           },
           {
-            "position": {"x": 0.4, "y": 0.875}, "zRotation": 0, "mirror": true
+            "position": {
+              "x": 0.4,
+              "y": 0.875
+            },
+            "zRotation": 0,
+            "mirror": true
           },
           {
-            "position": {"x": 0, "y": 1.775}, "zRotation": 333, "mirror": false
+            "position": {
+              "x": 0,
+              "y": 1.775
+            },
+            "zRotation": 333,
+            "mirror": false
           },
           {
-            "position": {"x": -0.6, "y": 1.775}, "zRotation": 53, "mirror": false
+            "position": {
+              "x": -0.6,
+              "y": 1.775
+            },
+            "zRotation": 53,
+            "mirror": false
           },
           {
-            "position": {"x": -0.4, "y": 2.8}, "zRotation": 298, "mirror": true
+            "position": {
+              "x": -0.4,
+              "y": 2.8
+            },
+            "zRotation": 298,
+            "mirror": true
           }
         ]
+      },
+      {
+        "position": {
+          "x": 2.838346,
+          "y": 10.41464,
+          "z": -57.60805
+        },
+        "rotation": {
+          "x": 15.43931,
+          "y": 213.9967,
+          "z": 357.5512
+        },
+        "xmlFile": "planets/nomaitext/FirstLaunch.xml",
+        "type": "preCrashRecorder"
+      },
+      {
+        "position": {
+          "x": -3.415527,
+          "y": -6.400028,
+          "z": -51.96555
+        },
+        "rotation": {
+          "x": 0,
+          "y": 163.3792,
+          "z": 0
+        },
+        "xmlFile": "planets/nomaitext/TrainWarning.xml",
+        "type": "preCrashComputer"
+      },
+      {
+        "position": {
+          "x": -0.1355209,
+          "y": -7.343575,
+          "z": -20.75521
+        },
+        "rotation": {
+          "x": 4.484174E-06,
+          "y": 271.3658,
+          "z": -5.925711E-06
+        },
+        "xmlFile": "planets/nomaitext/AnglerWarpHint.xml",
+        "type": "preCrashRecorder"
       }
     ]
   },

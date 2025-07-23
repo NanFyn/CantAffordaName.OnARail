@@ -1,0 +1,31 @@
+<NomaiObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/text_schema.xsd">
+	<TextBlock>
+		<ID>1</ID>
+		<Text><![CDATA[<color=lightblue>Enji</color>]]>: Ah... nothing like admiring your own work.</Text>
+	</TextBlock>
+  <TextBlock>
+    <ID>2</ID>
+      <ParentID>1</ParentID>
+    <Text>Soon it will be ready. There's just one... <![CDATA[<i>"catch"</i>]]>, to put it bluntly.</Text>
+  </TextBlock>,
+  <TextBlock>
+    <ID>3</ID>
+    <ParentID>2</ParentID>
+    <Text>The warpcore I had been using to get into <![CDATA[<color=orange>Locomocean's refinery</color>]]> fell into the water after the island it was built upon collapsed.</Text>
+  </TextBlock>,
+  <TextBlock>
+    <ID>4</ID>
+    <ParentID>3</ParentID>
+    <Text>Now, I <![CDATA[<i>was</i>]]> going to get it... but an anglerfish ate it!</Text>
+  </TextBlock>
+  <TextBlock>
+    <ID>5</ID>
+    <ParentID>4</ParentID>
+    <Text>...And somehow an anglerfish is a perfect conduit for warp cores. I... don't know what to make of this.</Text>
+  </TextBlock>
+  <TextBlock>
+    <ID>6</ID>
+    <ParentID>5</ParentID>
+    <Text>To get in, I have to seek out and find the right fish. Luckliy for me, a picture of the right fish shows it's <![CDATA[<color=orange>lure being completly blacked out</color>]]>.</Text>
+  </TextBlock>
+</NomaiObject>

@@ -86,6 +86,149 @@
         }
       ]
     },
+    "zeroGravityVolumes": [
+      {
+        "radius": 20,
+        "priority": 2
+      }
+    ],
+    "notificationVolumes": [
+      {
+        "entryNotification": {
+          "displayMessage": "DANGER: GHOST MATTER DETECTED NEARBY"
+        },
+        "radius": 23,
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": -33
+        },
+        "target": "player",
+        "rename": "GM_Message_Exterior"
+      },
+      {
+        "entryNotification": {
+          "displayMessage": "DANGER: GHOST MATTER DETECTED NEARBY"
+        },
+        "radius": 20,
+        "position": {
+          "x": -30,
+          "y": 0,
+          "z": 0
+        },
+        "target": "player",
+        "rename": "GM_Message_Interior"
+      }
+    ],
+    "hazardVolumes": [
+      {
+        "type": "ghostMatter",
+        "damagePerSecond": 200,
+        "radius": 4.5,
+        "parentPath": "Sector/SpruceBase/GM_Root_Main/GM (1)",
+        "isRelativeToParent": true
+      },
+      {
+        "type": "ghostMatter",
+        "damagePerSecond": 200,
+        "radius": 4,
+        "parentPath": "Sector/SpruceBase/GM_Root_Main/GM (2)",
+        "isRelativeToParent": true
+      },
+      {
+        "type": "ghostMatter",
+        "damagePerSecond": 200,
+        "radius": 6,
+        "parentPath": "Sector/SpruceBase/GM_Root_Main/GM (3)",
+        "isRelativeToParent": true
+      },
+      {
+        "type": "ghostMatter",
+        "damagePerSecond": 200,
+        "radius": 10.75,
+        "parentPath": "Sector/SpruceBase/GM_Root_Main/GM (4)",
+        "isRelativeToParent": true,
+        "position": {
+          "x": 3,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "type": "ghostMatter",
+        "damagePerSecond": 0.000001,
+        "radius": 4.5,
+        "parentPath": "Sector/SpruceBase/GM_Root_EffectOnly/GM (1)",
+        "isRelativeToParent": true
+      },
+      {
+        "type": "ghostMatter",
+        "damagePerSecond": 0.000001,
+        "radius": 4,
+        "parentPath": "Sector/SpruceBase/GM_Root_EffectOnly/GM (2)",
+        "isRelativeToParent": true
+      },
+      {
+        "type": "ghostMatter",
+        "damagePerSecond": 0.000001,
+        "radius": 6,
+        "parentPath": "Sector/SpruceBase/GM_Root_EffectOnly/GM (3)",
+        "isRelativeToParent": true
+      },
+      {
+        "type": "ghostMatter",
+        "damagePerSecond": 0.000001,
+        "radius": 10.75,
+        "parentPath": "Sector/SpruceBase/GM_Root_EffectOnly/GM (4)",
+        "isRelativeToParent": true,
+        "position": {
+          "x": 3,
+          "y": 0,
+          "z": 0
+        }
+      }
+    ],
+    "visorEffects": {
+      "frostEffectVolumes": [
+        {
+          "frostRate": 0.5,
+          "maxFrost": 0.2,
+          "radius": 4.5,
+          "layer": 1,
+          "parentPath": "Sector/SpruceBase/GM_Root_EffectOnly/GM (1)",
+          "isRelativeToParent": true
+        },
+        {
+          "frostRate": 0.5,
+          "maxFrost": 0.2,
+          "radius": 4,
+          "layer": 1,
+          "parentPath": "Sector/SpruceBase/GM_Root_EffectOnly/GM (2)",
+          "isRelativeToParent": true
+        },
+        {
+          "frostRate": 0.5,
+          "maxFrost": 0.2,
+          "radius": 6,
+          "layer": 1,
+          "parentPath": "Sector/SpruceBase/GM_Root_EffectOnly/GM (3)",
+          "isRelativeToParent": true
+        },
+        {
+          "frostRate": 0.5,
+          "maxFrost": 0.2,
+          "radius": 10.75,
+          "layer": 1,
+          "parentPath": "Sector/SpruceBase/GM_Root_EffectOnly/GM (4)",
+          "isRelativeToParent": true,
+          "position": {
+            "x": 3,
+            "y": 0,
+            "z": 0
+          }
+        }
+      ]
+    },
     "rulesets": {
       "playerImpactRulesets": [
         {
@@ -169,6 +312,23 @@
     "buoyancy": 0.9
   },
   "Props": {
+    "signals": [
+      {
+        "frequency": "One-Way Frequency",
+        "name": "Reverse Beacon",
+        "position": {
+          "x": -55.8,
+          "y": 0,
+          "z": 0
+        },
+        "audio": "1618",
+        "detectionRadius": 4.5,
+        "identificationRadius": 4.5,
+        "onlyAudibleToScope": false,
+        "minDistance": 2,
+        "maxDistance": 30
+      }
+    ],
     "remotes": [
       {
         "id": "REMOTE_SPRUCECABOOSE",
@@ -204,7 +364,8 @@
             {
               "id": "REMOTE_OCEAN1",
               "location": "a",
-              "xmlFile": "planets/nomaitext/SpruceToOcean.xml"
+              "xmlFile": "planets/nomaitext/SpruceToOcean.xml",
+              "seed": 12
             }
           ]
         }
@@ -216,14 +377,14 @@
           {
             "rename": "Ocean_RemoteStone2",
             "position": {
-              "x": 38.77724,
-              "y": 20.5141,
-              "z": -2.365089
+              "x": -1.696869,
+              "y": 9.621775,
+              "z": -31.03133
             },
             "rotation": {
-              "x": 18.99838,
-              "y": 19.23714,
-              "z": 303.4045
+              "x": 61.32196,
+              "y": 129.3314,
+              "z": 307.0144
             }
           }
         ]
@@ -276,6 +437,15 @@
           "y": 0,
           "z": 90
         }
+      },
+      {
+        "path": "",
+        "rename": "Trees",
+        "scale": 0.5
+      },
+      {
+        "path": "",
+        "rename": "Crystals"
       },
       {
         "path": "",
@@ -336,8 +506,73 @@
         }
       },
       {
+        "path": "",
+        "rename": "Props"
+      },
+      {
+        "rename": "GhostMatterClutter (1)",
+        "path": "TimberHearth_Body/Sector_TH/Sector_NomaiCrater/DetailPatches_NomaiCrater/NomaiCrater Foliage/Props_GhostMatter/Props_GM_Clutter",
+        "parentPath": "Sector/Props",
+        "position": {
+          "x": 11.8074,
+          "y": 2.4769,
+          "z": -32.8615
+        },
+        "rotation": {
+          "x": 359.4777,
+          "y": 71.0861,
+          "z": 275.3845
+        },
+        "stretch": {
+          "x": 1.2,
+          "y": 2,
+          "z": 1.2
+        }
+      },
+      {
+        "rename": "GhostMatterClutter (2)",
+        "path": "TimberHearth_Body/Sector_TH/Sector_NomaiCrater/DetailPatches_NomaiCrater/NomaiCrater Foliage/Props_GhostMatter/Props_GM_Clutter",
+        "parentPath": "Sector/Props",
+        "position": {
+          "x": -12.0206,
+          "y": 2.4392,
+          "z": -32.6693
+        },
+        "rotation": {
+          "x": 1.3107,
+          "y": 290.5721,
+          "z": 84.0531
+        },
+        "stretch": {
+          "x": 1.2,
+          "y": 2,
+          "z": 1.2
+        }
+      },
+      {
+        "rename": "GhostMatterClutter (3)",
+        "path": "TimberHearth_Body/Sector_TH/Sector_NomaiCrater/DetailPatches_NomaiCrater/NomaiCrater Foliage/Props_GhostMatter/Props_GM_Clutter",
+        "parentPath": "Sector/Props",
+        "position": {
+          "x": -50,
+          "y": -0.5,
+          "z": 0
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 270
+        },
+        "stretch": {
+          "x": 1.1,
+          "y": 2,
+          "z": 1.1
+        }
+      },
+      {
         "rename": "Fire",
         "path": "TimberHearth_Body/Sector_TH/Sector_RadioTower/RadioTower_DLC/Interactibles_RadioTower/Hornfels'GrovePivot/Prefab_HEA_Campfire",
+        "parentPath": "Sector/Props",
         "position": {
           "x": 39.56466,
           "y": 15.98947,
@@ -348,7 +583,7 @@
       {
         "path": "Moon_Body/Sector_THM/Interactables_THM/Prefab_HEA_FuelTank",
         "position": {
-          "x": 30,
+          "x": 30.2,
           "y": 0,
           "z": 0
         }
@@ -356,49 +591,619 @@
       {
         "path": "CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_TimeLoopExperiment/WarpCoreWallSockets/WarpCoreSocket/Props_NOM_WarpCoreBroken (1)",
         "position": {
-          "x": 30.11878,
-          "y": 3.83221,
-          "z": -7.747383
+          "x": 29.56128,
+          "y": 5.745169,
+          "z": -1.400831
         },
         "rotation": {
-          "x": 68.66869,
-          "y": 180.0001,
-          "z": 90.00007
+          "x": 61.4453,
+          "y": 180,
+          "z": 180
         }
       },
       {
-        "path": "CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_TimeLoopExperiment/WarpCoreWallSockets/WarpCoreSocket (1)/Props_NOM_WarpCoreBlack (2)",
+        "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "parentPath": "Sector/Trees",
         "position": {
-          "x": 30.11878,
-          "y": 3.83221,
-          "z": -7.747383
+          "x": 39.38274,
+          "y": -17.35199,
+          "z": 6.878763
+        },
+        "alignRadial": true
+      },
+      {
+        "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "parentPath": "Sector/Trees",
+        "position": {
+          "x": 10.10523,
+          "y": -23.98114,
+          "z": 19.49358
+        },
+        "alignRadial": true
+      },
+      {
+        "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "parentPath": "Sector/Trees",
+        "position": {
+          "x": 14.18491,
+          "y": 24.09984,
+          "z": 16.82447
+        },
+        "alignRadial": true
+      },
+      {
+        "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "parentPath": "Sector/Trees",
+        "position": {
+          "x": 10.1645,
+          "y": 30.6968,
+          "z": -3.287814
+        },
+        "alignRadial": true
+      },
+      {
+        "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "parentPath": "Sector/Trees",
+        "position": {
+          "x": 10.20109,
+          "y": 17.28537,
+          "z": -25.76031
+        },
+        "alignRadial": true
+      },
+      {
+        "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "parentPath": "Sector/Trees",
+        "position": {
+          "x": 15.14712,
+          "y": -17.32264,
+          "z": -23.0289
+        },
+        "alignRadial": true
+      },
+      {
+        "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "parentPath": "Sector/Trees",
+        "position": {
+          "x": -24.3448,
+          "y": -18.85524,
+          "z": -10.75909
+        },
+        "alignRadial": true
+      },
+      {
+        "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "parentPath": "Sector/Trees",
+        "position": {
+          "x": -2.741183,
+          "y": -30.24261,
+          "z": -11.86918
+        },
+        "alignRadial": true
+      },
+      {
+        "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "parentPath": "Sector/Trees",
+        "position": {
+          "x": -21.09602,
+          "y": 6.263361,
+          "z": 24.02659
+        },
+        "alignRadial": true
+      },
+      {
+        "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "parentPath": "Sector/Trees",
+        "position": {
+          "x": -16.0834,
+          "y": -27.18622,
+          "z": 7.845063
+        },
+        "alignRadial": true
+      },
+      {
+        "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "parentPath": "Sector/Trees",
+        "position": {
+          "x": -22.0084,
+          "y": -17.77796,
+          "z": 16.27139
+        },
+        "alignRadial": true
+      },
+      {
+        "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "parentPath": "Sector/Trees",
+        "position": {
+          "x": 38.14342,
+          "y": 19.99699,
+          "z": 8.432029
+        },
+        "alignRadial": true
+      },
+      {
+        "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "parentPath": "Sector/Trees",
+        "position": {
+          "x": -6.211119,
+          "y": 29.78901,
+          "z": -12.19285
+        },
+        "alignRadial": true
+      },
+      {
+        "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "parentPath": "Sector/Trees",
+        "position": {
+          "x": -23.10518,
+          "y": 19.27746,
+          "z": -13.03225
+        },
+        "alignRadial": true
+      },
+      {
+        "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "parentPath": "Sector/Trees",
+        "position": {
+          "x": 11.15024,
+          "y": -30.48542,
+          "z": -2.409123
+        },
+        "alignRadial": true
+      },
+      {
+        "path": "TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Interactables_Observatory/GravityFieldExhibit/Prefab_NOM_GravityCrystal",
+        "parentPath": "Sector/Crystals",
+        "position": {
+          "x": -32.04731,
+          "y": 12.52726,
+          "z": 8.699188
         },
         "rotation": {
-          "x": 68.66869,
-          "y": 180.0001,
-          "z": 90.00007
-        },
-        "removeComponents": true,
-        "item": {
-          "name": "Warp Core",
-          "itemType": "WarpCoreBlack",
-          "socketAudio": "206",
-          "holdOffset": {
-            "x": 0.161,
-            "y": 0,
-            "z": 0.123
-          },
-          "holdRotation": {
-            "x": 345.0511,
-            "y": 262.5902,
-            "z": 343.6968
-          },
-          "dropNormal": {
-            "x": 90,
-            "y": 0,
-            "z": 0
-          }
+          "x": 334.5675,
+          "y": 220.262,
+          "z": 146.8974
         }
+      },
+      {
+        "path": "TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Interactables_Observatory/GravityFieldExhibit/Prefab_NOM_GravityCrystal",
+        "parentPath": "Sector/Crystals",
+        "position": {
+          "x": -36.05791,
+          "y": 8.024338,
+          "z": 12.67325
+        },
+        "rotation": {
+          "x": 317.8094,
+          "y": 148.7102,
+          "z": 194.0071
+        }
+      },
+      {
+        "path": "TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Interactables_Observatory/GravityFieldExhibit/Prefab_NOM_GravityCrystal",
+        "parentPath": "Sector/Crystals",
+        "position": {
+          "x": -38.75466,
+          "y": 1.920313,
+          "z": 13.44693
+        },
+        "rotation": {
+          "x": 277.5712,
+          "y": 82.15217,
+          "z": 220.5542
+        }
+      },
+      {
+        "path": "TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Interactables_Observatory/GravityFieldExhibit/Prefab_NOM_GravityCrystal",
+        "parentPath": "Sector/Crystals",
+        "position": {
+          "x": -38.32656,
+          "y": -2.954626,
+          "z": 13.80078
+        },
+        "rotation": {
+          "x": 8.025297,
+          "y": 37.24649,
+          "z": 275.4966
+        }
+      },
+      {
+        "path": "TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Interactables_Observatory/GravityFieldExhibit/Prefab_NOM_GravityCrystal",
+        "parentPath": "Sector/Crystals",
+        "position": {
+          "x": -38.80108,
+          "y": -6.779656,
+          "z": 11.64594
+        },
+        "rotation": {
+          "x": 42.26418,
+          "y": 48.05001,
+          "z": 298.5009
+        }
+      },
+      {
+        "path": "TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Interactables_Observatory/GravityFieldExhibit/Prefab_NOM_GravityCrystal",
+        "parentPath": "Sector/Crystals",
+        "position": {
+          "x": -38.56764,
+          "y": -10.79054,
+          "z": 8.577066
+        },
+        "rotation": {
+          "x": 50.66428,
+          "y": 60.49405,
+          "z": 318.622
+        }
+      },
+      {
+        "path": "TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Interactables_Observatory/GravityFieldExhibit/Prefab_NOM_GravityCrystal",
+        "parentPath": "Sector/Crystals",
+        "position": {
+          "x": -39.25018,
+          "y": -12.28653,
+          "z": 3.054585
+        },
+        "rotation": {
+          "x": 30.7104,
+          "y": 30.6026,
+          "z": 304.1505
+        }
+      },
+      {
+        "path": "TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Interactables_Observatory/GravityFieldExhibit/Prefab_NOM_GravityCrystal",
+        "parentPath": "Sector/Crystals",
+        "position": {
+          "x": -39.66373,
+          "y": -11.46092,
+          "z": -2.929882
+        },
+        "rotation": {
+          "x": 41.74925,
+          "y": 92.35184,
+          "z": 16.62666
+        }
+      },
+      {
+        "path": "TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Interactables_Observatory/GravityFieldExhibit/Prefab_NOM_GravityCrystal",
+        "parentPath": "Sector/Crystals",
+        "position": {
+          "x": -46.2111,
+          "y": -8.6893,
+          "z": -3.4656
+        },
+        "rotation": {
+          "x": 9.584146,
+          "y": 91.10863,
+          "z": 7.86213
+        }
+      },
+      {
+        "path": "TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Interactables_Observatory/GravityFieldExhibit/Prefab_NOM_GravityCrystal",
+        "parentPath": "Sector/Crystals",
+        "position": {
+          "x": -51.1792,
+          "y": -5.407692,
+          "z": -7.279891
+        },
+        "rotation": {
+          "x": 27.03987,
+          "y": 20.92065,
+          "z": 358.4618
+        }
+      },
+      {
+        "path": "TimberHearth_Body/Sector_TH/Sector_Village/Sector_Observatory/Interactables_Observatory/GravityFieldExhibit/Prefab_NOM_GravityCrystal",
+        "parentPath": "Sector/Crystals",
+        "position": {
+          "x": -56.85408,
+          "y": -6.400935,
+          "z": -3.860524
+        },
+        "rotation": {
+          "x": 0.8859839,
+          "y": 306.0204,
+          "z": 345.5005
+        }
+      },
+      {
+        "rename": "GhostMatterWisps",
+        "path": "TimberHearth_Body/Sector_TH/Sector_NomaiCrater/Interactables_NomaiCrater/Effects_GM_AuroraWisps (1)",
+        "parentPath": "Sector/SpruceBase/GM_Root_EffectOnly/GM (1)",
+        "isRelativeToParent": true,
+        "alignRadial": true,
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0.9
+        }
+      },
+      {
+        "rename": "GhostMatterWisps",
+        "path": "TimberHearth_Body/Sector_TH/Sector_NomaiCrater/Interactables_NomaiCrater/Effects_GM_AuroraWisps (1)",
+        "parentPath": "Sector/SpruceBase/GM_Root_EffectOnly/GM (2)",
+        "isRelativeToParent": true,
+        "alignRadial": true,
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 1.4
+        }
+      },
+      {
+        "rename": "GhostMatterWisps",
+        "path": "TimberHearth_Body/Sector_TH/Sector_NomaiCrater/Interactables_NomaiCrater/Effects_GM_AuroraWisps (1)",
+        "parentPath": "Sector/SpruceBase/GM_Root_EffectOnly/GM (3)",
+        "isRelativeToParent": true,
+        "alignRadial": true,
+        "stretch": {
+          "x": 1.5,
+          "y": 2,
+          "z": 1
+        },
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 3.4
+        }
+      },
+      {
+        "rename": "GhostMatterWisps",
+        "path": "TimberHearth_Body/Sector_TH/Sector_NomaiCrater/Interactables_NomaiCrater/Effects_GM_AuroraWisps (1)",
+        "parentPath": "Sector/SpruceBase/GM_Root_EffectOnly/GM (4)",
+        "isRelativeToParent": true,
+        "alignRadial": true,
+        "scale": 3,
+        "position": {
+          "x": 8,
+          "y": 0,
+          "z": 0
+        }
+      }
+    ],
+    "translatorText": [
+      {
+        "position": {
+          "x": 0.5146,
+          "y": 10.2823,
+          "z": -30.9525
+        },
+        "rotation": {
+          "x": 73.507,
+          "y": 192.9208,
+          "z": 16.0344
+        },
+        "type": "whiteboard",
+        "seed": 12,
+        "xmlFile": "planets/nomaitext/GM_Safety.xml",
+        "arcInfo": [
+          {
+            "type": "adult"
+          },
+          {
+            "type": "adult"
+          },
+          {
+            "type": "adult"
+          },
+          {
+            "type": "adult"
+          },
+          {
+            "type": "adult"
+          },
+          {
+            "type": "adult"
+          },
+          {
+            "type": "adult"
+          },
+          {
+            "type": "adult",
+            "mirror": true,
+            "zRotation": 197,
+            "position": {
+              "x": 0,
+              "y": 1.8
+            }
+          },
+          {
+            "type": "adult",
+            "zRotation": 259.5,
+            "position": {
+              "x": 1.4,
+              "y": 1.2
+            }
+          }
+        ]
+      },
+      {
+        "position": {
+          "x": 30.118,
+          "y": 8.476,
+          "z": 7.7504
+        },
+        "rotation": {
+          "x": 16.03116,
+          "y": 180,
+          "z": 90
+        },
+        "type": "whiteboard"
+      },
+      {
+        "position": {
+          "x": 40.53735,
+          "y": 14.54109,
+          "z": -6.612262
+        },
+        "rotation": {
+          "x": 316.4497,
+          "y": 355.8211,
+          "z": 294.1908
+        },
+        "xmlFile": "planets/nomaitext/ChildEnji.xml",
+        "type": "scroll",
+        "seed": 24,
+        "arcInfo": [
+          {
+            "type": "child"
+          },
+          {
+            "type": "child"
+          },
+          {
+            "type": "child"
+          },
+          {
+            "type": "child"
+          },
+          {
+            "type": "child"
+          },
+          {
+            "type": "child"
+          },
+          {
+            "type": "child"
+          },
+          {
+            "type": "child",
+            "position": {
+              "x": 0.02,
+              "y": 1.66
+            },
+            "zRotation": 60,
+            "mirror": true
+          },
+          {
+            "type": "child",
+            "position": {
+              "x": -0.83,
+              "y": 1.055
+            },
+            "zRotation": 209
+          }
+        ]
+      },
+      {
+        "position": {
+          "x": 38.98949,
+          "y": 18.30518,
+          "z": -6.98998
+        },
+        "rotation": {
+          "x": 23.85435,
+          "y": 28.21142,
+          "z": 296.2375
+        },
+        "xmlFile": "planets/nomaitext/EscapeExplaination.xml",
+        "type": "preCrashRecorder"
+      },
+      {
+        "position": {
+          "x": 30.118,
+          "y": -2.524,
+          "z": 9.7504
+        },
+        "rotation": {
+          "x": 16.032,
+          "y": 180,
+          "z": 90
+        },
+        "type": "whiteboard",
+        "xmlFile": "planets/nomaiText/WarpCores.xml",
+        "seed": 20,
+        "arcInfo": [
+          {
+            "type": "adult"
+          },
+          {
+            "type": "adult"
+          },
+          {
+            "type": "adult"
+          },
+          {
+            "type": "adult"
+          },
+          {
+            "type": "adult",
+            "mirror": true,
+            "zRotation": 28.2,
+            "position": {
+              "x": 0.3,
+              "y": 1.9
+            }
+          },
+          {
+            "type": "adult",
+            "zRotation": 260,
+            "mirror": true,
+            "position": {
+              "x": 1.4,
+              "y": 1.33
+            }
+          }
+        ]
+      },
+      {
+        "xmlFile": "planets/nomaitext/EnjiPlan.xml",
+        "type": "scroll",
+        "seed": 24,
+        "position": {
+          "x": -56.00006,
+          "y": -3.041178,
+          "z": -0.5817375
+        },
+        "rotation": {
+          "x": 321.095,
+          "y": 180,
+          "z": 270
+        },
+        "arcInfo": [
+          {
+            "type": "adult"
+          },
+          {
+            "type": "adult"
+          },
+          {
+            "type": "adult"
+          },
+          {
+            "type": "adult"
+          },
+          {
+            "type": "adult",
+            "position": {
+              "x": 1.2486,
+              "y": 1.8018
+            },
+            "zRotation": 130
+          },
+          {
+            "type": "adult",
+            "position": {
+              "x": -0.15,
+              "y": 2
+            },
+            "zRotation": 97.7,
+            "mirror": true
+          }
+        ]
+      },
+      {
+        "position": {
+          "x": -56.00002,
+          "y": -3.50836,
+          "z": 1.820288
+        },
+        "rotation": {
+          "x": 300.3134,
+          "y": 180,
+          "z": 270
+        },
+        "xmlFile": "planets/nomaitext/BeaconMessage.xml",
+        "type": "preCrashComputer"
       }
     ]
   },
@@ -415,7 +1220,7 @@
     "Sector/WarpOld/Warp_Old/Effects_NOM_ReverseWarpParticles",
     "Sector/WarpOld/Warp_Old/PointLight_NOM_WarpCoreWhite (1)",
     "Sector/WarpOld/Warp_Old/Structure_NOM_WarpReceiver_Effects",
-    "Sector/Fire/Effects/Effects_HEA_SmokeColumn"
+    "Sector/Props/Fire/Effects/Effects_HEA_SmokeColumn"
   ],
   "ShipLog": {
     "mapMode": {

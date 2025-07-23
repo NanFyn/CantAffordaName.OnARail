@@ -8,23 +8,207 @@
   "Props": {
     "details": [
       {
-        "rename": "Treepot",
-        "path": "DB_VesselDimension_Body/Sector_VesselDimension/Props_VesselDimension/Prefab_NOM_NomaiTree_VarDRY_3/GEO_Treepot_3",
+        "path": "CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_TimeLoopExperiment/WarpCoreWallSockets/WarpCoreSocket (1)/Props_NOM_WarpCoreBlack (2)",
         "position": {
-          "x": 0,
-          "y": 10,
-          "z": 60
+          "x": -2.219028,
+          "y": 1.221895E-05,
+          "z": 69.37222
         },
         "rotation": {
           "x": 0,
-          "y": 0,
-          "z": 0
+          "y": 190,
+          "z": 90
+        },
+        "removeComponents": true,
+        "item": {
+          "name": "Warp Core",
+          "itemType": "WarpCoreBlack",
+          "socketAudio": "206",
+          "holdOffset": {
+            "x": 0.161,
+            "y": 0,
+            "z": 0.123
+          },
+          "holdRotation": {
+            "x": 345.0511,
+            "y": 262.5902,
+            "z": 343.6968
+          },
+          "dropNormal": {
+            "x": 90,
+            "y": 0,
+            "z": 0
+          }
         }
       },
       {
-        "path": "WhiteholeStation_Body/Sector_WhiteholeStation/Props_WhiteHoleStation/Prefab_NOM_NomaiTree_Var_2/GEO_NomaiTree_1_Trunk",
-        "parentPath": "Sector/Treepot",
-        "isRelativeToParent": true
+        "path": "CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_TimeLoopExperiment/WarpCoreWallSockets/WarpCoreSocket/Props_NOM_WarpCoreBroken (1)",
+        "position": {
+          "x": 2.769379,
+          "y": 1.218915E-05,
+          "z": 68.81454
+        },
+        "rotation": {
+          "x": 0,
+          "y": 29,
+          "z": 90
+        }
+      },
+      {
+        "path": "CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_TimeLoopExperiment/WarpCoreWallSockets/WarpCoreSocket/Props_NOM_WarpCoreBroken (1)",
+        "position": {
+          "x": 2.679384,
+          "y": 1.068413E-05,
+          "z": 51.71435
+        },
+        "rotation": {
+          "x": 0,
+          "y": 65,
+          "z": 90
+        }
+      },
+      {
+        "path": "CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_TimeLoopExperiment/WarpCoreWallSockets/WarpCoreSocket/Props_NOM_WarpCoreBroken (1)",
+        "position": {
+          "x": -0.7976379,
+          "y": 1.087785E-05,
+          "z": 53.91222
+        },
+        "rotation": {
+          "x": 0,
+          "y": 27,
+          "z": 90
+        }
+      },
+      {
+        "path": "CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_TimeLoopExperiment/WarpCoreWallSockets/WarpCoreSocket/Props_NOM_WarpCoreBroken (1)",
+        "position": {
+          "x": -4.735031,
+          "y": 1.066923E-05,
+          "z": 51.37747
+        },
+        "rotation": {
+          "x": 0,
+          "y": 15,
+          "z": 90
+        }
+      },
+      {
+        "path": "CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_TimeLoopExperiment/WarpCoreWallSockets/WarpCoreSocket/Props_NOM_WarpCoreBroken (1)",
+        "position": {
+          "x": -8.333473,
+          "y": 1.090765E-05,
+          "z": 54.30984
+        },
+        "rotation": {
+          "x": 0,
+          "y": 94,
+          "z": 90
+        }
+      },
+      {
+        "path": "CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_TimeLoopExperiment/WarpCoreWallSockets/WarpCoreSocket/Props_NOM_WarpCoreBroken (1)",
+        "position": {
+          "x": -6.120365,
+          "y": 1.120567E-05,
+          "z": 57.83982
+        },
+        "rotation": {
+          "x": 0,
+          "y": 37,
+          "z": 90
+        }
+      },
+      {
+        "path": "CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_TimeLoopExperiment/WarpCoreWallSockets/WarpCoreSocket/Props_NOM_WarpCoreBroken (1)",
+        "position": {
+          "x": -1.795879,
+          "y": 1.192093E-05,
+          "z": 65.94924
+        },
+        "rotation": {
+          "x": 0,
+          "y": 25,
+          "z": 90
+        }
+      },
+      {
+        "path": "CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_TimeLoopExperiment/WarpCoreWallSockets/WarpCoreSocket/Props_NOM_WarpCoreBroken (1)",
+        "position": {
+          "x": 3.253563,
+          "y": 1.192093E-05,
+          "z": 65.57514
+        },
+        "rotation": {
+          "x": 0,
+          "y": 87,
+          "z": 90
+        }
+      },
+      {
+        "path": "CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_TimeLoopExperiment/WarpCoreWallSockets/WarpCoreSocket/Props_NOM_WarpCoreBroken (1)",
+        "position": {
+          "x": -9.824574,
+          "y": 1.132488E-05,
+          "z": 59.30226
+        },
+        "rotation": {
+          "x": 0,
+          "y": 3,
+          "z": 90
+        }
+      },
+      {
+        "path": "CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_TimeLoopExperiment/WarpCoreWallSockets/WarpCoreSocket/Props_NOM_WarpCoreBroken (1)",
+        "position": {
+          "x": -5.522463,
+          "y": 1.15633E-05,
+          "z": 61.68758
+        },
+        "rotation": {
+          "x": 0,
+          "y": 66,
+          "z": 90
+        }
+      },
+      {
+        "path": "CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_TimeLoopExperiment/WarpCoreWallSockets/WarpCoreSocket/Props_NOM_WarpCoreBroken (1)",
+        "position": {
+          "x": -8.205038,
+          "y": 1.193583E-05,
+          "z": 65.98009
+        },
+        "rotation": {
+          "x": 0,
+          "y": 22,
+          "z": 90
+        }
+      },
+      {
+        "path": "CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_TimeLoopExperiment/WarpCoreWallSockets/WarpCoreSocket/Props_NOM_WarpCoreBroken (1)",
+        "position": {
+          "x": 7.133896,
+          "y": 1.165271E-05,
+          "z": 62.77774
+        },
+        "rotation": {
+          "x": 0,
+          "y": 11,
+          "z": 90
+        }
+      },
+      {
+        "path": "CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_TimeLoopExperiment/WarpCoreWallSockets/WarpCoreSocket/Props_NOM_WarpCoreBroken (1)",
+        "position": {
+          "x": 8.275734,
+          "y": 1.105666E-05,
+          "z": 56.07555
+        },
+        "rotation": {
+          "x": 0,
+          "y": 49,
+          "z": 90
+        }
       }
     ],
     "warpTransmitters": [

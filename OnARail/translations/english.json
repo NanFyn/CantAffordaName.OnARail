@@ -1,6 +1,7 @@
 {
 	"$schema": "https://raw.githubusercontent.com/outer-wilds-new-horizons/new-horizons/main/NewHorizons/Schemas/translation_schema.json",
 	"UIDictionary": {
+		"REMOTE_SPRUCECABOOSE": "Spruce Caboose",
 		"REMOTE_FROSTCAR": "Frost Car",
 		"REMOTE_OCEAN1": "Locomocean"
 	}

@@ -4,14 +4,14 @@
 
   <Entry>
     <ID>RAILWAY_ROOT</ID>
-    <Name>Railway Example</Name>
+    <Name>On A Rail</Name>
     <Curiosity>RAILWAY_CURIOSITY</Curiosity>
     <IsCuriosity/>
     <IgnoreMoreToExplore/>
 
     <ExploreFact>
-      <ID>RAILWAY_EXPLORE_FACT</ID>
-      <Text>Example for Railway!</Text>
+      <ID>RAILWAY_FINAL_FACT</ID>
+      <Text>I was able to get a train up and running! ...At least, I would have if it weren't for the time loop.</Text>
     </ExploreFact>
   </Entry>
 </AstroObjectEntry>

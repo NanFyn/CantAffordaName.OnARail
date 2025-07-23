@@ -1,15 +1,18 @@
-﻿using UnityEngine;
+﻿using NewHorizons.Utility;
+using System.Collections;
+using UnityEngine;
 
 namespace OnARail.Components
 {
     public class CoordInterfaceController : MonoBehaviour
     {
         private NomaiCoordinateInterface _interface;
+        private INewHorizons newHorizons = OnARail.Instance.newHorizons;
 
         //Coords start at top left, increments clockwise
-        private int[] coord1 = new int[] { 0, 1, 2, 3 };
-        private int[] coord2 = new int[] { 5, 4, 3, 2 };
-        private int[] coord3 = new int[] { 0, 1, 2, 3, 4, 5 };
+        private int[] coord1 = new int[] { 0, 3, 4, 2 };
+        private int[] coord2 = new int[] { 0, 4, 3, 1 };
+        private int[] coord3 = new int[] { 2, 5, 0, 3, 1};
 
         void Awake()
         {
@@ -36,15 +39,40 @@ namespace OnARail.Components
 
         void CheckIfCorrect()
         {
-            OnARail.DebugLog("CheckIfCorrect", OWML.Common.MessageType.Info);
             if (IsCorrect())
             {
                 OnARail.DebugLog("Correctly entered the coords!", OWML.Common.MessageType.Success);
                 //Doesn't deactivate properly, destroy it
                 Destroy(_interface._upperOrb);
-                OnARail.SolvedCoords();
+                //OnARail.SolvedCoords();
+
+                GameObject train = newHorizons.GetPlanet("Stellar Express");
+                if (train != null)
+                {
+                    GameObject warpSwitch = SearchUtilities.Find("StellarExpress_Body/Sector/TrainInterface/WarpSwitch");
+                    GameObject pillarRoot = SearchUtilities.Find("StellarExpress_Body/Sector/TrainInterface/PillarPivot/PillarRoot");
+
+                    warpSwitch.transform.SetParent(pillarRoot.transform);
+                    warpSwitch.transform.localPosition = new Vector3(0, 0.4f, 0);
+
+                    GameObject endingGM = SearchUtilities.Find("StellarExpress_Body/Sector/EndingGM");
+                    GameObject trainWhistle = SearchUtilities.Find("StellarExpress_Body/Sector/TrainBase/WhistleController");
+                    endingGM.SetActive(true);
+                    Destroy(trainWhistle);
+                    StartCoroutine(EndingCoroutine());
+                }
             }
             else {OnARail.DebugLog("The coords are not right.", OWML.Common.MessageType.Success);}
+        }
+
+        private IEnumerator EndingCoroutine()
+        {
+            yield return new WaitForSeconds(7.9f);
+            GameObject revealVolume = SearchUtilities.Find("StellarExpress_Body/Sector/Reveal Volume (Enter)");
+            revealVolume.SetActive(true);
+            yield return new WaitForSeconds(0.1f);
+            GameObject creditsVolume = SearchUtilities.Find("StellarExpress_Body/Sector/LoadCreditsVolume");
+            creditsVolume.SetActive(true);
         }
 
         bool IsCorrect()

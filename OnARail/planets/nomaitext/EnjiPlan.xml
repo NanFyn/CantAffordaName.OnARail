@@ -1,0 +1,31 @@
+<NomaiObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/text_schema.xsd">
+	<TextBlock>
+		<ID>1</ID>
+		<Text><![CDATA[<color=lightblue>Enji</color>]]>: I'm glad to be on my own. I've been planning to do this for a while now, I just needed to wait for the right conditions.</Text>
+	</TextBlock>
+  <TextBlock>
+    <ID>2</ID>
+    <ParentID>1</ParentID>
+    <Text>Ever since my younger days when no one appreciated my talk of space trains being the next big thing for Nomai-kind, I've been planning to get away from my clan to build it all myself.</Text>
+  </TextBlock>
+  <TextBlock>
+    <ID>3</ID>
+    <ParentID>2</ParentID>
+    <Text>I knew it could be done. I simply needed planets that were small enough with at least one with a potent energy source.</Text>
+  </TextBlock>
+  <TextBlock>
+    <ID>4</ID>
+    <ParentID>3</ParentID>
+    <Text>After identifying this system as my target destination, I quietly hijacked one of the escape pods from my <![CDATA[<color=orange>vessel</color>]]>, I managed to leave undetected.</Text>
+  </TextBlock>
+  <TextBlock>
+    <ID>5</ID>
+    <ParentID>4</ParentID>
+    <Text>To prevent my clan from finding and stopping me before I finish construction, I've set up this One-Way beacon. It'll make it harder for them to track me down and it'll still let me get back to them once I finish the train's warp functionality.</Text>
+  </TextBlock>
+  <TextBlock>
+    <ID>6</ID>
+    <ParentID>5</ParentID>
+    <Text>I'm almost done... Please let this buy me enough time.</Text>
+  </TextBlock>
+</NomaiObject>

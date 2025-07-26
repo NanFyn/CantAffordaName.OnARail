@@ -9,7 +9,7 @@
     "gravityAlignmentRadiusOverride": 100
   },
   "Orbit": {
-    "primaryBody": "Railway System",
+    "primaryBody": "The Stellar Express",
     "showOrbitLine": false,
     "semiMajorAxis": 1500,
     "trueAnomaly": 320,
@@ -22,32 +22,51 @@
     }
   },
   "Atmosphere": {
-    "atmosphereSunIntensity": 1,
+    "atmosphereSunIntensity": 0.1,
     "hasOxygen": true,
-    "size": 150,
+    "size": 120,
     "useAtmosphereShader": true,
     "atmosphereTint": {
-      "r": 166,
-      "g": 255,
-      "b": 255,
+      "r": 180,
+      "g": 100,
+      "b": 190,
       "a": 0
+    },
+    "clouds": {
+      "cloudsPrefab": "giantsDeep",
+      "fluidType": "cloud",
+      "outerCloudRadius": 110,
+      "innerCloudRadius": 100,
+      "texturePath": "planets/textures/clouds/locomocean.png",
+      "rotationSpeed": 5,
+      "tint": {
+        "r": 10,
+        "g": 0,
+        "b": 10,
+        "a": 0
+      }
     },
     "fogSize": 110,
     "fogDensity": 0.1,
-    "fogRampPath": "planets/textures/fog/FogColorRamp_TH.png",
+    "fogTint": {
+      "r": 180,
+      "g": 100,
+      "b": 190,
+      "a": 0
+    },
     "minShockSpeed": 50,
     "maxShockSpeed": 150
   },
   "AmbientLights": [
     {
-      "outerRadius": 100,
+      "outerRadius": 120,
       "innerRadius": 40,
       "isShell": true,
-      "intensity": 0.8,
+      "intensity": 0.4,
       "tint": {
-        "r": 166,
-        "g": 255,
-        "b": 255,
+        "r": 180,
+        "g": 100,
+        "b": 190,
         "a": 0
       }
     }
@@ -60,13 +79,58 @@
         "rename": "_OceanSpawn",
         "position": {
           "x": 0,
-          "y": -75,
+          "y": 75,
           "z": 0
         }
       }
     ]
   },
   "Volumes": {
+    "revealVolumes": [
+      {
+        "radius": 100,
+        "reveals": [ "LOCOMOCEAN_BASE_FACT" ],
+        "revealOn": "enter"
+      },
+      {
+        "radius": 50,
+        "reveals": [ "LOCOMOCEAN_BASE_FISH" ],
+        "revealOn": "enter"
+      },
+      {
+        "radius": 3,
+        "reveals": [ "LOCOMOCEAN_CORE_FACT" ],
+        "revealOn": "enter",
+        "revealFor": "player",
+        "position": {
+          "x": 0,
+          "y": -24.65,
+          "z": 0
+        }
+      },
+      {
+        "radius": 3,
+        "reveals": [ "LOCOMOCEAN_ENJI_FACT_1" ],
+        "revealOn": "observe",
+        "maxDistance": 15,
+        "position": {
+          "x": 5.8922,
+          "y": 22.275,
+          "z": 2.8652
+        }
+      },
+      {
+        "radius": 3,
+        "reveals": [ "LOCOMOCEAN_ENJI_FACT_1" ],
+        "revealOn": "snapshot",
+        "maxDistance": 15,
+        "position": {
+          "x": 5.8922,
+          "y": 22.275,
+          "z": 2.8652
+        }
+      }
+    ],
     "rulesets": {
       "probeRulesets": [
         {
@@ -99,6 +163,23 @@
           "minForce": 12,
           "fallOff": "inverseSquared",
           "rename": "CustomGravityVolume"
+        },
+        {
+          "alignmentRadius": 0,
+          "force": 100,
+          "upperRadius": 8,
+          "lowerRadius": 4,
+          "minForce": 100,
+          "radius": 2,
+          "fallOff": "inverseSquared",
+          "rename": "AnglerGravityAssist",
+          "parentPath": "Sector/Fish_Puzzle/Fish/FishCollider/WarpScale/WarpAssist",
+          "isRelativeToParent": true,
+          "position": {
+            "x": 0,
+            "y": 1.5,
+            "z": 6.5
+          }
         }
       ]
     },
@@ -113,14 +194,7 @@
         "rename": "MunchVolume",
         "deathType": "crushedByElevator",
         "onlyAffectsPlayerRelatedBodies": true,
-        "parentPath": "Sector/Fish_Standard/Fish/FishCollider/Angler",
-        "isRelativeToParent": true,
-        "radius": 1,
-        "position": {
-          "x": 0,
-          "y": 16,
-          "z": 74
-        }
+        "radius": 100
       }
     ],
     "audioVolumes": [
@@ -146,9 +220,11 @@
         "track": "music",
         "volume": 0.15,
         "priority": 1,
-        "radius": 49.5,
+        "layer": 1,
+        "radius": 100,
         "fadeSeconds": 5,
-        "pauseOnFadeOut": true
+        "pauseOnFadeOut": true,
+        "parentPath": "Sector/MusicParent"
       },
       {
         "audio": "1811",
@@ -164,8 +240,15 @@
         "track": "music",
         "volume": 0.15,
         "priority": 2,
+        "layer": 1,
         "radius": 26.5,
-        "fadeSeconds": 3
+        "fadeSeconds": 3,
+        "parentPath": "Sector/MusicParent"
+      }
+    ],
+    "reverbVolumes": [
+      {
+        "radius": 26.5
       }
     ]
   },
@@ -174,15 +257,35 @@
     "density": 50,
     "buoyancy": 0.9,
     "tint": {
-      "r": 65,
-      "g": 200,
-      "b": 255
+      "r": 40,
+      "g": 0,
+      "b": 40
     }
   },
   "Sand": {
     "size": 34.9
   },
   "Props": {
+    "entryLocation": [
+      {
+        "id": "LOCOMOCEAN_CORE",
+        "parentPath": "Sector/Fish_Puzzle/Fish/FishCollider/AnglerWarper/B_angler_root/B_angler_body01/B_angler_body02/B_angler_antenna01/B_angler_antenna02/B_angler_antenna03/B_angler_antenna04/B_angler_antenna05/B_angler_antenna06/B_angler_antenna07/B_angler_antenna08/B_angler_antenna09/B_angler_antenna10/B_angler_antenna11",
+        "isRelativeToParent": true,
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "id": "LOCOMOCEAN_BASE",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      }
+    ],
     "remotes": [
       {
         "id": "REMOTE_OCEAN1",
@@ -223,7 +326,8 @@
             {
               "id": "REMOTE_SPRUCECABOOSE",
               "location": "b",
-              "xmlFile": "planets/nomaitext/SpruceToOcean.xml"
+              "xmlFile": "planets/nomaitext/SpruceToOcean.xml",
+              "seed": 12
             }
           ]
         }
@@ -277,7 +381,7 @@
         "position": {
           "x": 0,
           "y": -1,
-          "z": 2.5
+          "z": 6.5
         }
       }
     ],
@@ -303,9 +407,19 @@
         "audio": "2100",
         "isRelativeToParent": true,
         "parentPath": "Sector/Fish_Standard/Fish/FishCollider",
-        "minDistance": 10,
-        "maxDistance": 50,
-        "volume": 1.5,
+        "minDistance": 50,
+        "maxDistance": 100,
+        "volume": 1,
+        "track": "environment"
+      },
+      {
+        "rename": "Breathing_Audio",
+        "audio": "2100",
+        "isRelativeToParent": true,
+        "parentPath": "Sector/Fish_Puzzle/Fish/FishCollider",
+        "minDistance": 50,
+        "maxDistance": 100,
+        "volume": 1,
         "track": "environment"
       }
     ],
@@ -313,32 +427,32 @@
       {
         "path": "DeadNomai_Body (4)/Prefab_NOM_Dead_Suit_Advanced_FloatC",
         "position": {
-          "x": 5.4922,
+          "x": 5.8922,
           "y": 23.475,
           "z": 2.8652
         },
         "rotation": {
-          "x": 279.9995,
-          "y": 92.7178,
-          "z": 180
+          "x": 279.996,
+          "y": 79.6034,
+          "z": 185.7165
         }
       },
       {
         "path": "Comet_Body/Sector_CO/Sector_CometInterior/Props_CometInterior/Props_GM_Cystals (1)/Props_GM_CrystalMedium_A",
         "position": {
-          "x": 6.8292,
-          "y": 23.875,
-          "z": 2.7652
+          "x": 7.0292,
+          "y": 25.875,
+          "z": 3.5652
         },
         "rotation": {
           "x": 0,
-          "y": 12.7178,
-          "z": 180
+          "y": 173.2803,
+          "z": 160.5815
         },
         "stretch": {
-          "x": 2,
-          "y": 6,
-          "z": 2
+          "x": 1,
+          "y": 10,
+          "z": 1
         }
       },
       {
@@ -361,7 +475,8 @@
           },
           "colliderRadius": 0.5,
           "itemType": "WarpCoreGM",
-          "removalCondition": "WARPCORE_GM_REMOVED"
+          "removalCondition": "WARPCORE_GM_REMOVED",
+          "removalFact": "LOCOMOCEAN_CORE_WARPCORE"
         },
         "deactivationCondition": "WARPCORE_GM_REMOVED",
         "blinkWhenActiveChanged": false
@@ -397,12 +512,26 @@
       },
       {
         "path": "",
+        "rename": "MusicParent",
+        "deactivationCondition": "WARPCORE_GM_REMOVED",
+        "blinkWhenActiveChanged": false
+      },
+      {
+        "path": "",
+        "rename": "EndMusicParent",
+        "activationCondition": "WARPCORE_GM_REMOVED",
+        "blinkWhenActiveChanged": false
+      },
+      {
+        "path": "",
         "rename": "ScatterProps",
         "scale": 0.7
       },
       {
         "path": "",
-        "rename": "Fish_Standard"
+        "rename": "Fish_Standard",
+        "deactivationCondition": "WARPCORE_GM_REMOVED",
+        "blinkWhenActiveChanged": false
       },
       {
         "path": "",
@@ -413,7 +542,15 @@
         "rename": "WarpScale",
         "parentPath": "Sector/Fish_Puzzle/Fish/FishCollider",
         "isRelativeToParent": true,
-        "scale": 0.5
+        "scale": 0.4
+      },
+      {
+        "path": "",
+        "rename": "WarpAssist",
+        "parentPath": "Sector/Fish_Puzzle/Fish/FishCollider/WarpScale",
+        "isRelativeToParent": true,
+        "deactivationCondition": "WARPCORE_GM_REMOVED",
+        "blinkWhenActiveChanged": false
       },
       {
         "assetBundle": "planets/assetbundle/onarail",
@@ -441,6 +578,16 @@
         "scale": 1.5
       },
       {
+        "path": "DB_VesselDimension_Body/Sector_VesselDimension/Interactables_VesselDimension/UNSORTED/Prefab_NOM_Lamp_Glow_Vessel_Wall/PointLight_NOM_Lamp",
+        "parentPath": "Sector/Fish_Standard/Fish/FishCollider/Angler/B_angler_root/B_angler_body01/B_angler_body02/B_angler_antenna01/B_angler_antenna02/B_angler_antenna03/B_angler_antenna04/B_angler_antenna05/B_angler_antenna06/B_angler_antenna07/B_angler_antenna08/B_angler_antenna09/B_angler_antenna10/B_angler_antenna11",
+        "isRelativeToParent": true,
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 20
+        }
+      },
+      {
         "rename": "AnglerWarper",
         "path": "Anglerfish_Body/Beast_Anglerfish",
         "parentPath": "Sector/Fish_Puzzle/Fish/FishCollider",
@@ -448,6 +595,16 @@
         "removeChildren": [
           "B_angler_root/B_angler_body01/B_angler_body02/B_angler_antenna01/B_angler_antenna02/B_angler_antenna03/B_angler_antenna04/B_angler_antenna05/B_angler_antenna06/B_angler_antenna07/B_angler_antenna08/B_angler_antenna09/B_angler_antenna10/B_angler_antenna11/B_angler_antenna12_end"
         ]
+      },
+      {
+        "path": "DB_VesselDimension_Body/Sector_VesselDimension/Interactables_VesselDimension/UNSORTED/Prefab_NOM_Lamp_Glow_Vessel_Wall/PointLight_NOM_Lamp",
+        "parentPath": "Sector/Fish_Puzzle/Fish/FishCollider/AnglerWarper/B_angler_root/B_angler_body01/B_angler_body02/B_angler_antenna01/B_angler_antenna02/B_angler_antenna03/B_angler_antenna04/B_angler_antenna05/B_angler_antenna06/B_angler_antenna07/B_angler_antenna08/B_angler_antenna09/B_angler_antenna10/B_angler_antenna11",
+        "isRelativeToParent": true,
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 20
+        }
       },
       {
         "assetBundle": "planets/assetbundle/onarail",
@@ -503,7 +660,8 @@
             "x": 90,
             "y": 0,
             "z": 0
-          }
+          },
+          "pickupFact": "LOCOMOCEAN_BASE_WARPCORE"
         }
       }
     ],
@@ -533,14 +691,14 @@
     "translatorText": [
       {
         "position": {
-          "x": -51.99221,
-          "y": 0.3020882,
-          "z": 1.301384
+          "x": -51.26023,
+          "y": 5.480701,
+          "z": 4.40015
         },
         "rotation": {
-          "x": 8.402731,
-          "y": 179.8856,
-          "z": 268.8449
+          "x": 353.2651,
+          "y": 186.4188,
+          "z": 279.1616
         },
         "type": "whiteboard"
       },
@@ -557,14 +715,14 @@
       },
       {
         "position": {
-          "x": 9.157279,
-          "y": 24.24091,
-          "z": 0.6820793
+          "x": 8.453236,
+          "y": 24.42235,
+          "z": 1.706951
         },
         "rotation": {
-          "x": 343.0923,
-          "y": 260.1107,
-          "z": 181.2423
+          "x": 343.3487,
+          "y": 242.0022,
+          "z": 183.2245
         },
         "xmlFile": "planets/nomaitext/End.xml",
         "type": "preCrashRecorder"
@@ -574,15 +732,21 @@
   "removeChildren": [
     "Sector/Sand/Collider",
     "Sector/Fire/Effects/Effects_HEA_SmokeColumn",
+    "Sector/Prefab_NOM_Recorder_Vessel/PointLight_NOM_Recorder",
     "Sector/Fish_Puzzle/Fish/FishCollider/WarpScale/Warp_Angler_Entrance/Props_NOM_WarpCoreBlack",
     "Sector/Fish_Puzzle/Fish/FishCollider/WarpScale/Warp_Angler_Entrance/PointLight_NOM_WarpCoreBlack (1)",
     "Sector/Fish_Puzzle/Fish/FishCollider/WarpScale/Warp_Angler_Entrance/Structure_NOM_PlatformContainer",
-    "Sector/Fish_Puzzle/Fish/FishCollider/WarpScale/Warp_Angler_Entrance/Structure_NOM_WarpTransmitter"
+    "Sector/Fish_Puzzle/Fish/FishCollider/WarpScale/Warp_Angler_Entrance/Structure_NOM_WarpTransmitter",
+    "Sector/Fish_Puzzle/Fish/FishCollider/AnglerWarper/B_angler_root/B_angler_body01/B_angler_body02/B_angler_jaw/Beast_Anglerfish_Collider_Mouth"
 
   ],
   "ShipLog": {
+    "xmlFile": "planets/shiplog/Locomocean.xml",
+    "spriteFolder": "planets/shiplog/sprites",
     "mapMode": {
-      "remove": true
+      "revealedSprite": "planets/shiplog/sprites/locomocean_map_mode.png",
+      "scale": 1,
+      "offset": 0.5
     }
   },
   "ReferenceFrame": {

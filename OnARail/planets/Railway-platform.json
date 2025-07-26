@@ -6,7 +6,22 @@
     "isPlatform": true
   },
   "Props": {
+    "entryLocation": [
+      {
+        "id": "SPRUCECABOOSE_VESSEL_PLATFORM",
+        "position": {
+          "x": -2.219028,
+          "y": 1.221895E-05,
+          "z": 69.37222
+        }
+      }
+    ],
     "details": [
+      {
+        "assetBundle": "planets/assetbundle/onarail",
+        "path": "Assets/OnARail/Prefabs/ShipFishCollider.prefab",
+        "keepLoaded": true
+      },
       {
         "path": "CaveTwin_Body/Sector_CaveTwin/Sector_NorthHemisphere/Sector_NorthSurface/Sector_TimeLoopExperiment/WarpCoreWallSockets/WarpCoreSocket (1)/Props_NOM_WarpCoreBlack (2)",
         "position": {
@@ -38,7 +53,8 @@
             "x": 90,
             "y": 0,
             "z": 0
-          }
+          },
+          "pickupFact": "SPRUCECABOOSE_VESSEL_PLATFORM_FACT"
         }
       },
       {

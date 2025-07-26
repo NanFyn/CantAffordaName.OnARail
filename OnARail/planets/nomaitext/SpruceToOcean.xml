@@ -8,18 +8,50 @@
 		<ID>2</ID>
         <ParentID>1</ParentID>
         <LocationB />
-		<Text>I'm in the process of sealing off <![CDATA[<color=orange>Locomocean's refinery</color>]]> and I brought a core by leaping to the planet. I hit a patch of land. On an ocean planet. Not quite the <![CDATA[<i>splash</i>]]> I was hoping to make (Ha ha. I'm in pain).</Text>
+		<Text>I'm in the process of sealing off <![CDATA[<color=orange>Locomocean's refinery</color>]]> and I brought one of the <![CDATA[<color=orange>white hole</color>]]> cores by leaping to the planet. I hit a patch of land. On an ocean planet. Not quite the <![CDATA[<i>splash</i>]]> I was hoping to make (Ha ha. I'm in pain).</Text>
 	</TextBlock>
   <TextBlock>
     <ID>3</ID>
     <ParentID>2</ParentID>
     <LocationB />
-    <Text>Now, I didn't break anything... I think. But I lost grip of the core and I'm not about to go back to swimming with the fishies to find it. I'll grab another core to use instead.</Text>
+    <Text>Now, I didn't break anything... I think. But I lost grip of the <![CDATA[<color=orange>core</color>]]> and I'm not about to go back to swimming with the fishies to find it, nor can I spare the time to. I'll grab another to use instead.</Text>
   </TextBlock>
   <TextBlock>
     <ID>4</ID>
     <ParentID>3</ParentID>
     <LocationB />
-    <Text>If I had to guess where it was? Based on the ocean current, probably the <![CDATA[<color=orange>South Pole</color>]]>. But I'm not about to go digging in the sand because A) I hate sand, and B) I hate the fish.</Text>
+    <Text>If I had to guess where it was? Based on the ocean current, probably the <![CDATA[<color=orange>South Pole</color>]]>. But I'm not about to go digging in the sand because <![CDATA[<color=lightblue>A)</color>]]> I hate sand, <![CDATA[<color=lightblue>B)</color>]]> I hate the fish, and <![CDATA[<color=lightblue>C)</color>]]> I don't have time for that.</Text>
   </TextBlock>
+  <TextBlock>
+    <ID>5</ID>
+    <ParentID>4</ParentID>
+    <LocationB />
+    <Text>I'm fortunate enough that I didn't end up losing the <![CDATA[<color=orange>black hole</color>]]> warp core instead. What a pain that would be!</Text>
+  </TextBlock>
+  <TextBlock>
+    <ID>6</ID>
+    <ParentID>5</ParentID>
+    <LocationA />
+    <Text><![CDATA[<color=orange>Update</color>]]>: It would seem that The Universe has it out for me. Me and my big mouth.</Text>
+  </TextBlock>
+  <TextBlock>
+    <ID>7</ID>
+    <ParentID>6</ParentID>
+    <LocationA />
+    <Text>Wait, I'm not talking, I'm writing. Me and my... big hands? No, that sounds dumb.</Text>
+  </TextBlock>
+  <ShipLogConditions>
+    <RevealFact>
+      <FactID>SPRUCECABOOSE_PLATFORM_LOSTCORE_1</FactID>
+      <Condition>2</Condition>
+    </RevealFact>
+    <RevealFact>
+      <FactID>SPRUCECABOOSE_PLATFORM_LOSTCORE_2</FactID>
+      <Condition>3</Condition>
+    </RevealFact>
+    <RevealFact>
+      <FactID>LOCOMOCEAN_BASE_WARPCORE_RUMOR</FactID>
+      <Condition>3</Condition>
+    </RevealFact>
+  </ShipLogConditions>
 </NomaiObject>

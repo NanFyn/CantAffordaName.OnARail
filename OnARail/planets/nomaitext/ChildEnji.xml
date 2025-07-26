@@ -43,4 +43,14 @@
     <ParentID>8</ParentID>
     <Text>...Guys?</Text>
   </TextBlock>
+  <ShipLogConditions>
+    <RevealFact>
+      <FactID>SPRUCECABOOSE_ENJI_PROJECT_1</FactID>
+      <Condition>5</Condition>
+    </RevealFact>
+    <RevealFact>
+      <FactID>SPRUCECABOOSE_ENJI_PROJECT_2</FactID>
+      <Condition>9</Condition>
+    </RevealFact>
+  </ShipLogConditions>
 </NomaiObject>

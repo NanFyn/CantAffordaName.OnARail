@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3849798249
+CRC: 2440264886
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 53e7df9bd21d627cc7befd50658c59d9
+    Hash: be1efd5d4f3bf687e89e204549590b81
   TypeTreeHash:
     serializedVersion: 2
     Hash: 3bfdfd7f3eee4a023ed83d9c81678d9a
@@ -83,6 +83,7 @@ Assets:
 - Assets/OnARail/Prefabs/SpruceInterior.prefab
 - Assets/OnARail/Prefabs/FrozenInterior.prefab
 - Assets/OnARail/Prefabs/OceanBase.prefab
+- Assets/OnARail/Prefabs/ShipFishCollider.prefab
 - Assets/OnARail/Prefabs/FrozenBase.prefab
 - Assets/OnARail/Prefabs/SpruceBase.prefab
 - Assets/OnARail/Prefabs/Foliage_Leaves.prefab

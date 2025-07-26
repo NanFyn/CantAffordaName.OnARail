@@ -21,6 +21,24 @@
   <TextBlock>
     <ID>5</ID>
     <ParentID>4</ParentID>
-    <Text>I can't wait to see the looks on their faces when I show them what I've accomplished here!</Text>
+    <Text>My two weeks are almost up. I can't wait to see the looks on their faces when I show them what I've accomplished here!</Text>
   </TextBlock>
+  <ShipLogConditions>
+    <RevealFact>
+      <FactID>RAILWAY_OBJECTIVE_1</FactID>
+      <Condition>3</Condition>
+    </RevealFact>
+    <RevealFact>
+      <FactID>LOCOMOCEAN_CORE_OBJECTIVE_RUMOR</FactID>
+      <Condition>3</Condition>
+    </RevealFact>
+    <RevealFact>
+      <FactID>RAILWAY_OBJECTIVE_2</FactID>
+      <Condition>4</Condition>
+    </RevealFact>
+    <RevealFact>
+      <FactID>SPRUCECABOOSE_COORDS_RUMOR</FactID>
+      <Condition>4</Condition>
+    </RevealFact>
+  </ShipLogConditions>
 </NomaiObject>

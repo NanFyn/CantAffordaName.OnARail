@@ -43,4 +43,14 @@
     <ParentID>8</ParentID>
     <Text><![CDATA[<color=orange>Update</color>]]>: I have reminded myself the hard way that <![CDATA[<color=orange>water vaporizes quickly</color>]]> in the vacuum of space. Ouch.</Text>
   </TextBlock>
+  <ShipLogConditions>
+    <RevealFact>
+      <FactID>SPRUCECABOOSE_PILLAR_IMMUNITY_1</FactID>
+      <Condition>8</Condition>
+    </RevealFact>
+    <RevealFact>
+      <FactID>SPRUCECABOOSE_PILLAR_IMMUNITY_2</FactID>
+      <Condition>9</Condition>
+    </RevealFact>
+  </ShipLogConditions>
 </NomaiObject>

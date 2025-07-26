@@ -1,8 +1,7 @@
 ﻿{
   "$schema": "https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/body_schema.json",
-  "name": "Railway System",
+  "name": "The Stellar Express",
   "starSystem": "Jam5",
-  "removeChildren": [ "Sector/Star/Audio_Star/SurfaceAudio_Sun" ],
   "Base": {
     "showMinimap": false,
     "gravityFallOff": "inverseSquared",
@@ -88,6 +87,11 @@
       }
     ]
   },
+  "removeChildren": [
+    "Sector/Star/Audio_Star/SurfaceAudio_Sun",
+    "Sector/Star/HeatVolume",
+    "GravityWell"
+  ],
   "ShipLog": {
     "xmlFile": "planets/shiplog/Railway.xml",
     "spriteFolder": "planets/shiplog/sprites",

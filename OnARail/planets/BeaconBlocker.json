@@ -9,17 +9,12 @@
     "showMinimap": false
   },
   "Orbit": {
-    "primaryBody": "Railway System",
-    "showOrbitLine": false,
-    "semiMajorAxis": 1500,
-    "trueAnomaly": 200,
-    "isMoon": true,
-    "isTidallyLocked": true,
-    "alignmentAxis": {
-      "x": -1,
-      "y": 0,
+    "staticPosition": {
+      "x": 0,
+      "y": 1500,
       "z": 0
-    }
+    },
+    "isStatic": true
   },
   "Spawn": {
     "playerSpawnPoints": [
@@ -34,7 +29,26 @@
       }
     ]
   },
+  "Volumes": {
+    "revealVolumes": [
+      {
+        "radius": 100,
+        "reveals": [ "SPRUCECABOOSE_COORDS_FACT" ],
+        "revealOn": "enter"
+      }
+    ]
+  },
   "Props": {
+    "entryLocation": [
+      {
+        "id": "SPRUCECABOOSE_COORDS",
+        "position": {
+          "x": 0,
+          "y": 13.2,
+          "z": 0
+        }
+      }
+    ],
     "signals": [
       {
         "frequency": "One-Way Frequency",
@@ -48,18 +62,14 @@
         "detectionRadius": 30,
         "identificationRadius": 10,
         "minDistance": 2,
-        "maxDistance": 30
+        "maxDistance": 30,
+        "sourceRadius": 5
       }
     ],
     "details": [
       {
         "assetBundle": "planets/assetbundle/onarail",
-        "path": "Assets/OnARail/Prefabs/ProbeRoot.prefab",
-        "rotation": {
-          "x": 90,
-          "y": 0,
-          "z": 0
-        }
+        "path": "Assets/OnARail/Prefabs/ProbeRoot.prefab"
       }
     ]
   },
@@ -69,7 +79,9 @@
     }
   },
   "ReferenceFrame": {
-    "enabled": false
+    "enabled": true,
+    "maxTargetDistance": 1250,
+    "targetWhenClose": true
   },
   "MapMarker": {
     "enabled": false

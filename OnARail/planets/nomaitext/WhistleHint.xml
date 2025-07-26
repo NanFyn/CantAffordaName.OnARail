@@ -1,12 +1,12 @@
 <NomaiObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/text_schema.xsd">
 	<TextBlock>
 		<ID>1</ID>
-		<Text><![CDATA[<color=lightblue>Enji</color>]]>: I may have made it slightly convoluted for myself, but at least I have a way to deal with <![CDATA[<color=lightblue>Ghost Matter</color>]]>.</Text>
+		<Text><![CDATA[<color=lightblue>Enji</color>]]>: I may have made it slightly convoluted for myself getting back to <![CDATA[<color=orange>Frost Car's Core</color>]]>, but at least I have a quick way to deal with <![CDATA[<color=lightblue>Ghost Matter</color>]]>.</Text>
 	</TextBlock>
   <TextBlock>
     <ID>2</ID>
       <ParentID>1</ParentID>
-    <Text>Speaking of which, now that the train is up and running, I've made a much needed change to put the minds of the others at ease when I bring it back show it off.</Text>
+    <Text>Speaking of which, now that the train is up and running, I've made a much needed change to put the minds of the others at ease when I ride it back to show it off.</Text>
   </TextBlock>
 <TextBlock>
     <ID>3</ID>
@@ -26,6 +26,16 @@
 <TextBlock>
     <ID>6</ID>
       <ParentID>5</ParentID>
-    <Text>It'll use more water in the long run, but it's worth it to keep it contained.</Text>
+    <Text>The whistle is already continously pumping out steam to counter the <![CDATA[<color=lightblue>Ghost Matter</color>]]> fumes, but keeping it contained by spending a little extra water every now and then to make it completely dissipate is worth it.</Text>
   </TextBlock>
+  <ShipLogConditions>
+    <RevealFact>
+      <FactID>FROSTCAR_CORE_WHISTLEHINT_RUMOR</FactID>
+      <Condition>6</Condition>
+    </RevealFact>
+    <RevealFact>
+      <FactID>FROSTCAR_CORE_WHISTLEHINT_FACT</FactID>
+      <Condition>6</Condition>
+    </RevealFact>
+  </ShipLogConditions>
 </NomaiObject>

@@ -38,4 +38,10 @@
     <ParentID>7</ParentID>
     <Text>I have successfully put a <![CDATA[<color=orange>system on rails</color>]]>! I knew it could be done!</Text>
   </TextBlock>
+  <ShipLogConditions>
+    <RevealFact>
+      <FactID>RAILWAY_START_FACT</FactID>
+      <Condition>8</Condition>
+    </RevealFact>
+  </ShipLogConditions>
 </NomaiObject>

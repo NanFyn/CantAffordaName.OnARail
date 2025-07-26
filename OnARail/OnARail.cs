@@ -4,9 +4,7 @@ using NewHorizons.Utility;
 using UnityEngine;
 using OnARail.Components;
 using System.Collections.Generic;
-using System.Collections;
 using System.Linq;
-using UnityEngine.Events;
 using NewHorizons.Components.Orbital;
 
 namespace OnARail
@@ -16,6 +14,8 @@ namespace OnARail
         public INewHorizons newHorizons;
         public static OnARail Instance;
         public Material porcelain, silver, black;
+        private GameObject[] fishies = new GameObject[10];
+        private GameObject warpScale;
 
         private void Awake()
         {
@@ -37,22 +37,24 @@ namespace OnARail
             };
 
             newHorizons.GetStarSystemLoadedEvent().AddListener(OnStarSystemLoaded);
-            GlobalMessenger.AddListener("EnterMapView", OnEnterMapView);
             GlobalMessenger<DeathType>.AddListener("PlayerDeath", OnPlayerDeath);
             GlobalMessenger.AddListener("TriggerSupernova", OnTriggerSupernova);
+            GlobalMessenger.AddListener("PutOnHelmet", OnPutOnHelmet);
+            GlobalMessenger.AddListener("EnterShip", OnEnterShip);
+            GlobalMessenger.AddListener("ExitShip", OnExitShip);
         }
 
         private void OnStarSystemLoaded(string systemName)
         {
             newHorizons = ModHelper.Interaction.TryGetModApi<INewHorizons>("xen.NewHorizons");
 
-            GameObject star = newHorizons.GetPlanet("Railway System");
+            GameObject star = newHorizons.GetPlanet("The Stellar Express");
             if (star != null)
             {
-                GameObject visorEffects = SearchUtilities.Find("RailwaySystem_Body/Sector/VisorEffects");
+                GameObject visorEffects = SearchUtilities.Find("TheStellarExpress_Body/Sector/VisorEffects");
                 if (visorEffects != null)
                 {
-                    VisorRainEffectVolume visorRainEffectVolume = SearchUtilities.Find("RailwaySystem_Body/Sector/VisorEffects/WetEffectVolume2").GetComponent<VisorRainEffectVolume>();
+                    VisorRainEffectVolume visorRainEffectVolume = SearchUtilities.Find("TheStellarExpress_Body/Sector/VisorEffects/WetEffectVolume2").GetComponent<VisorRainEffectVolume>();
                     visorRainEffectVolume._rainDirection = VisorRainEffectVolume.RainDirection.Linear;
                     visorEffects.SetActive(false);
                 }
@@ -60,7 +62,7 @@ namespace OnARail
             }
             else
             {
-                ModHelper.Console.WriteLine("Couldn't locate planet: Railway System!", MessageType.Error);
+                ModHelper.Console.WriteLine("Couldn't locate planet: The Stellar Express!", MessageType.Error);
             }
 
             GameObject trainPlanet = newHorizons.GetPlanet("Stellar Express");
@@ -91,6 +93,8 @@ namespace OnARail
                 if (endingGM != null)
                 {
                     endingGM.SetActive(false);
+                    VisorFrostEffectVolume frostEffect = endingGM.GetComponent<VisorFrostEffectVolume>();
+                    Destroy(frostEffect);
                 }
                 else { ModHelper.Console.WriteLine("Can't find EndingGM!", MessageType.Error); }
 
@@ -101,12 +105,12 @@ namespace OnARail
                 }
                 else { ModHelper.Console.WriteLine("Can't find LoadCreditsVolume!", MessageType.Error); }
 
-                GameObject revealVolume = SearchUtilities.Find("StellarExpress_Body/Sector/Reveal Volume (Enter)");
+                GameObject revealVolume = SearchUtilities.Find("StellarExpress_Body/Sector/RevealFinal");
                 if (revealVolume != null)
                 {
                     revealVolume.SetActive(false);
                 }
-                else { ModHelper.Console.WriteLine("Can't find Reveal Volume (Enter)!", MessageType.Error); }
+                else { ModHelper.Console.WriteLine("Can't find RevealFinal!", MessageType.Error); }
 
                 porcelain = Resources.FindObjectsOfTypeAll<Material>().First(x => x.name.Contains("Structure_NOM_PorcelainClean_mat"));
                 silver = Resources.FindObjectsOfTypeAll<Material>().First(x => x.name.Contains("Structure_NOM_Silver_mat"));
@@ -164,9 +168,24 @@ namespace OnARail
                     //ModHelper.Console.WriteLine("Set layer to IgnoreSun in Locomocean_Body/Sector/Water!", MessageType.Info);
 
                     Material[] waterMaterial = water.GetComponent<TessellatedSphereRenderer>().GetComponent<TessellatedRenderer>()._materials;
-                    waterMaterial[1].color = new Color(0.4f, 0.8f, 1f, 0f);
+                    waterMaterial[1].color = new Color(1f, 1f, 1f, 1f);
                 }
                 else { ModHelper.Console.WriteLine("Can't find Locomocean_Body/Sector/Water!", MessageType.Error); }
+
+                GiantsDeepSunOverrideVolume sunOverride = SearchUtilities.Find("Locomocean_Body/Sector/SunOverride").GetComponent<GiantsDeepSunOverrideVolume>();
+                if (sunOverride != null)
+                {
+                    sunOverride._innerIntensity = 0f;
+                    sunOverride._cloudsOuterRadius = 115f;
+                }
+                else { ModHelper.Console.WriteLine("Can't find Locomocean_Body/Sector/SunOverride!", MessageType.Error); }
+
+                GameObject munchVolume = SearchUtilities.Find("Locomocean_Body/Sector/MunchVolume");
+                if (munchVolume != null)
+                {
+                    munchVolume.SetActive(false);
+                }
+                else { ModHelper.Console.WriteLine("Can't find MunchVolume!", MessageType.Error); }
 
                 GameObject fishStandardRoot = SearchUtilities.Find("Locomocean_Body/Sector/Fish_Standard");
                 if (fishStandardRoot != null)
@@ -175,21 +194,28 @@ namespace OnARail
                     if (fish != null)
                     {
                         fish.AddComponent<FishController>();
-                        for (int i = 0; i < 24; i++)
+                        fish.transform.GetChild(0).transform.GetChild(0).gameObject.AddComponent<FishTrigger>();
+                        ModHelper.Console.WriteLine("Adding fish!", MessageType.Info);
+                        fishies[0] = fish;
+                        for (int i = 0; i <= 5; i++)
                         {
                             GameObject fishClone = Instantiate(fish, fishStandardRoot.transform);
+                            ModHelper.Console.WriteLine("Adding fish!", MessageType.Info);
+                            fishies[i+1] = fishClone;
                         }
                         fish.transform.rotation = new Quaternion(180f, 0f, 0f, 0f);
-                        for (int i = 0; i < 23; i++)
+                        for (int i = 0; i <= 4; i++)
                         {
                             GameObject fishClone = Instantiate(fish, fishStandardRoot.transform);
+                            ModHelper.Console.WriteLine("Adding fish!", MessageType.Info);
+                            fishies[i+5] = fishClone;
                         }
                     }
                     else { ModHelper.Console.WriteLine("Can't find Fish!", MessageType.Error); }
                 }
                 else { ModHelper.Console.WriteLine("Can't find Fish_Standard!", MessageType.Error); }
 
-                GameObject fishPuzzleRoot = SearchUtilities.Find("Locomocean_Body/Sector/Fish_Standard");
+                GameObject fishPuzzleRoot = SearchUtilities.Find("Locomocean_Body/Sector/Fish_Puzzle");
                 if (fishPuzzleRoot != null)
                 {
                     GameObject fish = SearchUtilities.Find("Locomocean_Body/Sector/Fish_Puzzle/Fish");
@@ -198,8 +224,26 @@ namespace OnARail
                         fish.AddComponent<FishController>();
                     }
                     else { ModHelper.Console.WriteLine("Can't find Fish!", MessageType.Error); }
+
+                    warpScale = SearchUtilities.Find("Locomocean_Body/Sector/Fish_Puzzle/Fish/FishCollider/WarpScale");
+
+                    Material material = SearchUtilities.Find("Locomocean_Body/Sector/Fish_Puzzle/Fish/FishCollider/WarpScale/Warp_Angler_Entrance/BlackHole/BlackHoleSingularity").GetComponent<MeshRenderer>().material;
+                    if (material != null)
+                    {
+                        material.renderQueue = 3601;
+                    }
+                    else { ModHelper.Console.WriteLine("Can't find BlackHoleSingularity!", MessageType.Error); }
                 }
                 else { ModHelper.Console.WriteLine("Can't find Fish_Puzzle!", MessageType.Error); }
+
+                GameObject endMusicParent = SearchUtilities.Find("Locomocean_Body/Sector/EndMusicParent");
+                if (endMusicParent != null)
+                {
+                    EndMusicTrigger.CreateEndMusicTrigger(endMusicParent, 26.5f);
+                }
+                else { ModHelper.Console.WriteLine("Can't find EndMusicParent!", MessageType.Error); }
+
+                GravityAssistTrigger.CreateGravityAssistTrigger(oceanPlanet, new Vector3(0f, -24.65f, 0f), 3f);
             }
             else
             {
@@ -235,17 +279,23 @@ namespace OnARail
             }
 
             GameObject beaconPlanet = newHorizons.GetPlanet("Beacon Blocker");
-            if (sprucePlanet != null)
+            if (beaconPlanet != null)
             {
                 SphereShape sectorSphere = SearchUtilities.Find("BeaconBlocker_Body/Sector").GetComponent<SphereShape>();
                 if (sectorSphere != null)
                 {
-                    sectorSphere.radius = 60f;
+                    sectorSphere.radius = 100f;
                 }
+
+                CoordMusicTrigger.CreateCoordMusicTrigger(beaconPlanet, 100f);
+
+                EndMusicTrigger endMusicTrigger = SearchUtilities.Find("Locomocean_Body/Sector/EndMusicParent/EndMusicTrigger").GetComponent<EndMusicTrigger>();
+                CoordMusicTrigger coordMusicTrigger = SearchUtilities.Find("BeaconBlocker_Body/CoordMusicTrigger").GetComponent<CoordMusicTrigger>();
+                endMusicTrigger.coordMusicTrigger = coordMusicTrigger;
             }
             else
             {
-                ModHelper.Console.WriteLine("Couldn't locate planet: Spruce Caboose!", MessageType.Error);
+                ModHelper.Console.WriteLine("Couldn't locate planet: Beacon Blocker!", MessageType.Error);
             }
 
             GameObject startPlatform = newHorizons.GetPlanet("CantAffordaName_OnARail_Platform");
@@ -255,31 +305,24 @@ namespace OnARail
                 silver = Resources.FindObjectsOfTypeAll<Material>().First(x => x.name.Contains("Structure_NOM_Silver_mat"));
                 black = Resources.FindObjectsOfTypeAll<Material>().First(x => x.name.Contains("Structure_NOM_SilverPorcelain_mat"));
 
+                var platform = newHorizons.GetPlanet("CantAffordaName_OnARail_Platform");
                 ReplaceMaterials(startPlatform);
+
+                //GameObject ship = Locator.GetShipTransform().GetChild(5).transform.GetChild(2).transform.GetChild(0).gameObject;
+                GameObject shipFishCollider = SearchUtilities.Find("CantAffordaName_OnARail_Platform_Body/Sector/ShipFishCollider");
+                if (shipFishCollider != null)
+                {
+                    GameObject ship = SearchUtilities.Find("Ship_Body");
+                    shipFishCollider.transform.parent = ship.transform;
+                    shipFishCollider.transform.localPosition = Vector3.zero;
+                    shipFishCollider.transform.localRotation = new Quaternion(0f, 0f, 0f, 0f);
+                }
+                else { ModHelper.Console.WriteLine("Can't find the ship!", MessageType.Error); }
             }
             else
             {
                 ModHelper.Console.WriteLine("Couldn't locate planet: CantAffordaName_OnARail_Platform!", MessageType.Error);
             }
-        }
-
-        //NHOrbitLine can't be accessed in OnStarSystemLoaded
-        private void OnEnterMapView()
-        {
-            newHorizons = ModHelper.Interaction.TryGetModApi<INewHorizons>("xen.NewHorizons");
-
-            GameObject trainOrbit = SearchUtilities.Find("StellarExpress_Body/Orbit");
-            if (trainOrbit != null)
-            {
-                trainOrbit.GetComponent<NHOrbitLine>()._lineWidth = 1;
-                LineRenderer lineRenderer = trainOrbit.GetComponent<LineRenderer>();
-                lineRenderer.material.renderQueue = 0;
-                lineRenderer.endColor = new Color(0, 0, 0, 0);
-                lineRenderer.endWidth = 0;
-                lineRenderer.numPositions = 128;
-                lineRenderer.positionCount = 128;
-            }
-            else{ModHelper.Console.WriteLine("Can't find Orbit!", MessageType.Error);}
         }
 
         public static void SolvedCoords()
@@ -311,6 +354,51 @@ namespace OnARail
             creditsVolume.SetActive(true);
         }*/
 
+        private void OnPutOnHelmet()
+        {
+            newHorizons = ModHelper.Interaction.TryGetModApi<INewHorizons>("xen.NewHorizons");
+
+            GameObject trainOrbit = SearchUtilities.Find("StellarExpress_Body/Orbit");
+            if (trainOrbit != null)
+            {
+                trainOrbit.GetComponent<NHOrbitLine>()._lineWidth = 1;
+                LineRenderer lineRenderer = trainOrbit.GetComponent<LineRenderer>();
+                lineRenderer.material.renderQueue = 0;
+                lineRenderer.endColor = new Color(0, 0, 0, 0);
+                lineRenderer.endWidth = 0;
+                lineRenderer.numPositions = 128;
+                lineRenderer.positionCount = 128;
+            }
+            else { ModHelper.Console.WriteLine("Can't find Orbit!", MessageType.Error); }
+
+            //lightRadius of the sun gets overridden by base mod, set it back to 2500m after player gains control!
+            //(This may or may not happen anymore, but too bad! Band-aid solution stays!)
+            Light starLight = SearchUtilities.Find("TheStellarExpress_Body/Sector/Star/StarLight").GetComponent<Light>();
+            starLight.range = 2500;
+        }
+
+        private void OnEnterShip()
+        {
+            warpScale.SetActive(false);
+
+            foreach (GameObject fish in fishies)
+            {
+                fish.transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(false);
+                //OnARail.DebugLog("FishTrigger " + fish + " disabled!", OWML.Common.MessageType.Info);
+            }
+        }
+
+        private void OnExitShip()
+        {
+            warpScale.SetActive(true);
+
+            foreach (GameObject fish in fishies)
+            {
+                fish.transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(true);
+                //OnARail.DebugLog("FishTrigger " + fish + " enabled!", OWML.Common.MessageType.Info);
+            }
+        }
+
         private static void OnPlayerDeath(DeathType deathType)
         {
             TimeLoop.SetTimeLoopEnabled(true);
@@ -336,7 +424,8 @@ namespace OnARail
 
         private Material GetReplacementMaterial(Material material)
         {
-            if (material.name.Contains("Structure_NOM_SandStone_mat") ||
+            if (material.name.Contains("Structure_NOM_Whiteboard_mat") ||
+                material.name.Contains("Structure_NOM_SandStone_mat") ||
                 material.name.Contains("Structure_NOM_SandStone_Dark_mat")
                 )
             {
@@ -355,6 +444,11 @@ namespace OnARail
                 )
             {
                 return black;
+            }
+            else if (material.name.Contains("Props_NOM_Scroll_mat")
+            )
+            {
+                material.color = new Color(0.05f, 0.05f, 0.05f);
             }
 
             return material;

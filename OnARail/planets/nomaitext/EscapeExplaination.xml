@@ -16,7 +16,7 @@
   <TextBlock>
     <ID>4</ID>
     <ParentID>3</ParentID>
-    <Text>Upon further inspection, there seems to be a <![CDATA[<color=orange>derilict vessel</color>]]> in the distance... Did something happen to this particular clan?</Text>
+    <Text>Upon further inspection, there seems to be a <![CDATA[<color=orange>derelict vessel</color>]]> in the distance... Did something happen to this particular clan?</Text>
   </TextBlock>
   <TextBlock>
     <ID>5</ID>
@@ -33,4 +33,10 @@
     <ParentID>6</ParentID>
     <Text>Anyways, I've covered my tracks to the best of my ability. For now I'll rest and in the morning my project begins.</Text>
   </TextBlock>
+  <ShipLogConditions>
+    <RevealFact>
+      <FactID>SPRUCECABOOSE_PLATFORM_ESCAPECLEANUP</FactID>
+      <Condition>7</Condition>
+    </RevealFact>
+  </ShipLogConditions>
 </NomaiObject>

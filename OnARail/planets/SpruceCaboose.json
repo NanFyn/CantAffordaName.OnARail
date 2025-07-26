@@ -9,7 +9,7 @@
     "gravityAlignmentRadiusOverride": 100
   },
   "Orbit": {
-    "primaryBody": "Railway System",
+    "primaryBody": "The Stellar Express",
     "showOrbitLine": false,
     "semiMajorAxis": 1500,
     "trueAnomaly": 300,
@@ -41,8 +41,9 @@
   },
   "AmbientLights": [
     {
-      "outerRadius": 100,
-      "innerRadius": 40,
+      "outerRadius": 150,
+      "innerRadius": 0,
+      "isShell": true,
       "intensity": 0.8,
       "tint": {
         "r": 130,
@@ -72,6 +73,107 @@
     ]
   },
   "Volumes": {
+    "revealVolumes": [
+      {
+        "radius": 110,
+        "reveals": [ "SPRUCECABOOSE_BASE_FACT" ],
+        "revealOn": "enter"
+      },
+      {
+        "radius": 10,
+        "reveals": [ "SPRUCECABOOSE_PLATFORM_FACT", "SPRUCECABOOSE_PLATFORM_WARP_FACT", "SPRUCECABOOSE_PLATFORM_RUMOR" ],
+        "revealOn": "enter",
+        "position": {
+          "x": 30,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "radius": 30,
+        "reveals": [ "SPRUCECABOOSE_PILLAR_START", "SPRUCECABOOSE_PILLAR_RUMOR" ],
+        "revealOn": "enter",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": -40
+        }
+      },
+      {
+        "radius": 10,
+        "reveals": [ "SPRUCECABOOSE_PILLAR_OBSERVATION" ],
+        "revealOn": "observe",
+        "maxDistance": 48,
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": -16
+        }
+      },
+      {
+        "radius": 10,
+        "reveals": [ "SPRUCECABOOSE_PILLAR_OBSERVATION" ],
+        "revealOn": "snapshot",
+        "maxDistance": 48,
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": -16
+        }
+      },
+      {
+        "radius": 35,
+        "reveals": [ "SPRUCECABOOSE_MOUNTAIN_START", "SPRUCECABOOSE_MOUNTAIN_RUMOR", "SPRUCECABOOSE_MOUNTAIN_AUDIO_RUMOR" ],
+        "revealOn": "enter",
+        "position": {
+          "x": -50,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "radius": 5,
+        "reveals": [ "SPRUCECABOOSE_MOUNTAIN_OBSERVATION" ],
+        "revealOn": "snapshot",
+        "maxDistance": 12,
+        "position": {
+          "x": -55,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "radius": 5,
+        "reveals": [ "SPRUCECABOOSE_MOUNTAIN_OBSERVATION" ],
+        "revealOn": "observe",
+        "maxDistance": 12,
+        "position": {
+          "x": -40,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "radius": 5,
+        "reveals": [ "SPRUCECABOOSE_MOUNTAIN_SCROLL" ],
+        "revealOn": "enter",
+        "position": {
+          "x": -58.5,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "radius": 4,
+        "reveals": [ "SPRUCECABOOSE_PLATFORM_SCROLL" ],
+        "revealOn": "enter",
+        "position": {
+          "x": 40.53735,
+          "y": 14.54109,
+          "z": -6.612262
+        }
+      }
+    ],
     "forces": {
       "gravityVolumes": [
         {
@@ -301,9 +403,17 @@
         "audio": "1807",
         "clipSelection": "random",
         "track": "environment",
-        "volume": 0.4,
+        "volume": 0.2,
         "priority": 2,
         "radius": 100.0
+      },
+      {
+        "audio": "2880",
+        "clipSelection": "random",
+        "track": "environment",
+        "volume": 0.4,
+        "priority": 3,
+        "radius": 29.2
       }
     ]
   },
@@ -312,12 +422,62 @@
     "buoyancy": 0.9
   },
   "Props": {
+    "entryLocation": [
+      {
+        "id": "SPRUCECABOOSE_BASE",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "id": "SPRUCECABOOSE_PLATFORM_WARP",
+        "position": {
+          "x": 29.3188,
+          "y": -5.7317,
+          "z": 1.9642
+        }
+      },
+      {
+        "id": "SPRUCECABOOSE_PLATFORM",
+        "position": {
+          "x": 30.2,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "id": "SPRUCECABOOSE_PILLAR",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": -40
+        }
+      },
+      {
+        "id": "SPRUCECABOOSE_MOUNTAIN",
+        "position": {
+          "x": -50,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "id": "SPRUCECABOOSE_MOUNTAIN_AUDIO",
+        "position": {
+          "x": -58.8,
+          "y": 0,
+          "z": 0
+        }
+      }
+    ],
     "signals": [
       {
         "frequency": "One-Way Frequency",
         "name": "Reverse Beacon",
         "position": {
-          "x": -55.8,
+          "x": -57.8,
           "y": 0,
           "z": 0
         },
@@ -326,7 +486,22 @@
         "identificationRadius": 4.5,
         "onlyAudibleToScope": false,
         "minDistance": 2,
-        "maxDistance": 30
+        "maxDistance": 100,
+        "reveals": "SPRUCECABOOSE_MOUNTAIN_AUDIO_FACT"
+      },
+      {
+        "frequency": "One-Way Frequency",
+        "name": "Reverse Beacon",
+        "position": {
+          "x": -57.8,
+          "y": 0,
+          "z": 0
+        },
+        "audio": "0",
+        "detectionRadius": 4.5,
+        "identificationRadius": 4.5,
+        "reveals": "SPRUCECABOOSE_COORDS_AUDIO",
+        "rename": "SignalForFact"
       }
     ],
     "remotes": [
@@ -445,6 +620,11 @@
       },
       {
         "path": "",
+        "rename": "ScatterProps",
+        "scale": 0.5
+      },
+      {
+        "path": "",
         "rename": "Crystals"
       },
       {
@@ -481,6 +661,7 @@
           "colliderRadius": 2,
           "itemType": "WarpCoreBlack",
           "insertCondition": "WARPCORE_BLACK_INSERTED",
+          "insertFact": "SPRUCECABOOSE_PLATFORM_WARP_INSERTED",
           "isRelativeToParent": true
         },
         "deactivationCondition": "WARPCORE_BLACK_INSERTED",
@@ -599,11 +780,16 @@
           "x": 61.4453,
           "y": 180,
           "z": 180
-        }
+        },
+        "isRelativeToParent": true,
+        "scale": 1.75
       },
       {
         "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "rename": "Tree (1)",
         "parentPath": "Sector/Trees",
+        "isRelativeToParent": true,
+        "scale": 1.85,
         "position": {
           "x": 39.38274,
           "y": -17.35199,
@@ -613,7 +799,10 @@
       },
       {
         "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "rename": "Tree (2)",
         "parentPath": "Sector/Trees",
+        "isRelativeToParent": true,
+        "scale": 1.75,
         "position": {
           "x": 10.10523,
           "y": -23.98114,
@@ -623,7 +812,10 @@
       },
       {
         "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "rename": "Tree (3)",
         "parentPath": "Sector/Trees",
+        "isRelativeToParent": true,
+        "scale": 1.75,
         "position": {
           "x": 14.18491,
           "y": 24.09984,
@@ -633,7 +825,10 @@
       },
       {
         "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "rename": "Tree (4)",
         "parentPath": "Sector/Trees",
+        "isRelativeToParent": true,
+        "scale": 1.65,
         "position": {
           "x": 10.1645,
           "y": 30.6968,
@@ -643,7 +838,10 @@
       },
       {
         "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "rename": "Tree (5)",
         "parentPath": "Sector/Trees",
+        "isRelativeToParent": true,
+        "scale": 1.75,
         "position": {
           "x": 10.20109,
           "y": 17.28537,
@@ -653,7 +851,10 @@
       },
       {
         "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "rename": "Tree (6)",
         "parentPath": "Sector/Trees",
+        "isRelativeToParent": true,
+        "scale": 1.45,
         "position": {
           "x": 15.14712,
           "y": -17.32264,
@@ -663,7 +864,10 @@
       },
       {
         "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "rename": "Tree (7)",
         "parentPath": "Sector/Trees",
+        "isRelativeToParent": true,
+        "scale": 1.65,
         "position": {
           "x": -24.3448,
           "y": -18.85524,
@@ -673,7 +877,10 @@
       },
       {
         "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "rename": "Tree (8)",
         "parentPath": "Sector/Trees",
+        "isRelativeToParent": true,
+        "scale": 1.75,
         "position": {
           "x": -2.741183,
           "y": -30.24261,
@@ -683,7 +890,10 @@
       },
       {
         "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "rename": "Tree (9)",
         "parentPath": "Sector/Trees",
+        "isRelativeToParent": true,
+        "scale": 2,
         "position": {
           "x": -21.09602,
           "y": 6.263361,
@@ -693,7 +903,10 @@
       },
       {
         "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "rename": "Tree (10)",
         "parentPath": "Sector/Trees",
+        "isRelativeToParent": true,
+        "scale": 1.55,
         "position": {
           "x": -16.0834,
           "y": -27.18622,
@@ -703,7 +916,10 @@
       },
       {
         "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "rename": "Tree (11)",
         "parentPath": "Sector/Trees",
+        "isRelativeToParent": true,
+        "scale": 1.45,
         "position": {
           "x": -22.0084,
           "y": -17.77796,
@@ -713,7 +929,10 @@
       },
       {
         "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "rename": "Tree (12)",
         "parentPath": "Sector/Trees",
+        "isRelativeToParent": true,
+        "scale": 2,
         "position": {
           "x": 38.14342,
           "y": 19.99699,
@@ -723,7 +942,10 @@
       },
       {
         "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "rename": "Tree (13)",
         "parentPath": "Sector/Trees",
+        "isRelativeToParent": true,
+        "scale": 1.5,
         "position": {
           "x": -6.211119,
           "y": 29.78901,
@@ -733,7 +955,10 @@
       },
       {
         "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "rename": "Tree (14)",
         "parentPath": "Sector/Trees",
+        "isRelativeToParent": true,
+        "scale": 1.4,
         "position": {
           "x": -23.10518,
           "y": 19.27746,
@@ -743,11 +968,122 @@
       },
       {
         "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "rename": "Tree (15)",
         "parentPath": "Sector/Trees",
+        "isRelativeToParent": true,
+        "scale": 1.3,
         "position": {
           "x": 11.15024,
           "y": -30.48542,
           "z": -2.409123
+        },
+        "alignRadial": true
+      },
+      {
+        "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "rename": "Tree (16)",
+        "parentPath": "Sector/Trees",
+        "scale": 1.2,
+        "position": {
+          "x": -24.52163,
+          "y": -0.3820853,
+          "z": -21.55627
+        },
+        "alignRadial": true
+      },
+      {
+        "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "rename": "Tree (17)",
+        "parentPath": "Sector/Trees",
+        "scale": 1.2,
+        "position": {
+          "x": -12.69769,
+          "y": -5.913123,
+          "z": -29.65429
+        },
+        "alignRadial": true
+      },
+      {
+        "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "rename": "Tree (18)",
+        "parentPath": "Sector/Trees",
+        "scale": 1.2,
+        "position": {
+          "x": 13.26134,
+          "y": -3.586284,
+          "z": -29.585
+        },
+        "alignRadial": true
+      },
+      {
+        "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "rename": "Tree (19)",
+        "parentPath": "Sector/Trees",
+        "scale": 1.2,
+        "position": {
+          "x": -2.065029,
+          "y": -32.39225,
+          "z": 2.201766
+        },
+        "alignRadial": true
+      },
+      {
+        "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "rename": "Tree (20)",
+        "parentPath": "Sector/Trees",
+        "scale": 1.2,
+        "position": {
+          "x": 27.37671,
+          "y": -15.71793,
+          "z": 20.36024
+        },
+        "alignRadial": true
+      },
+      {
+        "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "rename": "Tree (21)",
+        "parentPath": "Sector/Trees",
+        "scale": 1.2,
+        "position": {
+          "x": -15.42092,
+          "y": -24.7276,
+          "z": -14.50478
+        },
+        "alignRadial": true
+      },
+      {
+        "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "rename": "Tree (22)",
+        "parentPath": "Sector/Trees",
+        "scale": 1.2,
+        "position": {
+          "x": -6.244297,
+          "y": -62.1658,
+          "z": 6.239951
+        },
+        "alignRadial": true
+      },
+      {
+        "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "rename": "Tree (23)",
+        "parentPath": "Sector/Trees",
+        "scale": 1.2,
+        "position": {
+          "x": -6.475928,
+          "y": 17.83895,
+          "z": 26.75445
+        },
+        "alignRadial": true
+      },
+      {
+        "path": "TimberHearth_Body/Sector_TH/Sector_QuantumGrove/Interactables_QuantumGrove/QuantumSequoias/QuantumTree_Root/Prefab_TH_Redwood",
+        "rename": "Tree (24)",
+        "parentPath": "Sector/Trees",
+        "scale": 1.2,
+        "position": {
+          "x": -6.244268,
+          "y": 31.57293,
+          "z": 6.300835
         },
         "alignRadial": true
       },
@@ -1111,7 +1447,7 @@
         },
         "type": "whiteboard",
         "xmlFile": "planets/nomaiText/WarpCores.xml",
-        "seed": 20,
+        "seed": 13,
         "arcInfo": [
           {
             "type": "adult"
@@ -1127,28 +1463,29 @@
           },
           {
             "type": "adult",
-            "mirror": true,
-            "zRotation": 28.2,
+            "zRotation": 183.5,
             "position": {
-              "x": 0.3,
-              "y": 1.9
+              "x": 1.67,
+              "y": 0.53
             }
           },
           {
             "type": "adult",
-            "zRotation": 260,
-            "mirror": true,
+            "zRotation": 300,
             "position": {
-              "x": 1.4,
-              "y": 1.33
+              "x": 1.3,
+              "y": 1.52
             }
+          },
+          {
+            "type": "adult"
           }
         ]
       },
       {
         "xmlFile": "planets/nomaitext/EnjiPlan.xml",
         "type": "scroll",
-        "seed": 24,
+        "seed": 12,
         "position": {
           "x": -56.00006,
           "y": -3.041178,
@@ -1173,21 +1510,24 @@
             "type": "adult"
           },
           {
-            "type": "adult",
-            "position": {
-              "x": 1.2486,
-              "y": 1.8018
-            },
-            "zRotation": 130
+            "type": "adult"
+          },
+          {
+            "type": "adult"
+          },
+          {
+            "type": "adult"
           },
           {
             "type": "adult",
+            "zRotation": 0.93,
             "position": {
-              "x": -0.15,
-              "y": 2
-            },
-            "zRotation": 97.7,
-            "mirror": true
+              "x": 0.47,
+              "y": 1.52
+            }
+          },
+          {
+            "type": "adult"
           }
         ]
       },
@@ -1223,8 +1563,12 @@
     "Sector/Props/Fire/Effects/Effects_HEA_SmokeColumn"
   ],
   "ShipLog": {
+    "xmlFile": "planets/shiplog/SpruceCaboose.xml",
+    "spriteFolder": "planets/shiplog/sprites",
     "mapMode": {
-      "remove": true
+      "revealedSprite": "planets/shiplog/sprites/spruce_caboose_map_mode.png",
+      "scale": 1.25,
+      "offset": 0.5
     }
   },
   "ReferenceFrame": {

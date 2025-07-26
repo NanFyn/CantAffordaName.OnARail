@@ -9,7 +9,7 @@
     "showMinimap": false
   },
   "Orbit": {
-    "primaryBody": "Railway System",
+    "primaryBody": "The Stellar Express",
     "showOrbitLine": true,
     "semiMajorAxis": 1500,
     "trueAnomaly": 360,
@@ -41,7 +41,7 @@
   "Volumes": {
     "creditsVolume": [
       {
-        "deathType": "bigBang",
+        "deathType": "blackHole",
         "gameOver": {
           "creditsType": "none",
           "colour": {
@@ -50,7 +50,7 @@
             "b": 255,
             "a": 255
           },
-          "text": "On A Rail"
+          "text": "Somewhere, somehow, a Nomai clan witnesses something once deemed impossible... If only there weren't a time loop."
         },
         "radius": 300
       }
@@ -58,8 +58,30 @@
     "revealVolumes": [
       {
         "radius": 300,
-        "reveals": [ "RAILWAY_FINAL_FACT" ],
-        "revealOn": "enter"
+        "reveals": [ "RAILWAY_FINAL_FACT", "RAILWAY_FINAL_FACT_2", "RAILWAY_FINAL_RUMOR" ],
+        "revealOn": "enter",
+        "rename": "RevealFinal"
+      },
+      {
+        "radius": 100,
+        "reveals": [ "RAILWAY_START_BASE" ],
+        "revealOn": "enter",
+        "position": {
+          "x": 0,
+          "y": -6,
+          "z": -48
+        }
+      },
+      {
+        "radius": 2,
+        "reveals": [ "RAILWAY_ENGINEROOM_START", "RAILWAY_ENGINEROOM_WHISTLE_RUMOR" ],
+        "revealOn": "enter",
+        "revealFor": "player",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": -21.5
+        }
       }
     ],
     "notificationVolumes": [
@@ -147,6 +169,16 @@
     ]
   },
   "Props": {
+    "entryLocation": [
+      {
+        "id": "RAILWAY_START",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      }
+    ],
     "audioSources": [
       {
         "rename": "TrainWhistle",
@@ -541,17 +573,129 @@
       },
       {
         "position": {
-          "x": -0.1355209,
-          "y": -7.343575,
-          "z": -20.75521
+          "x": -5.5,
+          "y": -7.35,
+          "z": -5.3
         },
         "rotation": {
-          "x": 4.484174E-06,
-          "y": 271.3658,
-          "z": -5.925711E-06
+          "x": 0,
+          "y": 90,
+          "z": 0
         },
+        "type": "whiteboard"
+      },
+      {
+        "position": {
+          "x": 5.5,
+          "y": -7.35,
+          "z": -5.3
+        },
+        "rotation": {
+          "x": 0,
+          "y": 270,
+          "z": 0
+        },
+        "type": "whiteboard",
+        "seed": 1,
+        "xmlFile": "planets/nomaitext/CoordControlHint.xml"
+      },
+      {
+        "position": {
+          "x": -1.492,
+          "y": -1.675,
+          "z": -16.225
+        },
+        "rotation": {
+          "x": 0,
+          "y": 165.3,
+          "z": 60
+        },
+        "seed": 2,
         "xmlFile": "planets/nomaitext/AnglerWarpHint.xml",
-        "type": "preCrashRecorder"
+        "type": "scroll",
+        "arcInfo": [
+          {
+            "type": "adult"
+          },
+          {
+            "type": "adult"
+          },
+          {
+            "type": "adult",
+            "zRotation": 194,
+            "position": {
+              "x": 2.28,
+              "y": 0.6
+            }
+          },
+          {
+            "type": "adult"
+          },
+          {
+            "type": "adult"
+          },
+          {
+            "type": "adult",
+            "zRotation": 128,
+            "mirror": true,
+            "position": {
+              "x": -0.43,
+              "y": 1.93
+            }
+          },
+          {
+            "type": "adult",
+            "mirror": true,
+            "zRotation": 0,
+            "position": {
+              "x": -0.74,
+              "y": 1.61
+            }
+          },
+          {
+            "type": "adult",
+            "mirror": true,
+            "zRotation": 69.3,
+            "position": {
+              "x": -1.65,
+              "y": 2.5
+            }
+          },
+          {
+            "type": "adult",
+            "mirror": true,
+            "zRotation": 197,
+            "position": {
+              "x": -2.75,
+              "y": 1.8
+            }
+          },
+          {
+            "type": "adult",
+            "zRotation": 243,
+            "position": {
+              "x": -1.5,
+              "y": 1.05
+            }
+          },
+          {
+            "type": "adult",
+            "zRotation": 211,
+            "position": {
+              "x": -2,
+              "y": 0.975
+            }
+          },
+          {
+            "type": "adult",
+            "mirror": true,
+            "zRotation": 199,
+            "position": {
+              "x": -1.75,
+              "y": 0.1
+            }
+          }
+        ]
       }
     ]
   },

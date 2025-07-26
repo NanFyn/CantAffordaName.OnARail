@@ -1,0 +1,30 @@
+<NomaiObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/text_schema.xsd">
+	<TextBlock>
+		<ID>1</ID>
+		<Text><![CDATA[<color=lightblue>Enji</color>]]>: I have prepared the socket for the new <![CDATA[<color=orange>Advanced Warp Core</color>]]> here in the engine room.</Text>
+	</TextBlock>
+  <TextBlock>
+    <ID>2</ID>
+      <ParentID>1</ParentID>
+    <Text>Once it's finished I'll be ready to take the train on its inaugural warp back to my clan!</Text>
+  </TextBlock>
+  <TextBlock>
+    <ID>3</ID>
+    <ParentID>2</ParentID>
+    <Text>After placing the <![CDATA[<color=orange>Advanced Warp Core</color>]]>, the <![CDATA[<color=orange>Coordinate Interface</color>]]> will rise up from the floor. All I need to do is enter the correct coordinates from the <![CDATA[<color=orange>Coordinate Relay</color>]]> and we're off!</Text>
+  </TextBlock>
+  <ShipLogConditions>
+    <RevealFact>
+      <FactID>RAILWAY_ENGINEROOM_COORDHINT_1</FactID>
+      <Condition>1</Condition>
+    </RevealFact>
+    <RevealFact>
+      <FactID>RAILWAY_ENGINEROOM_COORDHINT_2</FactID>
+      <Condition>3</Condition>
+    </RevealFact>
+    <RevealFact>
+      <FactID>RAILWAY_ENGINEROOM_COORD_RUMOR</FactID>
+      <Condition>3</Condition>
+    </RevealFact>
+  </ShipLogConditions>
+</NomaiObject>

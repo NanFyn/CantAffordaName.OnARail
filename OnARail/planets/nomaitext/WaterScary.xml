@@ -6,7 +6,7 @@
   <TextBlock>
     <ID>2</ID>
       <ParentID>1</ParentID>
-    <Text>But... I don't really have a choice. I need to go through with this. <![CDATA[<color=orange>Locomocean's</color>]]> the only place I can really do this.</Text>
+    <Text>But... I don't really have a choice. I can't spare any time for apprehention. <![CDATA[<color=orange>Locomocean's</color>]]> the only place I can really do this.</Text>
   </TextBlock>
   <TextBlock>
     <ID>3</ID>
@@ -43,4 +43,18 @@
     <ParentID>8</ParentID>
     <Text>Even if the, uh... "entrance" I now have to use is <![CDATA[<i>slightly</i>]]> unorthodox.</Text>
   </TextBlock>
+  <ShipLogConditions>
+    <RevealFact>
+      <FactID>LOCOMOCEAN_BASE_SCROLL_1</FactID>
+      <Condition>8</Condition>
+    </RevealFact>
+    <RevealFact>
+      <FactID>LOCOMOCEAN_CORE_SCROLL_RUMOR</FactID>
+      <Condition>8</Condition>
+    </RevealFact>
+    <RevealFact>
+      <FactID>LOCOMOCEAN_BASE_SCROLL_2</FactID>
+      <Condition>9</Condition>
+    </RevealFact>
+  </ShipLogConditions>
 </NomaiObject>

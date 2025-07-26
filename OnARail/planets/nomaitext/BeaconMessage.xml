@@ -13,4 +13,19 @@
     <ParentID>2</ParentID>
     <Text>Approximate transmission coordinates may still be retrieved on-site at the <![CDATA[<color=orange>Coordinate Relay</color>]]>.</Text>
   </TextBlock>
+  <TextBlock>
+    <ID>4</ID>
+    <ParentID>3</ParentID>
+    <Text><![CDATA[<color=red>ERROR</color>]]>: Scheduled automatic cessation of <![CDATA[<color=orange>One-Way Signal Blocker</color>]]> following user inputed time of <![CDATA[<color=yellow>three weeks</color>]]> has failed. Please contact your system administrator.</Text>
+  </TextBlock>
+  <ShipLogConditions>
+    <RevealFact>
+      <FactID>SPRUCECABOOSE_MOUNTAIN_TOP_1</FactID>
+      <Condition>3</Condition>
+    </RevealFact>
+    <RevealFact>
+      <FactID>SPRUCECABOOSE_MOUNTAIN_TOP_2</FactID>
+      <Condition>3</Condition>
+    </RevealFact>
+  </ShipLogConditions>
 </NomaiObject>

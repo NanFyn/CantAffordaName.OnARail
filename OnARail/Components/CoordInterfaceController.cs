@@ -1,4 +1,5 @@
 ﻿using NewHorizons.Utility;
+using OWML.ModHelper;
 using System.Collections;
 using UnityEngine;
 
@@ -41,7 +42,7 @@ namespace OnARail.Components
         {
             if (IsCorrect())
             {
-                OnARail.DebugLog("Correctly entered the coords!", OWML.Common.MessageType.Success);
+                //OnARail.DebugLog("Correctly entered the coords!", OWML.Common.MessageType.Success);
                 //Doesn't deactivate properly, destroy it
                 Destroy(_interface._upperOrb);
                 //OnARail.SolvedCoords();
@@ -61,16 +62,25 @@ namespace OnARail.Components
                     Destroy(trainWhistle);
                     StartCoroutine(EndingCoroutine());
                 }
+
+                GameObject star = newHorizons.GetPlanet("The Stellar Express");
+                if (star != null)
+                {
+                    GameObject destructionVolume = SearchUtilities.Find("TheStellarExpress_Body/Sector/Star/DestructionFluidVolume");
+                    GameObject planetDestructionVolume = SearchUtilities.Find("TheStellarExpress_Body/Sector/Star/PlanetDestructionVolume");
+
+                    destructionVolume.SetActive(false);
+                    planetDestructionVolume.SetActive(false);
+                }
             }
-            else {OnARail.DebugLog("The coords are not right.", OWML.Common.MessageType.Success);}
         }
 
         private IEnumerator EndingCoroutine()
         {
-            yield return new WaitForSeconds(7.9f);
-            GameObject revealVolume = SearchUtilities.Find("StellarExpress_Body/Sector/Reveal Volume (Enter)");
+            yield return new WaitForSeconds(7.5f);
+            GameObject revealVolume = SearchUtilities.Find("StellarExpress_Body/Sector/RevealFinal");
             revealVolume.SetActive(true);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.5f);
             GameObject creditsVolume = SearchUtilities.Find("StellarExpress_Body/Sector/LoadCreditsVolume");
             creditsVolume.SetActive(true);
         }
@@ -86,7 +96,7 @@ namespace OnARail.Components
             bool first = _interface._nodeControllers[0].CheckCoordinate(coord1);
             bool second = _interface._nodeControllers[1].CheckCoordinate(coord2);
             bool third = _interface._nodeControllers[2].CheckCoordinate(coord3);
-            OnARail.DebugLog("1: " + first + " | 2: " + second + " | 3: " + third, OWML.Common.MessageType.Info);
+            //OnARail.DebugLog("1: " + first + " | 2: " + second + " | 3: " + third, OWML.Common.MessageType.Info);
 
             return first && second && third;
         }

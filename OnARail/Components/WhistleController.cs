@@ -17,11 +17,11 @@ namespace OnARail.Components
 
         private void Update()
         {
-            var currentTime = TimeLoop.GetMinutesElapsed();
+            var currentTime = TimeLoop.GetMinutesElapsed() % 2;
 
             //GetMinutesElapsed: whole numbers are minutes, decimals are seconds
             //i.e. 20 minutes left: currentTime = 2  ||  19.5 minutes left: currentTime = 2.5
-            if (currentTime % 2 >= 0 && currentTime % 2 <= 0.01 && !justWhistled)
+            if (currentTime >= 0 && currentTime <= 0.01 && !justWhistled)
             {
                 //OnARail.DebugLog("Time to whistle!", OWML.Common.MessageType.Success);
                 justWhistled = true;

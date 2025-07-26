@@ -9,7 +9,7 @@
     "gravityAlignmentRadiusOverride": 100
   },
   "Orbit": {
-    "primaryBody": "Railway System",
+    "primaryBody": "The Stellar Express",
     "showOrbitLine": false,
     "semiMajorAxis": 1500,
     "trueAnomaly": 340,
@@ -70,6 +70,46 @@
     ]
   },
   "Volumes": {
+    "revealVolumes": [
+      {
+        "radius": 110,
+        "reveals": [ "FROSTCAR_BASE_FACT", "FROSTCAR_MINE_RUMOR" ],
+        "revealOn": "enter"
+      },
+      {
+        "radius": 54,
+        "reveals": [ "FROSTCAR_BASE_GM" ],
+        "revealOn": "enter",
+        "revealFor": "player"
+      },
+      {
+        "radius": 22,
+        "reveals": [ "FROSTCAR_MINE_RUMOR" ],
+        "revealOn": "enter",
+        "position": {
+          "x": 56,
+          "y": -3,
+          "z": 0
+        }
+      },
+      {
+        "radius": 5,
+        "reveals": [ "FROSTCAR_MINE_FACT", "FROSTCAR_MINE_WARP_FACT", "FROSTCAR_MINE_WARP_RUMOR" ],
+        "revealOn": "enter",
+        "revealFor": "player",
+        "position": {
+          "x": 31.3,
+          "y": -4.7,
+          "z": 9.4
+        }
+      },
+      {
+        "radius": 18,
+        "reveals": [ "FROSTCAR_CORE_FACT", "FROSTCAR_CORE_SCROLL" ],
+        "revealOn": "enter",
+        "revealFor": "player"
+      }
+    ],
     "rulesets": {
       "probeRulesets": [
         {
@@ -105,6 +145,62 @@
         "priority": 2,
         "radius": 26,
         "layer": 0
+      }
+    ],
+    "fluidVolumes": [
+      {
+        "position": {
+          "x": 1.8,
+          "y": 0,
+          "z": 0
+        },
+        "type": "none",
+        "density": 5,
+        "priority": 2,
+        "radius": 26
+      }
+    ],
+    "notificationVolumes": [
+      {
+        "entryNotification": {
+          "displayMessage": "DANGER: GHOST MATTER DETECTED NEARBY"
+        },
+        "radius": 15.5,
+        "parentPath": "Sector/FrozenInterior/GM_Root_Main/GM (1)",
+        "isRelativeToParent": true,
+        "target": "player"
+      },
+      {
+        "entryNotification": {
+          "displayMessage": "DANGER: GHOST MATTER DETECTED NEARBY"
+        },
+        "radius": 20,
+        "parentPath": "Sector/FrozenInterior/GM_Root_Main/GM (2)",
+        "isRelativeToParent": true,
+        "target": "player"
+      },
+      {
+        "entryNotification": {
+          "displayMessage": "DANGER: GHOST MATTER DETECTED NEARBY"
+        },
+        "radius": 17,
+        "parentPath": "Sector/FrozenInterior/GM_Root_Main/GM (3)",
+        "isRelativeToParent": true,
+        "target": "player"
+      },
+      {
+        "entryNotification": {
+          "displayMessage": "DANGER: GHOST MATTER DETECTED NEARBY"
+        },
+        "radius": 20,
+        "parentPath": "Sector/FrozenInterior/GM_Root_Main/GM (4)",
+        "isRelativeToParent": true,
+        "position": {
+          "x": -10,
+          "y": 0,
+          "z": 7
+        },
+        "target": "player"
       }
     ],
     "hazardVolumes": [
@@ -239,6 +335,40 @@
     ]
   },
   "Props": {
+    "entryLocation": [
+      {
+        "id": "FROSTCAR_BASE",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "id": "FROSTCAR_MINE",
+        "position": {
+          "x": 28.5,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "id": "FROSTCAR_MINE_WARP",
+        "position": {
+          "x": 26.875,
+          "y": 8.85,
+          "z": 11.6
+        }
+      },
+      {
+        "id": "FROSTCAR_CORE",
+        "position": {
+          "x": -19.7846,
+          "y": -2.8956,
+          "z": -37.0101
+        }
+      }
+    ],
     "remotes": [
       {
         "id": "REMOTE_FROSTCAR",
@@ -361,6 +491,7 @@
           "colliderRadius": 2,
           "itemType": "WarpCoreWhite",
           "insertCondition": "WARPCORE_WHITE_INSERTED",
+          "insertFact": "FROSTCAR_MINE_WARP_INSERTED",
           "isRelativeToParent": true
         },
         "deactivationCondition": "WARPCORE_WHITE_INSERTED",
@@ -506,9 +637,9 @@
     "translatorText": [
       {
         "position": {
-          "x": 28.56266,
-          "y": 0.5811505,
-          "z": 0.4517908
+          "x": 0,
+          "y": 0,
+          "z": 0
         },
         "rotation": {
           "x": 301.6093,
@@ -516,7 +647,27 @@
           "z": 270
         },
         "xmlFile": "planets/nomaitext/WhistleHint.xml",
-        "type": "preCrashRecorder"
+        "type": "scroll",
+        "arcInfo": [
+          {
+            "type": "adult"
+          },
+          {
+            "type": "adult"
+          },
+          {
+            "type": "adult"
+          },
+          {
+            "type": "adult"
+          },
+          {
+            "type": "adult"
+          },
+          {
+            "type": "adult"
+          }
+        ]
       }
     ]
   },
@@ -530,8 +681,12 @@
     "Sector/WarpFake/Warp_Fake/Structure_NOM_WarpReceiver_Effects"
   ],
   "ShipLog": {
+    "xmlFile": "planets/shiplog/FrostCar.xml",
+    "spriteFolder": "planets/shiplog/sprites",
     "mapMode": {
-      "remove": true
+      "revealedSprite": "planets/shiplog/sprites/frost_car_map_mode.png",
+      "scale": 0.75,
+      "offset": 0.5
     }
   },
   "ReferenceFrame": {

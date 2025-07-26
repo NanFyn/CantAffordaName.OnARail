@@ -14,10 +14,10 @@ namespace OnARail.Components
 
         void Awake()
         {
-            GameObject star = newHorizons.GetPlanet("Railway System");
+            GameObject star = newHorizons.GetPlanet("The Stellar Express");
             if (star != null)
             {
-                GameObject visorRoot = SearchUtilities.Find("RailwaySystem_Body/Sector/VisorEffects");
+                GameObject visorRoot = SearchUtilities.Find("TheStellarExpress_Body/Sector/VisorEffects");
                 if (visorRoot != null)
                 {
                     visorEffects = visorRoot;
